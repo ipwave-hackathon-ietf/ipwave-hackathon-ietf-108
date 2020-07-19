@@ -1,0 +1,184 @@
+                                                                
+version 2
+run Lamda_1-0-20200717-09:30:50-31199
+attr configname Lamda_1
+attr datetime 20200717-09:30:50
+attr experiment Lamda_1
+attr inifile CNPOMNeTPP.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network CNPNet
+attr processid 31199
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param *.manager.launchConfig "xmldoc(\"CAN2Mapd2.launchd.xml\")"
+param *.node[*].appl.lambda 1
+param *.manager.seed 0
+param **.debug false
+param **.coreDebug false
+param *.playgroundSizeX 2500m
+param *.playgroundSizeY 2500m
+param *.playgroundSizeZ 50m
+param *.annotations.draw true
+param *.obstacles.debug false
+param *.obstacles.obstacles "xmldoc(\"config.xml\", \"//AnalogueModel[@type='SimpleObstacleShadowing']/obstacles\")"
+param *.manager.updateInterval 0.1s
+param *.manager.host "\"localhost\""
+param *.manager.port 9999
+param *.manager.autoShutdown true
+param *.rsu[0].mobility.x 325
+param *.rsu[0].mobility.y 1025
+param *.rsu[0].mobility.z 0
+param *.rsu[*].applType "\"CNPTraCIDemoRSU11p\""
+param **.rsu[*].app[*].typename "\"UdpSink\""
+param **.rsu[*].app[0].destPort 1000
+param **.rsu[*].app[0].messageLength 1000B
+param **.node[*].app[0].sendInterval 100ms
+param **.*.app[0].localPort 1000
+param **.eth[*].queue.typename "\"EtherQosQueue\""
+param **.eth[*].queue.dataQueue.typename "\"DropTailQueue\""
+param **.eth[*].queue.dataQueue.frameCapacity 10
+param **.eth[*].mac.duplexMode true
+param *.rsu[*].appl.headerLength "80 bit"
+param *.rsu[*].appl.sendCCM true
+param *.rsu[*].appl.dataOnSch true
+param *.rsu[*].appl.CCMInterval 1s
+param *.rsu[*].appl.CCMUserPriority 7
+param *.rsu[*].appl.dataUserPriority 5
+param *.connectionManager.sendDirect true
+param *.connectionManager.maxInterfDist 700m
+param *.connectionManager.drawMaxIntfDist true
+param *.**.nic.mac1609_4.useServiceChannel true
+param *.**.nic.mac1609_4.txPower 20mW
+param *.**.nic.mac1609_4.bitrate 6Mbps
+param *.**.nic.phy80211p.sensitivity -89dBm
+param *.**.nic.phy80211p.useThermalNoise true
+param *.**.nic.phy80211p.thermalNoise -110dBm
+param *.**.nic.phy80211p.decider "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.analogueModels "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.usePropagationDelay true
+param *.**.nic.phy80211p.antenna "xmldoc(\"antenna.xml\", \"/root/Antenna[@id='monopole']\")"
+param **.node[*].app[*].typename "\"UdpSink\""
+param **.node[*].app[0].destPort 1000
+param **.node[*].app[0].messageLength 1000B
+param **.node[*].app[0].sendInterval 100ms
+param **.node[*].app[0].sendInterval "uniform(5s, 10s)"
+param *.node[*].applType "\"CNPTraCIDemo11p\""
+param *.node[*].appl.headerLength "80 bit"
+param *.node[*].appl.sendCCM true
+param *.node[*].appl.dataOnSch true
+param *.node[*].appl.CCMInterval 0.5s
+param *.node[*].appl.maxt2cThresh 3.0
+param *.node[*].appl.mint2cThresh 1.0
+param *.node[*].appl.maximumAcceleration 5.0
+param *.node[*].appl.emergentManeuverTime 3.0
+param *.node[*].appl.singleClusterFormationPeriod 12.0
+param *.node[*3].appl.tesVeh false
+param *.node[*].veinsmobilityType.debug true
+param *.node[*].veinsmobility.x 0
+param *.node[*].veinsmobility.y 0
+param *.node[*].veinsmobility.z 1.895
+
+vector 0 CNPNet.rsu[0].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 1 CNPNet.rsu[0].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 2 CNPNet.MA[0].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 3 CNPNet.MA[0].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 4 CNPNet.node[0].veinsmobility posx ETV
+vector 5 CNPNet.node[0].veinsmobility posy ETV
+vector 6 CNPNet.node[0].veinsmobility speed ETV
+vector 7 CNPNet.node[0].veinsmobility acceleration ETV
+vector 8 CNPNet.node[0].veinsmobility co2emission ETV
+vector 9 CNPNet.node[1].veinsmobility posx ETV
+vector 10 CNPNet.node[1].veinsmobility posy ETV
+vector 11 CNPNet.node[1].veinsmobility speed ETV
+vector 12 CNPNet.node[1].veinsmobility acceleration ETV
+vector 13 CNPNet.node[1].veinsmobility co2emission ETV
+vector 14 CNPNet.node[2].veinsmobility posx ETV
+vector 15 CNPNet.node[2].veinsmobility posy ETV
+vector 16 CNPNet.node[2].veinsmobility speed ETV
+vector 17 CNPNet.node[2].veinsmobility acceleration ETV
+vector 18 CNPNet.node[2].veinsmobility co2emission ETV
+vector 19 CNPNet.node[3].veinsmobility posx ETV
+vector 20 CNPNet.node[3].veinsmobility posy ETV
+vector 21 CNPNet.node[3].veinsmobility speed ETV
+vector 22 CNPNet.node[3].veinsmobility acceleration ETV
+vector 23 CNPNet.node[3].veinsmobility co2emission ETV
+vector 24 CNPNet.node[4].veinsmobility posx ETV
+vector 25 CNPNet.node[4].veinsmobility posy ETV
+vector 26 CNPNet.node[4].veinsmobility speed ETV
+vector 27 CNPNet.node[4].veinsmobility acceleration ETV
+vector 28 CNPNet.node[4].veinsmobility co2emission ETV
+vector 29 CNPNet.node[5].veinsmobility posx ETV
+vector 30 CNPNet.node[5].veinsmobility posy ETV
+vector 31 CNPNet.node[5].veinsmobility speed ETV
+vector 32 CNPNet.node[5].veinsmobility acceleration ETV
+vector 33 CNPNet.node[5].veinsmobility co2emission ETV
+vector 34 CNPNet.node[6].veinsmobility posx ETV
+vector 35 CNPNet.node[6].veinsmobility posy ETV
+vector 36 CNPNet.node[6].veinsmobility speed ETV
+vector 37 CNPNet.node[6].veinsmobility acceleration ETV
+vector 38 CNPNet.node[6].veinsmobility co2emission ETV
+vector 39 CNPNet.node[7].veinsmobility posx ETV
+vector 40 CNPNet.node[7].veinsmobility posy ETV
+vector 41 CNPNet.node[7].veinsmobility speed ETV
+vector 42 CNPNet.node[7].veinsmobility acceleration ETV
+vector 43 CNPNet.node[7].veinsmobility co2emission ETV
+vector 44 CNPNet.node[8].veinsmobility posx ETV
+vector 45 CNPNet.node[8].veinsmobility posy ETV
+vector 46 CNPNet.node[8].veinsmobility speed ETV
+vector 47 CNPNet.node[8].veinsmobility acceleration ETV
+vector 48 CNPNet.node[8].veinsmobility co2emission ETV
+vector 49 CNPNet.node[9].veinsmobility posx ETV
+vector 50 CNPNet.node[9].veinsmobility posy ETV
+vector 51 CNPNet.node[9].veinsmobility speed ETV
+vector 52 CNPNet.node[9].veinsmobility acceleration ETV
+vector 53 CNPNet.node[9].veinsmobility co2emission ETV
+vector 54 CNPNet.node[10].veinsmobility posx ETV
+vector 55 CNPNet.node[10].veinsmobility posy ETV
+vector 56 CNPNet.node[10].veinsmobility speed ETV
+vector 57 CNPNet.node[10].veinsmobility acceleration ETV
+vector 58 CNPNet.node[10].veinsmobility co2emission ETV
+vector 59 CNPNet.node[11].veinsmobility posx ETV
+vector 60 CNPNet.node[11].veinsmobility posy ETV
+vector 61 CNPNet.node[11].veinsmobility speed ETV
+vector 62 CNPNet.node[11].veinsmobility acceleration ETV
+vector 63 CNPNet.node[11].veinsmobility co2emission ETV
+vector 64 CNPNet.node[12].veinsmobility posx ETV
+vector 65 CNPNet.node[12].veinsmobility posy ETV
+vector 66 CNPNet.node[12].veinsmobility speed ETV
+vector 67 CNPNet.node[12].veinsmobility acceleration ETV
+vector 68 CNPNet.node[12].veinsmobility co2emission ETV
+vector 69 CNPNet.node[13].veinsmobility posx ETV
+vector 70 CNPNet.node[13].veinsmobility posy ETV
+vector 71 CNPNet.node[13].veinsmobility speed ETV
+vector 72 CNPNet.node[13].veinsmobility acceleration ETV
+vector 73 CNPNet.node[13].veinsmobility co2emission ETV
+vector 74 CNPNet.rsu[0].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 75 CNPNet.rsu[0].eth[0].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+vector 76 CNPNet.rsu[0].eth[0].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 77 CNPNet.rsu[0].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 78 CNPNet.rsu[0].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower

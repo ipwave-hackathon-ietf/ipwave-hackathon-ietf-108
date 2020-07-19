@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- 
+194 Cars leaving the Computer Science Building and campus of the University of Erlangen-Nuremberg
+Copyright (C) 2008 Christoph Sommer <christoph.sommer@informatik.uni-erlangen.de>
+Licensed under the Creative Commons Attribution-ShareAlike 2.0 license <http://creativecommons.org/licenses/by-sa/2.0/>
+-->
+<routes>
+    <vType accel="2.6" decel="4.5" id="CarA" length="5" minGap="2.5" maxSpeed="30.5555" sigma="0.5" guiShape="passenger"/>
+    <vType accel="2.6" decel="4.5" id="CarB" length="5" minGap="2.5" maxSpeed="30.5555" sigma="0.5" guiShape="passenger"/>
+    <vType accel="2.6" decel="4.5" id="CarC" length="5" minGap="2.5" maxSpeed="30.5555" sigma="0.5" guiShape="passenger"/>
+    <vType accel="2.6" decel="0" id="CarD" length="5" minGap="2.5" maxSpeed="30.5555" sigma="0.5" guiShape="passenger"/>   
+
+<route id="route02" edges="0/2to1/2 1/2to2/2 2/2to3/2 3/2to4/2 4/2to5/2 5/2to6/2"/>
+<route id="route03" edges="3/0to3/1 3/1to3/2 3/2to3/3 3/3to3/4"/>
+
+<route id="route5" edges="0/0to1/0 1/0to2/0 2/0to3/0 3/0to4/0 4/0to5/0 5/0to6/0"/>
+
+<route id="route07" edges="1/0to2/0 2/0to3/0 3/0to4/0 4/0to5/0 5/0to6/0"/>
+<route id="route08" edges="0/1to1/1 1/1to2/1 2/1to3/1 3/1to4/1 4/1to5/1 5/1to6/1"/>
+<route id="route09" edges="1/0to2/0 2/0to3/0 3/0to4/0 4/0to5/0 5/0to6/0"/>
+<route id="route10" edges="0/5to1/5 1/5to2/5 2/5to3/5 3/5to4/5 4/5to5/5 5/5to6/5 6/5to7/5 7/5to8/5 8/5to9/5 9/5to10/5 10/5to11/5"/>
+<route id="route11" edges="0/4to1/4 1/4to2/4 2/4to3/4 3/4to4/4 4/4to5/4 5/4to6/4 6/4to7/4 7/4to8/4 8/4to9/4 9/4to10/4 10/4to11/4"/>
+<route id="route12" edges="0/3to1/3 1/3to2/3 2/3to3/3 3/3to4/3 4/3to5/3 5/3to6/3 6/3to7/3 7/3to8/3 8/3to9/3 9/3to10/3 10/3to11/3" />
+<route id="route06" edges="0/2to1/2 1/2to2/2 2/2to3/2 3/2to4/2 4/2to5/2 5/2to6/2 6/2to7/2 7/2to8/2 8/2to9/2 9/2to10/2 10/2to11/2"/>
+<route id="route05" edges="0/0to1/0 1/0to2/0 2/0to3/0 3/0to4/0 4/0to5/0 5/0to6/0 6/0to7/0 7/0to8/0 8/0to9/0 9/0to10/0 10/0to11/0"/>
+<route id="route04" edges="0/1to1/1 1/1to2/1 2/1to3/1 3/1to4/1 4/1to5/1 5/1to6/1 6/1to7/1 7/1to8/1 8/1to9/1 9/1to10/1 10/1to11/1"/>
+
+
+<route id="route111" edges="11/4to10/4 10/4to9/4 9/4to8/4 8/4to7/4 7/4to6/4 6/4to5/4 5/4to4/4 4/4to3/4 3/4to2/4 2/4to1/4 1/4to0/4"/>
+
+<flow id="flow0" type="CarA" route="route11" begin="0" period="0.00001"  number="1" departSpeed="max"  />
+</routes>

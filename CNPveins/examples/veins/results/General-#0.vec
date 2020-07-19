@@ -1,0 +1,474 @@
+version 2
+run General-0-20200715-00:09:44-23767
+attr configname General
+attr datetime 20200715-00:09:44
+attr experiment General
+attr inifile omnetppTestRouting.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network TestRouting
+attr processid 23767
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param *.n 2
+param **.debug false
+param **.coreDebug false
+param *.playgroundSizeX 1400m
+param *.playgroundSizeY 700m
+param *.playgroundSizeZ 50m
+param *.annotations.draw true
+param *.obstacles.debug false
+param *.obstacles.obstacles "xmldoc(\"config.xml\", \"//AnalogueModel[@type='SimpleObstacleShadowing']/obstacles\")"
+param *.manager.updateInterval 0.5s
+param *.manager.host "\"localhost\""
+param *.manager.port 9999
+param *.manager.autoShutdown true
+param *.manager.launchConfig "xmldoc(\"test2.launchd.xml\")"
+param **.rsu[*].numApps 1
+param *.rsu[0].mobility.x 200
+param *.rsu[0].mobility.y 130
+param *.rsu[0].mobility.z 1.895
+param *.rsu[1].mobility.x 650
+param *.rsu[1].mobility.y 130
+param *.rsu[1].mobility.z 1.895
+param *.rsu[*].applType "\"TraCIDemoRSU11p\""
+param **.rsu[*].app[*].typename "\"UdpSink\""
+param **.rsu[*].app[0].destPort 1000
+param **.rsu[*].app[0].messageLength 1000B
+param **.rsu[*].app[0].sendInterval "uniform(5s, 10s)"
+param **.rsu[*].app[0].sendInterval 100ms
+param **.rsu[*].app[0].destAddresses "\"node[3]\""
+param **.rsu[*].app[0].localAddress "\"\""
+param **.rsu[*].app[0].localPort 1000
+param **.rsu[*].app[0].replyDelay 0s
+param **.app[*].dataTransferMode "\"object\""
+param **.eth[*].queue.typename "\"EtherQosQueue\""
+param **.eth[*].queue.dataQueue.typename "\"DropTailQueue\""
+param **.eth[*].queue.dataQueue.frameCapacity 10
+param **.eth[*].mac.duplexMode true
+param *.rsu[*].app[0].headerLength "80 bit"
+param *.rsu[*].app[0].sendBeacons false
+param *.rsu[*].app[0].dataOnSch false
+param *.rsu[*].app[0].beaconInterval 1s
+param *.rsu[*].app[0].beaconUserPriority 7
+param *.rsu[*].app[0].dataUserPriority 5
+param *.connectionManager.sendDirect true
+param *.connectionManager.maxInterfDist 700m
+param *.connectionManager.drawMaxIntfDist true
+param *.**.nic.mac1609_4.useServiceChannel false
+param *.node[*].nic.mac1609_4.txPower 8mW
+param *.rsu[*].nic.mac1609_4.txPower 8mW
+param *.**.nic.mac1609_4.bitrate 6Mbps
+param *.**.nic.phy80211p.sensitivity -89dBm
+param *.**.nic.phy80211p.useThermalNoise false
+param *.**.nic.phy80211p.thermalNoise -110dBm
+param *.**.nic.phy80211p.decider "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.analogueModels "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.usePropagationDelay true
+param *.**.nic.phy80211p.antenna "xmldoc(\"antenna.xml\", \"/root/Antenna[@id='monopole']\")"
+param *.node[*].applType "\"TraCIDemo11p\""
+param *.node[*].appl.headerLength "80 bit"
+param *.node[*].appl.sendBeacons false
+param *.node[*].appl.dataOnSch false
+param *.node[*].appl.beaconInterval 1s
+param *.node[*].numApps 1
+param **.node[*].app[*].typename "\"UdpBasicApp\""
+param **.node[*].app[0].destPort 1000
+param **.node[*].app[0].messageLength 1000B
+param **.node[*].app[0].sendInterval 100ms
+param **.node[*].app[0].destAddresses "\"rsu[0]\""
+param **.node[*].app[0].connectPort 1000
+param **.node[*].app[0].startTime uniform(4000s,5000s)
+param **.node[*].app[0].sendInterval 200ms
+param **.node[*].app[0].numCommands int(exponential(10))
+param **.node[*].app[0].commandLength intWithUnit(exponential(10B))
+param **.node[*].app[0].keyPressDelay exponential(0.1s)
+param **.node[*].app[0].commandOutputLength intWithUnit(exponential(40B))
+param **.node[*].app[0].thinkTime truncnormal(2s,3s)
+param **.node[*].app[0].idleInterval truncnormal(3600s,1200s)
+param **.node[*].app[0].reconnectInterval 30s
+param *.node[*].veinsmobilityType.debug true
+param *.node[*].veinsmobility.x 0
+param *.node[*].veinsmobility.y 0
+param *.node[*].veinsmobility.z 1.895
+param *.node[*0].veinsmobility.accidentCount 1
+param *.node[*0].veinsmobility.accidentStart 75s
+param *.node[*0].veinsmobility.accidentDuration 50s
+
+vector 0 TestRouting.rsu[0].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 1 TestRouting.rsu[0].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 2 TestRouting.rsu[0].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 3 TestRouting.rsu[0].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 4 TestRouting.rsu[1].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 5 TestRouting.rsu[1].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 6 TestRouting.rsu[1].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 7 TestRouting.rsu[1].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 8 TestRouting.MA[0].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 9 TestRouting.MA[0].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 10 TestRouting.MA[0].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 11 TestRouting.MA[0].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 12 TestRouting.node[0].veinsmobility posx ETV
+vector 13 TestRouting.node[0].veinsmobility posy ETV
+vector 14 TestRouting.node[1].veinsmobility posx ETV
+vector 15 TestRouting.node[1].veinsmobility posy ETV
+vector 16 TestRouting.node[0].veinsmobility speed ETV
+vector 17 TestRouting.node[0].veinsmobility acceleration ETV
+vector 18 TestRouting.node[0].veinsmobility co2emission ETV
+vector 19 TestRouting.node[1].veinsmobility speed ETV
+vector 20 TestRouting.node[2].veinsmobility posx ETV
+vector 21 TestRouting.node[2].veinsmobility posy ETV
+vector 22 TestRouting.node[1].veinsmobility acceleration ETV
+vector 23 TestRouting.node[1].veinsmobility co2emission ETV
+vector 24 TestRouting.rsu[0].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 25 TestRouting.rsu[0].eth[0].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+vector 26 TestRouting.rsu[0].eth[0].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 27 TestRouting.rsu[0].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 28 TestRouting.rsu[0].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 29 TestRouting.MA[0].eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 30 TestRouting.MA[0].eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 31 TestRouting.MA[0].eth[0].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 32 TestRouting.MA[0].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 33 TestRouting.MA[0].eth[0].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+vector 34 TestRouting.MA[0].eth[0].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 35 TestRouting.MA[0].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 36 TestRouting.MA[0].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 37 TestRouting.rsu[0].eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 38 TestRouting.rsu[0].eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 39 TestRouting.rsu[0].eth[0].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 40 TestRouting.node[3].veinsmobility posx ETV
+vector 41 TestRouting.node[3].veinsmobility posy ETV
+vector 42 TestRouting.node[2].veinsmobility speed ETV
+vector 43 TestRouting.node[2].veinsmobility acceleration ETV
+vector 44 TestRouting.node[2].veinsmobility co2emission ETV
+vector 45 TestRouting.node[3].veinsmobility speed ETV
+vector 46 TestRouting.node[3].veinsmobility acceleration ETV
+vector 47 TestRouting.node[3].veinsmobility co2emission ETV
+vector 48 TestRouting.node[4].veinsmobility posx ETV
+vector 49 TestRouting.node[4].veinsmobility posy ETV
+vector 50 TestRouting.node[5].veinsmobility posx ETV
+vector 51 TestRouting.node[5].veinsmobility posy ETV
+vector 52 TestRouting.node[4].veinsmobility speed ETV
+vector 53 TestRouting.node[4].veinsmobility acceleration ETV
+vector 54 TestRouting.node[4].veinsmobility co2emission ETV
+vector 55 TestRouting.node[5].veinsmobility speed ETV
+vector 56 TestRouting.node[6].veinsmobility posx ETV
+vector 57 TestRouting.node[6].veinsmobility posy ETV
+vector 58 TestRouting.node[5].veinsmobility acceleration ETV
+vector 59 TestRouting.node[5].veinsmobility co2emission ETV
+vector 60 TestRouting.node[6].veinsmobility speed ETV
+vector 61 TestRouting.node[7].veinsmobility posx ETV
+vector 62 TestRouting.node[7].veinsmobility posy ETV
+vector 63 TestRouting.node[6].veinsmobility acceleration ETV
+vector 64 TestRouting.node[6].veinsmobility co2emission ETV
+vector 65 TestRouting.node[7].veinsmobility speed ETV
+vector 66 TestRouting.node[8].veinsmobility posx ETV
+vector 67 TestRouting.node[8].veinsmobility posy ETV
+vector 68 TestRouting.node[7].veinsmobility acceleration ETV
+vector 69 TestRouting.node[7].veinsmobility co2emission ETV
+vector 70 TestRouting.node[8].veinsmobility speed ETV
+vector 71 TestRouting.node[9].veinsmobility posx ETV
+vector 72 TestRouting.node[9].veinsmobility posy ETV
+vector 73 TestRouting.node[8].veinsmobility acceleration ETV
+vector 74 TestRouting.node[8].veinsmobility co2emission ETV
+vector 75 TestRouting.node[10].veinsmobility posx ETV
+vector 76 TestRouting.node[10].veinsmobility posy ETV
+vector 77 TestRouting.node[9].veinsmobility speed ETV
+vector 78 TestRouting.node[9].veinsmobility acceleration ETV
+vector 79 TestRouting.node[9].veinsmobility co2emission ETV
+vector 80 TestRouting.node[10].veinsmobility speed ETV
+vector 81 TestRouting.node[10].veinsmobility acceleration ETV
+vector 82 TestRouting.node[10].veinsmobility co2emission ETV
+vector 83 TestRouting.node[11].veinsmobility posx ETV
+vector 84 TestRouting.node[11].veinsmobility posy ETV
+vector 85 TestRouting.node[12].veinsmobility posx ETV
+vector 86 TestRouting.node[12].veinsmobility posy ETV
+vector 87 TestRouting.node[11].veinsmobility speed ETV
+vector 88 TestRouting.node[11].veinsmobility acceleration ETV
+vector 89 TestRouting.node[11].veinsmobility co2emission ETV
+vector 90 TestRouting.node[12].veinsmobility speed ETV
+vector 91 TestRouting.node[12].veinsmobility acceleration ETV
+vector 92 TestRouting.node[12].veinsmobility co2emission ETV
+vector 93 TestRouting.node[13].veinsmobility posx ETV
+vector 94 TestRouting.node[13].veinsmobility posy ETV
+vector 95 TestRouting.node[13].veinsmobility speed ETV
+vector 96 TestRouting.node[14].veinsmobility posx ETV
+vector 97 TestRouting.node[14].veinsmobility posy ETV
+vector 98 TestRouting.node[13].veinsmobility acceleration ETV
+vector 99 TestRouting.node[13].veinsmobility co2emission ETV
+vector 100 TestRouting.node[14].veinsmobility speed ETV
+vector 101 TestRouting.node[15].veinsmobility posx ETV
+vector 102 TestRouting.node[15].veinsmobility posy ETV
+vector 103 TestRouting.node[14].veinsmobility acceleration ETV
+vector 104 TestRouting.node[14].veinsmobility co2emission ETV
+vector 105 TestRouting.node[15].veinsmobility speed ETV
+vector 106 TestRouting.node[16].veinsmobility posx ETV
+vector 107 TestRouting.node[16].veinsmobility posy ETV
+vector 108 TestRouting.node[15].veinsmobility acceleration ETV
+vector 109 TestRouting.node[15].veinsmobility co2emission ETV
+vector 110 TestRouting.node[16].veinsmobility speed ETV
+vector 111 TestRouting.node[16].veinsmobility acceleration ETV
+vector 112 TestRouting.node[16].veinsmobility co2emission ETV
+vector 113 TestRouting.node[17].veinsmobility posx ETV
+vector 114 TestRouting.node[17].veinsmobility posy ETV
+vector 115 TestRouting.node[17].veinsmobility speed ETV
+vector 116 TestRouting.node[18].veinsmobility posx ETV
+vector 117 TestRouting.node[18].veinsmobility posy ETV
+vector 118 TestRouting.node[17].veinsmobility acceleration ETV
+vector 119 TestRouting.node[17].veinsmobility co2emission ETV
+vector 120 TestRouting.node[18].veinsmobility speed ETV
+vector 121 TestRouting.node[18].veinsmobility acceleration ETV
+vector 122 TestRouting.node[18].veinsmobility co2emission ETV
+vector 123 TestRouting.node[19].veinsmobility posx ETV
+vector 124 TestRouting.node[19].veinsmobility posy ETV
+vector 125 TestRouting.node[19].veinsmobility speed ETV
+vector 126 TestRouting.node[20].veinsmobility posx ETV
+vector 127 TestRouting.node[20].veinsmobility posy ETV
+vector 128 TestRouting.node[19].veinsmobility acceleration ETV
+vector 129 TestRouting.node[19].veinsmobility co2emission ETV
+vector 130 TestRouting.node[20].veinsmobility speed ETV
+vector 131 TestRouting.node[20].veinsmobility acceleration ETV
+vector 132 TestRouting.node[20].veinsmobility co2emission ETV
+vector 133 TestRouting.node[21].veinsmobility posx ETV
+vector 134 TestRouting.node[21].veinsmobility posy ETV
+vector 135 TestRouting.node[21].veinsmobility speed ETV
+vector 136 TestRouting.node[22].veinsmobility posx ETV
+vector 137 TestRouting.node[22].veinsmobility posy ETV
+vector 138 TestRouting.node[21].veinsmobility acceleration ETV
+vector 139 TestRouting.node[21].veinsmobility co2emission ETV
+vector 140 TestRouting.node[22].veinsmobility speed ETV
+vector 141 TestRouting.node[22].veinsmobility acceleration ETV
+vector 142 TestRouting.node[22].veinsmobility co2emission ETV
+vector 143 TestRouting.node[23].veinsmobility posx ETV
+vector 144 TestRouting.node[23].veinsmobility posy ETV
+vector 145 TestRouting.node[23].veinsmobility speed ETV
+vector 146 TestRouting.node[24].veinsmobility posx ETV
+vector 147 TestRouting.node[24].veinsmobility posy ETV
+vector 148 TestRouting.node[23].veinsmobility acceleration ETV
+vector 149 TestRouting.node[23].veinsmobility co2emission ETV
+vector 150 TestRouting.node[24].veinsmobility speed ETV
+vector 151 TestRouting.node[24].veinsmobility acceleration ETV
+vector 152 TestRouting.node[24].veinsmobility co2emission ETV
+vector 153 TestRouting.node[25].veinsmobility posx ETV
+vector 154 TestRouting.node[25].veinsmobility posy ETV
+vector 155 TestRouting.node[25].veinsmobility speed ETV
+vector 156 TestRouting.node[26].veinsmobility posx ETV
+vector 157 TestRouting.node[26].veinsmobility posy ETV
+vector 158 TestRouting.node[25].veinsmobility acceleration ETV
+vector 159 TestRouting.node[25].veinsmobility co2emission ETV
+vector 160 TestRouting.node[26].veinsmobility speed ETV
+vector 161 TestRouting.node[27].veinsmobility posx ETV
+vector 162 TestRouting.node[27].veinsmobility posy ETV
+vector 163 TestRouting.node[26].veinsmobility acceleration ETV
+vector 164 TestRouting.node[26].veinsmobility co2emission ETV
+vector 165 TestRouting.node[27].veinsmobility speed ETV
+vector 166 TestRouting.node[28].veinsmobility posx ETV
+vector 167 TestRouting.node[28].veinsmobility posy ETV
+vector 168 TestRouting.node[27].veinsmobility acceleration ETV
+vector 169 TestRouting.node[27].veinsmobility co2emission ETV
+vector 170 TestRouting.node[28].veinsmobility speed ETV
+vector 171 TestRouting.node[28].veinsmobility acceleration ETV
+vector 172 TestRouting.node[28].veinsmobility co2emission ETV
+vector 173 TestRouting.node[29].veinsmobility posx ETV
+vector 174 TestRouting.node[29].veinsmobility posy ETV
+vector 175 TestRouting.node[29].veinsmobility speed ETV
+vector 176 TestRouting.node[30].veinsmobility posx ETV
+vector 177 TestRouting.node[30].veinsmobility posy ETV
+vector 178 TestRouting.node[29].veinsmobility acceleration ETV
+vector 179 TestRouting.node[29].veinsmobility co2emission ETV
+vector 180 TestRouting.node[30].veinsmobility speed ETV
+vector 181 TestRouting.node[30].veinsmobility acceleration ETV
+vector 182 TestRouting.node[30].veinsmobility co2emission ETV
+vector 183 TestRouting.node[31].veinsmobility posx ETV
+vector 184 TestRouting.node[31].veinsmobility posy ETV
+vector 185 TestRouting.node[31].veinsmobility speed ETV
+vector 186 TestRouting.node[32].veinsmobility posx ETV
+vector 187 TestRouting.node[32].veinsmobility posy ETV
+vector 188 TestRouting.node[31].veinsmobility acceleration ETV
+vector 189 TestRouting.node[31].veinsmobility co2emission ETV
+vector 190 TestRouting.node[32].veinsmobility speed ETV
+vector 191 TestRouting.node[32].veinsmobility acceleration ETV
+vector 192 TestRouting.node[32].veinsmobility co2emission ETV
+vector 193 TestRouting.node[33].veinsmobility posx ETV
+vector 194 TestRouting.node[33].veinsmobility posy ETV
+vector 195 TestRouting.node[33].veinsmobility speed ETV
+vector 196 TestRouting.node[34].veinsmobility posx ETV
+vector 197 TestRouting.node[34].veinsmobility posy ETV
+vector 198 TestRouting.node[33].veinsmobility acceleration ETV
+vector 199 TestRouting.node[33].veinsmobility co2emission ETV
+vector 200 TestRouting.node[34].veinsmobility speed ETV
+vector 201 TestRouting.node[34].veinsmobility acceleration ETV
+vector 202 TestRouting.node[34].veinsmobility co2emission ETV
+vector 203 TestRouting.node[35].veinsmobility posx ETV
+vector 204 TestRouting.node[35].veinsmobility posy ETV
+vector 205 TestRouting.node[35].veinsmobility speed ETV
+vector 206 TestRouting.node[36].veinsmobility posx ETV
+vector 207 TestRouting.node[36].veinsmobility posy ETV
+vector 208 TestRouting.node[35].veinsmobility acceleration ETV
+vector 209 TestRouting.node[35].veinsmobility co2emission ETV
+vector 210 TestRouting.node[36].veinsmobility speed ETV
+vector 211 TestRouting.node[36].veinsmobility acceleration ETV
+vector 212 TestRouting.node[36].veinsmobility co2emission ETV
+vector 213 TestRouting.node[37].veinsmobility posx ETV
+vector 214 TestRouting.node[37].veinsmobility posy ETV
+vector 215 TestRouting.node[37].veinsmobility speed ETV
+vector 216 TestRouting.node[38].veinsmobility posx ETV
+vector 217 TestRouting.node[38].veinsmobility posy ETV
+vector 218 TestRouting.node[37].veinsmobility acceleration ETV
+vector 219 TestRouting.node[37].veinsmobility co2emission ETV
+vector 220 TestRouting.node[38].veinsmobility speed ETV
+vector 221 TestRouting.node[39].veinsmobility posx ETV
+vector 222 TestRouting.node[39].veinsmobility posy ETV
+vector 223 TestRouting.node[38].veinsmobility acceleration ETV
+vector 224 TestRouting.node[38].veinsmobility co2emission ETV
+vector 225 TestRouting.node[39].veinsmobility speed ETV
+vector 226 TestRouting.node[40].veinsmobility posx ETV
+vector 227 TestRouting.node[40].veinsmobility posy ETV
+vector 228 TestRouting.node[39].veinsmobility acceleration ETV
+vector 229 TestRouting.node[39].veinsmobility co2emission ETV
+vector 230 TestRouting.node[40].veinsmobility speed ETV
+vector 231 TestRouting.node[40].veinsmobility acceleration ETV
+vector 232 TestRouting.node[40].veinsmobility co2emission ETV
+vector 233 TestRouting.node[41].veinsmobility posx ETV
+vector 234 TestRouting.node[41].veinsmobility posy ETV
+vector 235 TestRouting.node[41].veinsmobility speed ETV
+vector 236 TestRouting.node[42].veinsmobility posx ETV
+vector 237 TestRouting.node[42].veinsmobility posy ETV
+vector 238 TestRouting.node[41].veinsmobility acceleration ETV
+vector 239 TestRouting.node[41].veinsmobility co2emission ETV
+vector 240 TestRouting.node[42].veinsmobility speed ETV
+vector 241 TestRouting.node[42].veinsmobility acceleration ETV
+vector 242 TestRouting.node[42].veinsmobility co2emission ETV
+vector 243 TestRouting.node[43].veinsmobility posx ETV
+vector 244 TestRouting.node[43].veinsmobility posy ETV
+vector 245 TestRouting.node[43].veinsmobility speed ETV
+vector 246 TestRouting.node[44].veinsmobility posx ETV
+vector 247 TestRouting.node[44].veinsmobility posy ETV
+vector 248 TestRouting.node[43].veinsmobility acceleration ETV
+vector 249 TestRouting.node[43].veinsmobility co2emission ETV
+vector 250 TestRouting.node[44].veinsmobility speed ETV
+vector 251 TestRouting.node[44].veinsmobility acceleration ETV
+vector 252 TestRouting.node[44].veinsmobility co2emission ETV
+vector 253 TestRouting.node[45].veinsmobility posx ETV
+vector 254 TestRouting.node[45].veinsmobility posy ETV
+vector 255 TestRouting.node[45].veinsmobility speed ETV
+vector 256 TestRouting.node[46].veinsmobility posx ETV
+vector 257 TestRouting.node[46].veinsmobility posy ETV
+vector 258 TestRouting.node[45].veinsmobility acceleration ETV
+vector 259 TestRouting.node[45].veinsmobility co2emission ETV
+vector 260 TestRouting.node[46].veinsmobility speed ETV
+vector 261 TestRouting.node[46].veinsmobility acceleration ETV
+vector 262 TestRouting.node[46].veinsmobility co2emission ETV
+vector 263 TestRouting.node[47].veinsmobility posx ETV
+vector 264 TestRouting.node[47].veinsmobility posy ETV
+vector 265 TestRouting.node[47].veinsmobility speed ETV
+vector 266 TestRouting.node[48].veinsmobility posx ETV
+vector 267 TestRouting.node[48].veinsmobility posy ETV
+vector 268 TestRouting.node[47].veinsmobility acceleration ETV
+vector 269 TestRouting.node[47].veinsmobility co2emission ETV
+vector 270 TestRouting.node[48].veinsmobility speed ETV
+vector 271 TestRouting.node[48].veinsmobility acceleration ETV
+vector 272 TestRouting.node[48].veinsmobility co2emission ETV
+vector 273 TestRouting.node[49].veinsmobility posx ETV
+vector 274 TestRouting.node[49].veinsmobility posy ETV
+vector 275 TestRouting.node[49].veinsmobility speed ETV
+vector 276 TestRouting.node[50].veinsmobility posx ETV
+vector 277 TestRouting.node[50].veinsmobility posy ETV
+vector 278 TestRouting.node[49].veinsmobility acceleration ETV
+vector 279 TestRouting.node[49].veinsmobility co2emission ETV
+vector 280 TestRouting.node[50].veinsmobility speed ETV
+vector 281 TestRouting.node[50].veinsmobility acceleration ETV
+vector 282 TestRouting.node[50].veinsmobility co2emission ETV
+vector 283 TestRouting.node[51].veinsmobility posx ETV
+vector 284 TestRouting.node[51].veinsmobility posy ETV
+vector 285 TestRouting.node[51].veinsmobility speed ETV
+vector 286 TestRouting.node[52].veinsmobility posx ETV
+vector 287 TestRouting.node[52].veinsmobility posy ETV
+vector 288 TestRouting.node[51].veinsmobility acceleration ETV
+vector 289 TestRouting.node[51].veinsmobility co2emission ETV
+vector 290 TestRouting.node[52].veinsmobility speed ETV
+vector 291 TestRouting.node[52].veinsmobility acceleration ETV
+vector 292 TestRouting.node[52].veinsmobility co2emission ETV
+vector 293 TestRouting.node[53].veinsmobility posx ETV
+vector 294 TestRouting.node[53].veinsmobility posy ETV
+vector 295 TestRouting.node[53].veinsmobility speed ETV
+vector 296 TestRouting.node[54].veinsmobility posx ETV
+vector 297 TestRouting.node[54].veinsmobility posy ETV
+vector 298 TestRouting.node[53].veinsmobility acceleration ETV
+vector 299 TestRouting.node[53].veinsmobility co2emission ETV
+vector 300 TestRouting.node[54].veinsmobility speed ETV
+vector 301 TestRouting.node[54].veinsmobility acceleration ETV
+vector 302 TestRouting.node[54].veinsmobility co2emission ETV
+vector 303 TestRouting.node[55].veinsmobility posx ETV
+vector 304 TestRouting.n

@@ -1,0 +1,1048 @@
+file 486040 1595087316                                          
+version 2
+run Default-0-20200719-00:48:15-31600
+attr configname Default
+attr datetime 20200719-00:48:15
+attr experiment Default
+attr inifile omnetppTestPmipv6.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network TestPmipv6
+attr processid 31600
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param *.n 3
+param **.debug false
+param **.coreDebug false
+param *.playgroundSizeX 1400m
+param *.playgroundSizeY 700m
+param *.playgroundSizeZ 50m
+param *.annotations.draw true
+param *.obstacles.debug false
+param *.obstacles.obstacles "xmldoc(\"config.xml\", \"//AnalogueModel[@type='SimpleObstacleShadowing']/obstacles\")"
+param *.manager.updateInterval 0.5s
+param *.manager.host "\"localhost\""
+param *.manager.port 9999
+param *.manager.autoShutdown true
+param *.manager.launchConfig "xmldoc(\"test2.launchd.xml\")"
+param **.rsu[*].numApps 1
+param *.rsu[0].mobility.x 200
+param *.rsu[0].mobility.y 130
+param *.rsu[0].mobility.z 1.895
+param *.rsu[1].mobility.x 650
+param *.rsu[1].mobility.y 130
+param *.rsu[1].mobility.z 1.895
+param *.rsu[2].mobility.x 1100
+param *.rsu[2].mobility.y 130
+param *.rsu[2].mobility.z 1.895
+param *.rsu[*].applType "\"TraCIDemoRSU11p\""
+param **.rsu[*].app[*].typename "\"UdpSink\""
+param **.rsu[*].app[0].destPort 1000
+param **.rsu[*].app[0].messageLength 1000B
+param **.rsu[*].app[0].sendInterval "uniform(5s, 10s)"
+param **.rsu[*].app[0].sendInterval 100ms
+param **.rsu[*].app[0].destAddresses "\"node[3]\""
+param **.rsu[*].app[0].localAddress "\"\""
+param **.rsu[*].app[0].localPort 1000
+param **.rsu[*].app[0].replyDelay 0s
+param **.app[*].dataTransferMode "\"object\""
+param **.eth[*].queue.typename "\"EtherQosQueue\""
+param **.eth[*].queue.dataQueue.typename "\"DropTailQueue\""
+param **.eth[*].queue.dataQueue.frameCapacity 10
+param **.eth[*].mac.duplexMode true
+param *.rsu[*].app[0].headerLength "80 bit"
+param *.rsu[*].app[0].sendBeacons false
+param *.rsu[*].app[0].dataOnSch false
+param *.rsu[*].app[0].beaconInterval 1s
+param *.rsu[*].app[0].beaconUserPriority 7
+param *.rsu[*].app[0].dataUserPriority 5
+param *.connectionManager.sendDirect true
+param *.connectionManager.maxInterfDist 700m
+param *.connectionManager.drawMaxIntfDist true
+param *.**.nic.mac1609_4.useServiceChannel false
+param *.node[*].nic.mac1609_4.txPower 8mW
+param *.rsu[*].nic.mac1609_4.txPower 8mW
+param *.**.nic.mac1609_4.bitrate 6Mbps
+param *.**.nic.phy80211p.sensitivity -89dBm
+param *.**.nic.phy80211p.useThermalNoise false
+param *.**.nic.phy80211p.thermalNoise -110dBm
+param *.**.nic.phy80211p.decider "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.analogueModels "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.usePropagationDelay true
+param *.**.nic.phy80211p.antenna "xmldoc(\"antenna.xml\", \"/root/Antenna[@id='monopole']\")"
+param *.node[*].applType "\"TraCIDemo11p\""
+param *.node[*].appl.headerLength "80 bit"
+param *.node[*].appl.sendBeacons false
+param *.node[*].appl.dataOnSch false
+param *.node[*].appl.beaconInterval 1s
+param *.node[*].numApps 1
+param **.node[*].app[*].typename "\"UdpBasicApp\""
+param **.node[*].app[0].destPort 1000
+param **.node[*].app[0].messageLength 1000B
+param **.node[*].app[0].sendInterval 100ms
+param **.node[*].app[0].destAddresses "\"rsu[0]\""
+param **.node[*].app[0].connectPort 1000
+param **.node[0].app[0].startTime uniform(1700s,1700.5s)
+param **.node[1].app[0].startTime uniform(1700.5s,1800s)
+param **.node[2].app[0].startTime uniform(1800s,1800.5s)
+param **.node[3].app[0].startTime uniform(1800.5s,1900s)
+param **.node[*].app[0].sendInterval 200ms
+param **.node[*].app[0].numCommands int(exponential(10))
+param **.node[*].app[0].commandLength intWithUnit(exponential(10B))
+param **.node[*].app[0].keyPressDelay exponential(0.1s)
+param **.node[*].app[0].commandOutputLength intWithUnit(exponential(40B))
+param **.node[*].app[0].thinkTime truncnormal(2s,3s)
+param **.node[*].app[0].idleInterval truncnormal(3600s,1200s)
+param **.node[*].app[0].reconnectInterval 30s
+param *.node[*].veinsmobilityType.debug true
+param *.node[*].veinsmobility.x 0
+param *.node[*].veinsmobility.y 0
+param *.node[*].veinsmobility.z 1.895
+param *.node[*0].veinsmobility.accidentCount 1
+param *.node[*0].veinsmobility.accidentStart 75s
+param *.node[*0].veinsmobility.accidentDuration 50s
+param **.CN*.numApps 1
+param **.CN*.app[*].typename "\"PingApp\""
+param **.CN[0].app[0].destAddr "\"node[0]\""
+param **.CN[1].app[0].destAddr "\"\""
+param **.CN*.app[0].srcAddr "\"\""
+param **.CN*.app[0].packetSize 56B
+param **.CN*.app[0].sendInterval 5s
+param **.CN*.app[0].hopLimit 32
+param **.CN[0].app[0].count -1
+param **.CN[1].app[0].count 0
+param **.CN*.app[0].startTime 5s
+param **.CN*.app[0].stopTime 2000s
+param **.CN*.app[0].printPing true
+
+vector 0 TestPmipv6.rsu[0].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 1 TestPmipv6.rsu[0].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 2 TestPmipv6.rsu[0].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 3 TestPmipv6.rsu[0].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 4 TestPmipv6.rsu[1].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 5 TestPmipv6.rsu[1].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 6 TestPmipv6.rsu[1].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 7 TestPmipv6.rsu[1].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 8 TestPmipv6.rsu[1].eth[2].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 9 TestPmipv6.rsu[1].eth[2].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 10 TestPmipv6.rsu[2].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 11 TestPmipv6.rsu[2].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 12 TestPmipv6.rsu[2].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 13 TestPmipv6.rsu[2].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 14 TestPmipv6.MA[0].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 15 TestPmipv6.MA[0].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 16 TestPmipv6.MA[0].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 17 TestPmipv6.MA[0].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 18 TestPmipv6.MA[0].eth[2].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 19 TestPmipv6.MA[0].eth[2].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 20 TestPmipv6.MA[0].eth[3].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 21 TestPmipv6.MA[0].eth[3].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 22 TestPmipv6.CN[0].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 23 TestPmipv6.CN[0].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 24 TestPmipv6.node[0].veinsmobility posx ETV
+vector 25 TestPmipv6.node[0].veinsmobility posy ETV
+vector 26 TestPmipv6.node[1].veinsmobility posx ETV
+vector 27 TestPmipv6.node[1].veinsmobility posy ETV
+vector 28 TestPmipv6.node[0].veinsmobility speed ETV
+vector 29 TestPmipv6.node[0].veinsmobility acceleration ETV
+vector 30 TestPmipv6.node[0].veinsmobility co2emission ETV
+vector 31 TestPmipv6.node[1].veinsmobility speed ETV
+vector 32 TestPmipv6.CN[0].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 33 TestPmipv6.CN[0].eth[0].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+vector 34 TestPmipv6.CN[0].eth[0].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 35 TestPmipv6.CN[0].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 36 TestPmipv6.CN[0].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 37 TestPmipv6.MA[0].eth[3].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 38 TestPmipv6.MA[0].eth[3].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 39 TestPmipv6.MA[0].eth[3].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 40 TestPmipv6.MA[0].eth[3].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 41 TestPmipv6.MA[0].eth[3].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+vector 42 TestPmipv6.MA[0].eth[3].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 43 TestPmipv6.MA[0].eth[3].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 44 TestPmipv6.MA[0].eth[3].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 45 TestPmipv6.CN[0].eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 46 TestPmipv6.CN[0].eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 47 TestPmipv6.CN[0].eth[0].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 48 TestPmipv6.rsu[0].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 49 TestPmipv6.rsu[0].eth[0].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+vector 50 TestPmipv6.rsu[0].eth[0].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 51 TestPmipv6.rsu[0].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 52 TestPmipv6.rsu[0].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 53 TestPmipv6.MA[0].eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 54 TestPmipv6.MA[0].eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 55 TestPmipv6.MA[0].eth[0].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 56 TestPmipv6.node[2].veinsmobility posx ETV
+vector 57 TestPmipv6.node[2].veinsmobility posy ETV
+vector 58 TestPmipv6.node[1].veinsmobility acceleration ETV
+vector 59 TestPmipv6.node[1].veinsmobility co2emission ETV
+vector 60 TestPmipv6.node[3].veinsmobility posx ETV
+vector 61 TestPmipv6.node[3].veinsmobility posy ETV
+vector 62 TestPmipv6.node[2].veinsmobility speed ETV
+vector 63 TestPmipv6.node[2].veinsmobility acceleration ETV
+vector 64 TestPmipv6.node[2].veinsmobility co2emission ETV
+vector 65 TestPmipv6.node[3].veinsmobility speed ETV
+vector 66 TestPmipv6.node[3].veinsmobility acceleration ETV
+vector 67 TestPmipv6.node[3].veinsmobility co2emission ETV
+vector 68 TestPmipv6.node[4].veinsmobility posx ETV
+vector 69 TestPmipv6.node[4].veinsmobility posy ETV
+vector 70 TestPmipv6.node[4].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 71 TestPmipv6.node[4].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 72 TestPmipv6.node[5].veinsmobility posx ETV
+vector 73 TestPmipv6.node[5].veinsmobility posy ETV
+vector 74 TestPmipv6.node[4].veinsmobility speed ETV
+vector 75 TestPmipv6.node[5].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 76 TestPmipv6.node[5].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 77 TestPmipv6.CN[0].app[0] pingTxSeq:vector ETV
+attr interpolationmode none
+attr title "ping tx seq, vector"
+vector 78 TestPmipv6.node[4].veinsmobility acceleration ETV
+vector 79 TestPmipv6.node[4].veinsmobility co2emission ETV
+vector 80 TestPmipv6.node[5].veinsmobility speed ETV
+vector 81 TestPmipv6.MA[0].eth[2].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 82 TestPmipv6.MA[0].eth[2].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+vector 83 TestPmipv6.MA[0].eth[2].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 84 TestPmipv6.MA[0].eth[2].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 85 TestPmipv6.MA[0].eth[2].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 86 TestPmipv6.rsu[2].eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 87 TestPmipv6.rsu[2].eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 88 TestPmipv6.rsu[2].eth[0].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 89 TestPmipv6.node[6].veinsmobility posx ETV
+vector 90 TestPmipv6.node[6].veinsmobility posy ETV
+vector 91 TestPmipv6.node[5].veinsmobility acceleration ETV
+vector 92 TestPmipv6.node[5].veinsmobility co2emission ETV
+vector 93 TestPmipv6.node[6].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 94 TestPmipv6.node[6].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 95 TestPmipv6.node[6].veinsmobility speed ETV
+vector 96 TestPmipv6.node[7].veinsmobility posx ETV
+vector 97 TestPmipv6.node[7].veinsmobility posy ETV
+vector 98 TestPmipv6.node[6].veinsmobility acceleration ETV
+vector 99 TestPmipv6.node[6].veinsmobility co2emission ETV
+vector 100 TestPmipv6.node[7].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 101 TestPmipv6.node[7].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 102 TestPmipv6.node[7].veinsmobility speed ETV
+vector 103 TestPmipv6.node[8].veinsmobility posx ETV
+vector 104 TestPmipv6.node[8].veinsmobility posy ETV
+vector 105 TestPmipv6.node[7].veinsmobility acceleration ETV
+vector 106 TestPmipv6.node[7].veinsmobility co2emission ETV
+vector 107 TestPmipv6.node[8].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 108 TestPmipv6.node[8].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 109 TestPmipv6.node[8].veinsmobility speed ETV
+vector 110 TestPmipv6.node[9].veinsmobility posx ETV
+vector 111 TestPmipv6.node[9].veinsmobility posy ETV
+vector 112 TestPmipv6.node[8].veinsmobility acceleration ETV
+vector 113 TestPmipv6.node[8].veinsmobility co2emission ETV
+vector 114 TestPmipv6.node[9].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 115 TestPmipv6.node[9].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 116 TestPmipv6.node[10].veinsmobility posx ETV
+vector 117 TestPmipv6.node[10].veinsmobility posy ETV
+vector 118 TestPmipv6.node[9].veinsmobility speed ETV
+vector 119 TestPmipv6.node[10].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 120 TestPmipv6.node[10].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 121 TestPmipv6.node[9].veinsmobility acceleration ETV
+vector 122 TestPmipv6.node[9].veinsmobility co2emission ETV
+vector 123 TestPmipv6.node[10].veinsmobility speed ETV
+vector 124 TestPmipv6.node[10].veinsmobility acceleration ETV
+vector 125 TestPmipv6.node[10].veinsmobility co2emission ETV
+vector 126 TestPmipv6.node[11].veinsmobility posx ETV
+vector 127 TestPmipv6.node[11].veinsmobility posy ETV
+vector 128 TestPmipv6.node[11].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 129 TestPmipv6.node[11].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 130 TestPmipv6.node[12].veinsmobility posx ETV
+vector 131 TestPmipv6.node[12].veinsmobility posy ETV
+vector 132 TestPmipv6.node[11].veinsmobility speed ETV
+vector 133 TestPmipv6.node[12].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 134 TestPmipv6.node[12].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 135 TestPmipv6.node[11].veinsmobility acceleration ETV
+vector 136 TestPmipv6.node[11].veinsmobility co2emission ETV
+vector 137 TestPmipv6.node[12].veinsmobility speed ETV
+vector 138 TestPmipv6.node[12].veinsmobility acceleration ETV
+vector 139 TestPmipv6.node[12].veinsmobility co2emission ETV
+vector 140 TestPmipv6.node[13].veinsmobility posx ETV
+vector 141 TestPmipv6.node[13].veinsmobility posy ETV
+vector 142 TestPmipv6.node[13].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 143 TestPmipv6.node[13].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 144 TestPmipv6.node[13].veinsmobility speed ETV
+vector 145 TestPmipv6.node[14].veinsmobility posx ETV
+vector 146 TestPmipv6.node[14].veinsmobility posy ETV
+vector 147 TestPmipv6.node[13].veinsmobility acceleration ETV
+vector 148 TestPmipv6.node[13].veinsmobility co2emission ETV
+vector 149 TestPmipv6.node[14].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 150 TestPmipv6.node[14].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 151 TestPmipv6.node[14].veinsmobility speed ETV
+vector 152 TestPmipv6.node[15].veinsmobility posx ETV
+vector 153 TestPmipv6.node[15].veinsmobility posy ETV
+vector 154 TestPmipv6.node[14].veinsmobility acceleration ETV
+vector 155 TestPmipv6.node[14].veinsmobility co2emission ETV
+vector 156 TestPmipv6.node[15].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 157 TestPmipv6.node[15].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 158 TestPmipv6.node[15].veinsmobility speed ETV
+vector 159 TestPmipv6.node[16].veinsmobility posx ETV
+vector 160 TestPmipv6.node[16].veinsmobility posy ETV
+vector 161 TestPmipv6.node[15].veinsmobility acceleration ETV
+vector 162 TestPmipv6.node[15].veinsmobility co2emission ETV
+vector 163 TestPmipv6.node[16].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 164 TestPmipv6.node[16].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 165 TestPmipv6.node[16].veinsmobility speed ETV
+vector 166 TestPmipv6.node[16].veinsmobility acceleration ETV
+vector 167 TestPmipv6.node[16].veinsmobility co2emission ETV
+vector 168 TestPmipv6.node[17].veinsmobility posx ETV
+vector 169 TestPmipv6.node[17].veinsmobility posy ETV
+vector 170 TestPmipv6.node[17].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 171 TestPmipv6.node[17].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 172 TestPmipv6.node[17].veinsmobility speed ETV
+vector 173 TestPmipv6.node[18].veinsmobility posx ETV
+vector 174 TestPmipv6.node[18].veinsmobility posy ETV
+vector 175 TestPmipv6.node[17].veinsmobility acceleration ETV
+vector 176 TestPmipv6.node[17].veinsmobility co2emission ETV
+vector 177 TestPmipv6.node[18].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 178 TestPmipv6.node[18].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 179 TestPmipv6.node[18].veinsmobility speed ETV
+vector 180 TestPmipv6.node[18].veinsmobility acceleration ETV
+vector 181 TestPmipv6.node[18].veinsmobility co2emission ETV
+vector 182 TestPmipv6.node[19].veinsmobility posx ETV
+vector 183 TestPmipv6.node[19].veinsmobility posy ETV
+vector 184 TestPmipv6.node[19].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 185 TestPmipv6.node[19].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 186 TestPmipv6.node[19].veinsmobility speed ETV
+vector 187 TestPmipv6.node[20].veinsmobility posx ETV
+vector 188 TestPmipv6.node[20].veinsmobility posy ETV
+vector 189 TestPmipv6.node[19].veinsmobility acceleration ETV
+vector 190 TestPmipv6.node[19].veinsmobility co2emission ETV
+vector 191 TestPmipv6.node[20].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 192 TestPmipv6.node[20].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 193 TestPmipv6.node[20].veinsmobility speed ETV
+vector 194 TestPmipv6.node[20].veinsmobility acceleration ETV
+vector 195 TestPmipv6.node[20].veinsmobility co2emission ETV
+vector 196 TestPmipv6.node[21].veinsmobility posx ETV
+vector 197 TestPmipv6.node[21].veinsmobility posy ETV
+vector 198 TestPmipv6.node[21].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 199 TestPmipv6.node[21].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 200 TestPmipv6.node[21].veinsmobility speed ETV
+vector 201 TestPmipv6.node[22].veinsmobility posx ETV
+vector 202 TestPmipv6.node[22].veinsmobility posy ETV
+vector 203 TestPmipv6.node[21].veinsmobility acceleration ETV
+vector 204 TestPmipv6.node[21].veinsmobility co2emission ETV
+vector 205 TestPmipv6.node[22].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 206 TestPmipv6.node[22].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 207 TestPmipv6.node[22].veinsmobility speed ETV
+vector 208 TestPmipv6.node[22].veinsmobility acceleration ETV
+vector 209 TestPmipv6.node[22].veinsmobility co2emission ETV
+vector 210 TestPmipv6.node[23].veinsmobility posx ETV
+vector 211 TestPmipv6.node[23].veinsmobility posy ETV
+vector 212 TestPmipv6.node[23].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 213 TestPmipv6.node[23].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 214 TestPmipv6.node[23].veinsmobility speed ETV
+vector 215 TestPmipv6.node[24].veinsmobility posx ETV
+vector 216 TestPmipv6.node[24].veinsmobility posy ETV
+vector 217 TestPmipv6.node[23].veinsmobility acceleration ETV
+vector 218 TestPmipv6.node[23].veinsmobility co2emission ETV
+vector 219 TestPmipv6.node[24].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 220 TestPmipv6.node[24].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 221 TestPmipv6.node[24].veinsmobility speed ETV
+vector 222 TestPmipv6.node[24].veinsmobility acceleration ETV
+vector 223 TestPmipv6.node[24].veinsmobility co2emission ETV
+vector 224 TestPmipv6.node[25].veinsmobility posx ETV
+vector 225 TestPmipv6.node[25].veinsmobility posy ETV
+vector 226 TestPmipv6.node[25].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 227 TestPmipv6.node[25].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 228 TestPmipv6.node[25].veinsmobility speed ETV
+vector 229 TestPmipv6.node[26].veinsmobility posx ETV
+vector 230 TestPmipv6.node[26].veinsmobility posy ETV
+vector 231 TestPmipv6.node[25].veinsmobility acceleration ETV
+vector 232 TestPmipv6.node[25].veinsmobility co2emission ETV
+vector 233 TestPmipv6.node[26].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 234 TestPmipv6.node[26].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 235 TestPmipv6.node[26].veinsmobility speed ETV
+vector 236 TestPmipv6.node[27].veinsmobility posx ETV
+vector 237 TestPmipv6.node[27].veinsmobility posy ETV
+vector 238 TestPmipv6.node[26].veinsmobility acceleration ETV
+vector 239 TestPmipv6.node[26].veinsmobility co2emission ETV
+vector 240 TestPmipv6.node[27].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 241 TestPmipv6.node[27].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 242 TestPmipv6.node[27].veinsmobility speed ETV
+vector 243 TestPmipv6.node[28].veinsmobility posx ETV
+vector 244 TestPmipv6.node[28].veinsmobility posy ETV
+vector 245 TestPmipv6.node[27].veinsmobility acceleration ETV
+vector 246 TestPmipv6.node[27].veinsmobility co2emission ETV
+vector 247 TestPmipv6.node[28].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 248 TestPmipv6.node[28].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 249 TestPmipv6.node[28].veinsmobility speed ETV
+vector 250 TestPmipv6.node[28].veinsmobility acceleration ETV
+vector 251 TestPmipv6.node[28].veinsmobility co2emission ETV
+vector 252 TestPmipv6.node[29].veinsmobility posx ETV
+vector 253 TestPmipv6.node[29].veinsmobility posy ETV
+vector 254 TestPmipv6.node[29].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 255 TestPmipv6.node[29].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 256 TestPmipv6.node[29].veinsmobility speed ETV
+vector 257 TestPmipv6.node[30].veinsmobility posx ETV
+vector 258 TestPmipv6.node[30].veinsmobility posy ETV
+vector 259 TestPmipv6.node[29].veinsmobility acceleration ETV
+vector 260 TestPmipv6.node[29].veinsmobility co2emission ETV
+vector 261 TestPmipv6.node[30].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 262 TestPmipv6.node[30].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 263 TestPmipv6.node[30].veinsmobility speed ETV
+vector 264 TestPmipv6.node[30].veinsmobility acceleration ETV
+vector 265 TestPmipv6.node[30].veinsmobility co2emission ETV
+vector 266 TestPmipv6.node[31].veinsmobility posx ETV
+vector 267 TestPmipv6.node[31].veinsmobility posy ETV
+vector 268 TestPmipv6.node[31].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 269 TestPmipv6.node[31].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 270 TestPmipv6.node[31].veinsmobility speed ETV
+vector 271 TestPmipv6.node[32].veinsmobility posx ETV
+vector 272 TestPmipv6.node[32].veinsmobility posy ETV
+vector 273 TestPmipv6.node[31].veinsmobility acceleration ETV
+vector 274 TestPmipv6.node[31].veinsmobility co2emission ETV
+vector 275 TestPmipv6.node[32].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 276 TestPmipv6.node[32].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 277 TestPmipv6.node[32].veinsmobility speed ETV
+vector 278 TestPmipv6.node[32].veinsmobility acceleration ETV
+vector 279 TestPmipv6.node[32].veinsmobility co2emission ETV
+vector 280 TestPmipv6.node[33].veinsmobility posx ETV
+vector 281 TestPmipv6.node[33].veinsmobility posy ETV
+vector 282 TestPmipv6.node[33].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 283 TestPmipv6.node[33].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 284 TestPmipv6.node[33].veinsmobility speed ETV
+vector 285 TestPmipv6.node[34].veinsmobility posx ETV
+vector 286 TestPmipv6.node[34].veinsmobility posy ETV
+vector 287 TestPmipv6.node[33].veinsmobility acceleration ETV
+vector 288 TestPmipv6.node[33].veinsmobility co2emission ETV
+vector 289 TestPmipv6.node[34].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 290 TestPmipv6.node[34].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 291 TestPmipv6.node[34].veinsmobility speed ETV
+vector 292 TestPmipv6.node[34].veinsmobility acceleration ETV
+vector 293 TestPmipv6.node[34].veinsmobility co2emission ETV
+vector 294 TestPmipv6.node[35].veinsmobility posx ETV
+vector 295 TestPmipv6.node[35].veinsmobility posy ETV
+vector 296 TestPmipv6.node[35].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 297 TestPmipv6.node[35].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+0	34824 8 0 0 0 0 1 0 0 0 0
+1	34832 1764 0 45506 0 38.825494785311 71 0 1 35 35
+2	36596 8 0 0 0 0 1 0 0 0 0
+3	36604 8 0 0 0 0 1 0 0 0 0
+4	36612 8 0 0 0 0 1 0 0 0 0
+5	36620 8 0 0 0 0 1 0 0 0 0
+6	36628 8 0 0 0 0 1 0 0 0 0
+7	36636 8 0 0 0 0 1 0 0 0 0
+8	36644 8 0 0 0 0 1 0 0 0 0
+9	36652 8 0 0 0 0 1 0 0 0 0
+10	36660 9 0 0 0 0 1 0 0 0 0
+11	36669 9 0 0 0 0 1 0 0 0 0
+12	36678 9 0 0 0 0 1 0 0 0 0
+13	36687 9 0 0 0 0 1 0 0 0 0
+14	36696 9 0 0 0 0 1 0 0 0 0
+15	36705 9 0 0 0 0 1 0 0 0 0
+16	36714 9 0 0 0 0 1 0 0 0 0
+17	36723 9 0 0 0 0 1 0 0 0 0
+18	36732 9 0 0 0 0 1 0 0 0 0
+19	36741 907 0 40828 0 37.0000105 43 0 1 21 21
+20	37648 9 0 0 0 0 1 0 0 0 0
+21	37657 101 0 56 0 1.565966520631 5 0 1 2 2
+22	37758 9 0 0 0 0 1 0 0 0 0
+23	37767 287 0 36081 0 35 19 0 1 9 9
+24	38054 2178 12 45990 0.5 39 78 45.414885528039 368.5848787486 16028.190915919 3984523.1098745
+25	40232 1491 12 45990 0.5 39 78 233.25 233.25 18193.5 4243633.875
+26	41723 2161 14 45990 1 39 77 42.088789456655 357.78992491341 15253.293208958 3691194.4156983
+27	43884 1474 14 45990 1 39 77 229.95 233.25 17716.05 4076114.8725
+28	45358 2164 14 45990 1 39 77 3.6325510461784 9.9997927061724 656.17900574859 5908.8648505098
+29	47522 2210 16 45990 1.5 39 76 -3.1017714053455 2.6 0.085266102389433 168.70221125586
+30	49732 1969 16 45990 1.5 39 76 0.973 6.6908052632268 178.72739226014 612.70243792085
+31	51701 2137 16 45990 1.5 39 76 3.4318032389826 9.9982620120444 642.80129110354 5747.8576750406
+32	53838 155 19 36047 1.565943340631 35 9 56 104 856 84032
+33	53993 155 21 36081 1.565943340631 35 9 74 122 1018 117764
+34	54148 139 21 36081 1.565943340631 35 9 0 0 0 0
+35	54287 155 23 36084 1.565943340631 35 9 74 122 1018 117764
+36	54442 211 24 36085 1.565949900631 35.0000104 9 74 122 1018 117764
+37	54653 211 25 36086 1.565950000631 35.0000105 9 74 122 1018 117764
+38	54864 211 25 36086 1.565950000631 35.0000105 9 74 122 1018 117764
+39	55075 211 26 36087 1.565950000631 35.0000105 9 56 104 856 84032
+40	55286 48 30 54 1.565950000631 1.565966520631 2 72 80 152 11584
+41	55334 48 32 56 1.565950000631 1.565966520631 2 90 98 188 17704
+42	55382 46 32 56 1.565950000631 1.565966520631 2 0 0 0 0
+43	55428 48 34 58 1.565950000631 1.565966520631 2 90 98 188 17704
+44	55476 48 36 60 1.565958480631 1.565974360631 2 90 98 188 17704
+45	55524 48 37 61 1.565958580631 1.565974460631 2 90 98 188 17704
+46	55572 48 37 61 1.565958580631 1.565974460631 2 90 98 188 17704
+47	55620 48 38 62 1.565958580631 1.565974460631 2 72 80 152 11584
+48	55668 948 140 45504 1.923730778595 38.825494785311 35 72 72 2520 181440
+49	56616 948 142 45506 1.923730778595 38.825494785311 35 90 90 3150 283500
+50	57564 913 142 45506 1.923730778595 38.825494785311 35 0 0 0 0
+51	58477 948 144 45508 1.923730778595 38.825494785311 35 90 90 3150 283500
+52	59425 948 146 45535 1.923738618595 38.825502625311 35 90 90 3150 283500
+53	60373 948 147 45536 1.923738718595 38.825502725311 35 90 90 3150 283500
+54	61321 948 147 45536 1.923738718595 38.825502725311 35 90 90 3150 283500
+55	62269 948 148 45537 1.923738718595 38.825502725311 35 72 72 2520 181440
+56	63217 2109 213 45990 2 39 75 44.272440925347 335.04377330302 14104.809381106 3212570.9026132
+57	65326 1442 213 45990 2 39 75 233.25 233.25 17493.75 4080417.1875
+58	66768 2172 213 45990 2 39 75 -3.0469096179394 2.6 5.7426778236969 186.65539889068
+59	68940 1945 213 45990 2 39 75 0.973 6.9098993968821 189.83609066153 711.07094211958
+60	70885 2064 372 45990 2.5 39 74 41.45 332.7470743909 13799.847135966 3146395.3161626
+61	72949 1426 372 45990 2.5 39 74 226.65 233.25 16848 3836139.525
+62	74375 2080 372 45990 2.5 39 74 3.4426561464197 9.9961064582155 591.91288867588 5043.164334252
+63	76455 2098 374 45990 3 39 73 -2.8155259480581 2.6 0.92336215068054 164.3724112351
+64	78553 1810 374 45990 3 39 73 0.973 6.3068416069709 173.58660666652 618.10767858893
+65	80363 2060 374 45990 3 39 73 3.4613807673197 9.9962361681787 593.82150291578 5122.5222428329
+66	82423 2072 561 45990 3.5 39 72 -3.1334853814875 2.6 6.6780685363958 203.31012264986
+67	84495 1825 561 45990 3.5 39 72 0.973 6.5595898176606 193.39018844051 771.05168879068
+68	86320 2003 562 45990 4 39 71 44.428024077767 310.51838805709 12397.41317471 2613524.9216659
+69	88323 1374 562 45990 4 39 71 233.25 233.25 16560.75 3862794.9375
+70	89697 6414 563 46186 4 39.2 353 1000 1000 353000 353000000
+71	96111 6414 565 46218 4 39.2 353 1008 1008 355824 358670592
+72	102525 1961 796 45990 4.5 39 70 41.45 318.77351210815 12644.915485894 2778124.4090771
+73	104486 1358 796 45990 4.5 39 70 229.95 233.25 16106.4 3705975.855
+74	105844 1982 796 45990 4.5 39 70 3.5794075239947 9.997386018429 535.77430878938 4407.4459258783
+75	107826 6336 798 46187 4.5 39.2 348 1000 1000 348000 348000000
+76	114162 6336 801 46219 4.5 39.2 348 1008 1008 350784 353590272
+77	120498 93 839 35987 5 35 7 0 6 21 91
+78	120591 1997 840 45990 5 39 69 -2.943724851443 2.6 -8.9194134904404 145.67024490108
+79	122588 1705 840 45990 5 39 69 0.973 6.5511214588766 148.68346218495 480.27267118391
+80	124293 1949 840 45990 5 39 69 3.7804806505124 9.9947076666635 563.67337269742 4884.8067374445
+81	126242 470 862 40826 5.0000105 37.0000105 21 80 80 1680 134400
+82	126712 470 864 40828 5.0000105 37.0000105 21 98 98 2058 201684
+83	127182 449 864 40828 5.0000105 37.0000105 21 0 0 0 0
+84	127631 470 866 40830 5.0000105 37.0000105 21 98 98 2058 201684
+85	128101 491 868 40831 5.00001898 37.00001898 21 98 98 2058 201684
+86	128592 491 869 40832 5.00001908 37.00001908 21 98 98 2058 201684
+87	129083 491 869 40832 5.00001908 37.00001908 21 98 98 2058 201684
+88	129574 491 870 40833 5.00001908 37.00001908 21 80 80 1680 134400
+89	130065 1911 906 45990 5.5 39 68 41.45 293.99579874967 10894.872118909 2114798.2223523
+90	131976 1324 906 45990 5.5 39 68 233.25 233.25 15861 3699578.25
+91	133300 1968 906 45990 5.5 39 68 -3.078864152619 2.6 2.324516955365 184.85188834806
+92	135268 1730 906 45990 5.5 39 68 0.973 6.4929659027486 175.28793323346 681.41439399853
+93	136998 6178 909 46188 5.5 39.2 338 1000 1000 338000 338000000
+94	143176 6178 913 46220 5.5 39.2 338 1008 1008 340704 343429632
+95	149354 1905 1495 45990 6 39 67 3.6424160409643 9.9968445479311 510.1388606124 4144.9102368412
+96	151259 1876 1824 45990 6.5 39 66 42.65396387748 306.76561862603 11292.631295549 2345134.8630047
+97	153135 1289 1824 45990 6.5 39 66 226.65 233.25 15028.2 3422142.405
+98	154424 1931 1824 45990 6.5 39 66 -2.7470928132412 2.6 -6.4287815663653 113.966265685
+99	156355 1591 1824 45990 6.5 39 66 0.973 6.2357324525827 136.61187076923 439.45622686845
+100	157946 6339 1828 46189 6.5 39.2 328 1000 1000 328000 328000000
+101	164285 6339 1833 46221 6.5 39.2 328 1008 1008 330624 333268992
+102	170624 1913 1891 45990 7 39 65 3.3473494650527 9.9950906676496 530.96919325464 4594.5552914317
+103	172537 1890 1970 45990 7.5 39 64 44.652019546262 269.53708812723 9473.9633083781 1680318.7661422
+104	174427 1317 1970 45990 7.5 39 64 233.25 233.25 14928 3481956
+105	175744 1938 1970 45990 7.5 39 64 -3.0853275116265 2.6 -5.0272585479798 181.88346753602
+106	177682 1691 1970 45990 7.5 39 64 0.973 6.210915063161 161.34358773004 605.94375486727
+107	179373 6161 1975 46190 7.5 39.2 318 1000 1000 318000 318000000
+108	185534 6161 1981 46222 7.5 39.2 318 1008 1008 320544 323108352
+109	191695 1854 2373 45990 8 39 63 3.358316313544 9.9971830387274 459.94638796194 3620.581371113
+110	193549 1832 2456 45990 8.5 39 62 43.214173286993 294.93662066611 10120.47533066 1996276.5564646
+111	195381 1279 2456 45990 8.5 39 62 229.95 233.25 14263.5 3281431.275
+112	196660 1881 2456 45990 8.5 39 62 -2.7055942066346 2.6 4.3556466616556 108.42996014306
+113	198541 1611 2456 45990 8.5 39 62 0.973 6.0901542959378 136.57300943009 454.46309826153
+114	200152 5983 2462 46191 8.5 39.2 308 1000 1000 308000 308000000
+115	206135 5983 2469 46223 8.5 39.2 308 1008 1008 310464 312947712
+116	212118 1780 2558 45990 9 39 61 41.45 241.74477454614 8225.1248957844 1328528.2114794
+117	213898 1259 2558 45990 9 39 61 233.25 233.25 14228.25 3318739.3125
+118	215157 1803 2558 45990 9 39 61 3.6230846204877 9.9924136742204 513.65186304526 4557.9061074813
+119	216960 5893 2565 46192 9 39.2 303 1000 1000 303000 303000000
+120	222853 5893 2573 46224 9 39.2 303 1008 1008 305424 307867392
+121	228746 1818 3424 45990 9.5 39 60 -3.0467595871132 2.6 5.8847134255912 156.05047034005
+122	230564 1595 3424 45990 9.5 39 60 0.973 6.815244539124 157.97271201251 625.30833313145
+123	232159 1776 3424 45990 9.5 39 60 3.5768997863459 9.9912142392318 411.77803184913 3052.466581908
+124	233935 1801 3537 45990 10 39 59 -2.599274327973 2.6 6.0280033072406 101.71746684563
+125	235736 1528 3537 45990 10 39 59 0.973 5.8487442234876 131.41829151367 435.51034200834
+126	237264 1718 4044 45990 10.5 39 58 43.003854158473 271.88508690374 8762.569243738 1595242.9887432
+127	238982 1202 4044 45990 10.5 39 58 226.65 233.25 13218.3 3012665.625
+128	240184 5622 4052 46193 10.5 39.2 288 1000 1000 288000 288000000
+129	245806 5622 4061 46225 10.5 39.2 288 1008 1008 290304 292626432
+130	251428 1668 4172 45990 11 39 57 41.45 217.40651294791 7088.0562370343 1050946.7643947
+131	253096 1181 4172 45990 11 39 57 233.25 233.25 13295.25 3101117.0625
+132	254277 1685 4172 45990 11 39 57 3.7027427731014 9.9815175251453 469.81093852207 4106.1084971086
+133	255962 5527 4181 46194 11 39.2 283 1000 1000 283000 283000000
+134	261489 5527 4191 46226 11 39.2 283 1008 1008 285264 287546112
+135	267016 1708 4331 45990 11.5 39 56 -3.0242701716679 2.6 11.10545275165 141.23847291026
+136	268724 1532 4331 45990 11.5 39 56 0.973 6.7176096858673 149.89268759122 592.28430884962
+137	270256 1656 4331 45990 11.5 39 56 3.4753745824306 9.953891892496 360.43823523159 2503.8199368751
+138	271912 1678 4903 45990 12 39 55 -2.524495593828 2.6 3.5063723000201 91.209564042328
+139	273590 1423 4903 45990 12 39 55 0.973 5.4914845469516 115.40607241902 362.71017465892
+140	275013 1606 5056 45990 12.5 39 54 42.148075853665 250.80566854994 7651.6645827672 1302458.933267
+141	276619 1122 5056 45990 12.5 39 54 229.95 233.25 12427.2 2859943.815
+142	277741 5246 5066 46195 12.5 39.2 268 1000 1000 268000 268000000
+143	282987 5246 5077 46227 12.5 39.2 268 1008 1008 270144 272305152
+144	288233 1574 5671 45990 13 39 53 3.3297510409879 9.9996065559238 429.89883508225 3739.4973084185
+145	289807 1541 5829 45990 13.5 39 52 43.230049651328 203.60352051876 6011.1878159228 818747.13077412
+146	291348 1082 5829 45990 13.5 39 52 233.25 233.25 12129 2829089.25
+147	292430 1583 5829 45990 13.5 39 52 -3.2188871076067 2.6 11.80782074891 145.53792469538
+148	294013 1438 5829 45990 13.5 39 52 0.973 6.4791521410513 142.54176121081 562.01517239594
+149	295451 5058 5840 46196 13.5 39.2 258 1000 1000 258000 258000000
+150	300509 5058 5852 46228 13.5 39.2 258 1008 1008 260064 262144512
+151	305567 1513 6489 45990 14 39 51 3.8347896397719 9.981557255839 325.79725063152 2253.3432083263
+152	307080 1464 7138 45990 14.5 39 50 41.45 226.0416519861 6504.4994686768 1015401.6292088
+153	308544 1042 7138 45990 14.5 39 50 226.65 233.25 11388.6 2594191.725
+154	309586 1545 7138 45990 14.5 39 50 -2.4667413193133 2.6 -1.6548723965448 62.188594532383
+155	311131 1240 7138 45990 14.5 39 50 0.973 5.7444307455879 92.279475526689 264.77017820997
+156	312371 4870 7150 46197 14.5 39.2 248 1000 1000 248000 248000000
+157	317241 4870 7163 46229 14.5 39.2 248 1008 1008 249984 251983872
+158	322111 1458 7326 45990 15 39 49 3.3169687837567 9.9839389307564 381.45015609934 3198.9781409011
+159	323569 1433 8045 45990 15.5 39 48 41.999923358836 194.17034241006 5101.637700324 636595.17304757
+160	325002 1002 8045 45990 15.5 39 48 229.95 233.25 11113.5 2573253
+161	326004 1450 8045 45990 15.5 39 48 -3.0180223940148 2.6 13.134498359641 154.94237165747
+162	327454 1299 8045 45990 15.5 39 48 0.973 6.1845670356735 141.23009766548 588.0824264232
+163	328753 4682 8058 46198 15.5 39.2 238 1000 1000 238000 238000000
+164	333435 4682 8072 46230 15.5 39.2 238 1008 1008 239904 241823232
+165	338117 1401 8247 45990 16 39 47 3.8471708972671 9.997009020492 311.70140359208 2271.8507672789
+166	339518 1418 8997 45990 16.5 39 46 -2.4935008659317 2.6 3.2448949878165 54.803162098813
+167	340936 1213 8997 45990 16.5 39 46 0.973 5.6397879952817 91.087902084816 259.79028790332
+168	342149 1345 9193 45990 17 39 45 41.940799967271 211.46517083944 5520.5059518425 807940.32031659
+169	343494 941 9193 45990 17 39 45 229.95 233.25 10357.65 2384050.7925
+170	344435 4399 9207 46199 17 39.2 223 1000 1000 223000 223000000
+171	348834 4399 9222 46231 17 39.2 223 1008 1008 224784 226582272
+172	353233 1314 9422 45990 17.5 39 44 3.2463129091865 9.9846293033892 345.79130385137 2954.8577176619
+173	354547 1284 9639 45990 18 39 43 42.96306825298 181.30846012637 4325.8445787927 504633.54231686
+174	355831 901 9639 45990 18 39 43 233.25 233.25 10029.75 2339439.1875
+175	356732 1310 9639 45990 18 39 43 -3.0643159157132 2.6 4.9568987659655 132.60921691822
+176	358042 1184 9639 45990 18 39 43 0.973 6.7754146571651 113.14715510661 432.16576816306
+177	359226 4211 9654 46200 18 39.2 213 1000 1000 213000 213000000
+178	363437 4211 9670 46232 18 39.2 213 1008 1008 214704 216421632
+179	367648 1254 10468 45990 18.5 39 42 3.8256703409668 9.9982012866903 286.82663173174 2153.4019175154
+180	368902 1270 11503 45990 19 39 41 -2.7552232380389 2.6 6.8670396539748 66.346859391248
+181	370172 1077 11503 45990 19 39 41 0.973 6.3828492797212 90.393797350817 307.07179592573
+182	371249 1196 11946 45990 19.5 39 40 42.149440781886 194.33406289776 4391.6577770138 566158.30078502
+183	372445 840 11946 45990 19.5 39 40 226.65 233.25 9125.4 2081996.28
+184	373285 3920 11962 46201 19.5 39.2 198 1000 1000 198000 198000000
+185	377205 3920 11979 46233 19.5 39.2 198 1008 1008 199584 201180672
+186	381125 1163 12194 45990 20 39 39 3.1842902543981 9.9885195933026 315.15088213377 2722.1135825231
+187	382288 1137 12691 45990 20.5 39 38 43.401429550133 156.13755802208 3477.4103711256 358206.39319975
+188	383425 798 12691 45990 20.5 39 38 233.25 233.25 8863.5 2067411.375
+189	384223 1164 12691 45990 20.5 39 38 -3.1325199189558 2.6 10.191061533301 105.44053949197
+190	385387 1057 12691 45990 20.5 39 38 0.973 6.5555838569343 105.83982013045 411.79232734216
+191	386444 3722 12708 46202 20.5 39.2 188 1000 1000 188000 188000000
+192	390166 3722 12726 46234 20.5 39.2 188 1008 1008 189504 191020032
+193	393888 1106 13599 45990 21 39 37 3.7174970119877 9.9799755855533 237.29130682711 1671.9454932569
+194	394994 1103 14110 45990 21.5 39 36 -2.2867949537337 2.6 9.8762749344795 53.733900701018
+195	396097 969 14110 45990 21.5 39 36 0.973 6.2885060583463 82.381578517188 275.72773691685
+196	397066 1046 15012 45990 22 39 35 42.161695393066 167.59948237075 3440.0520728699 387900.47538525
+197	398112 734 15012 45990 22 39 35 229.95 233.25 8058.15 1855280.7675
+198	398846 3424 15030 46203 22 39.2 173 1000 1000 173000 173000000
+199	402270 3424 15049 46235 22 39.2 173 1008 1008 174384 175779072
+200	405694 1015 15301 45990 22.5 39 34 3.2395356979045 9.9987289220863 263.54374309079 2193.9880477211
+201	406709 986 16072 45990 23 39 33 43.391703634859 130.08294496522 2751.5878170771 251326.84192506
+202	407695 692 16072 45990 23 39 33 233.25 233.25 7697.25 1795383.5625
+203	408387 1003 16072 45990 23 39 33 -2.5664397580065 2.6 13.273301887501 75.536363511945
+204	409390 894 16072 45990 23 39 33 0.973 5.953226989272 92.97014070448 366.4158569991
+205	410284 3226 16091 46204 23 39.2 163 1000 1000 163000 163000000
+206	413510 3226 16111 46236 23 39.2 163 1008 1008 164304 165618432
+207	416736 955 16627 45990 23.5 39 32 3.3561820598122 9.9869433211 185.23741485456 1144.8495142463
+208	417691 941 17618 45990 24 39 31 -2.36914655358 2.6 10.035693762369 57.246000344713
+209	418632 817 17618 45990 24 39 31 0.973 6.3339083343168 74.654947201366 263.38939085981
+210	419449 897 18606 45990 24.5 39 30 42.154655327472 145.0715192922 2665.9932821292 267717.23656731
+211	420346 630 18606 45990 24.5 39 30 226.65 233.25 6855.6 1566787.275
+212	420976 2930 18626 46205 24.5 39.2 148 1000 1000 148000 148000000
+213	423906 2930 18647 46237 24.5 39.2 148 1008 1008 149184 150377472
+214	426836 867 19181 45990 25 39 29 3.1095198131023 9.9787704205327 218.67623587643 1787.0643772363
+215	427703 838 19511 45990 25.5 39 28 43.356082731662 110.91528010777 2152.0562040132 178144.07758078
+216	428541 588 19511 45990 25.5 39 28 233.25 233.25 6531 1523355.75
+217	429129 847 19511 45990 25.5 39 28 -2.9422096438874 2.6 13.679126953185 93.569071791877
+218	429976 749 19511 45990 25.5 39 28 0.973 6.9114082249305 88.947343126358 404.79380969265
+219	430725 2732 19532 46206 25.5 39.2 138 1000 1000 138000 138000000
+220	433457 2732 19554 46238 25.5 39.2 138 1008 1008 139104 140216832
+221	436189 808 20589 45990 26 39 27 3.5538110098906 6.4703020438115 141.18207076112 749.05482650978
+222	436997 792 21477 45990 26.5 39 26 -2.474424664717 2.6 1.7561779470077 37.382958022655
+223	437789 660 21477 45990 26.5 39 26 0.973 4.9848997010057 49.142230651643 122.29804077286
+224	438449 746 22548 45990 27 39 25 42.107773738105 124.12565537435 2030.1894906543 183787.73174311
+225	439195 524 22548 45990 27 39 25 229.95 233.25 5758.65 1326510.7425
+226	439719 2434 22570 46207 27 39.2 123 1000 1000 123000 123000000
+227	442153 2434 22593 46239 27 39.2 123 1008 1008 123984 124975872
+228	444587 718 23184 45990 27.5 39 24 3.3067592086075 9.9897556938976 175.98406341614 1406.5890549384
+229	445305 687 24299 45990 28 39 23 43.510373723295 98.673726999195 1628.2779116866 122194.73907113
+230	445992 482 24299 45990 28 39 23 233.25 233.25 5364.75 1251327.9375
+231	446474 693 24299 45990 28 39 23 -3.2235737434731 2.6 12.199061632894 81.127706474028
+232	447167 639 24299 45990 28 39 23 0.973 6.7267420938129 74.636332786851 325.60500853905
+233	447806 2236 24322 46208 28 39.2 113 1000 1000 113000 113000000
+234	450042 2236 24346 46240 28 39.2 113 1008 1008 113904 114815232
+235	452278 655 24652 45990 28.5 39 22 4.4039658115216 5.8779787293432 114.92025175145 603.95565691473
+236	452933 608 26107 45990 29 39 21 41.45 108.86471915462 1515.2105072218 120647.00873309
+237	453541 440 26107 45990 29 39 21 226.65 233.25 4819.05 1105962.0525
+238	453981 661 26107 45990 29 39 21 -1.1806848775423 1.3023532147756 -1.4590863300347 8.1651482742546
+239	454642 519 26107 45990 29 39 21 0.973 2.9524367251029 30.001503209915 50.621939186657
+240	455161 2038 26131 46209 29 39.2 103 1000 1000 103000 103000000
+241	457199 2038 26156 46241 29 39.2 103 1008 1008 103824 104654592
+242	459237 598 26474 45990 29.5 39 20 3.4728495487029 9.9649144526874 139.60964477889 1068.3165908274
+243	459835 547 27970 45990 30 39 19 41.45 86.213598165222 1200.8611889898 79764.479516512
+244	460382 398 27970 45990 30 39 19 233.25 233.25 4431.75 1033705.6875
+245	460780 579 27970 45990 30 39 19 -2.8744084954491 2.431003495371 1.9199473400775 69.091523977664
+246	461359 498 27970 45990 30 39 19 0.973 7.4365092783635 55.054727884109 231.24674261788
+247	461857 1840 27996 46210 30 39.2 93 1000 1000 93000 93000000
+248	463697 1840 28023 46242 30 39.2 93 1008 1008 93744 94493952
+249	465537 538 29226 45990 30.5 39 18 4.5387363181438 5.6781001796991 93.864222283728 491.20024131303
+250	466075 535 29919 45990 31 39 17 -0.61750542474612 0.82202952528522 -1.6764056923007 2.7603529001835
+251	466610 399 29919 45990 31 39 17 0.973 2.4414968389316 21.651582525201 31.045737127002
+252	467009 478 30624 45990 31.5 39 16 41.723622833913 97.200102322315 1023.7257469415 70926.047206676
+253	467487 336 30624 45990 31.5 39 16 229.95 233.25 3689.1 850617.72
+254	467823 1544 30650 46211 31.5 39.2 78 1000 1000 78000 78000000
+255	469367 1544 30677 46243 31.5 39.2 78 1008 1008 78624 79252992
+256	470911 447 31021 45990 32 39 15 3.5772632886651 9.9335887770541 120.47057891041 1035.4205600455
+257	471358 419 31757 45990 32.5 39 14 42.528257661286 73.626849734105 799.73302512935 47138.841344785
+258	471777 294 31757 45990 32.5 39 14 233.25 233.25 3265.5 761677.875
+259	472071 431 31757 45990 32.5 39 14 -3.1963864735901 2.2750137656974 7.4283535191062 38.175611844482
+260	472502 399 31757 45990 32.5 39 14 0.973 6.2540956887223 42.843955158909 174.11163667712
+261	472901 1346 31784 46212 32.5 39.2 68 1000 1000 68000 68000000
+262	474247 1346 31812 46244 32.5 39.2 68 1008 1008 68544 69092352
+263	475593 386 32174 45990 33 39 13 4.7922519446862 5.4219733953262 66.668667382985 342.30801208012
+264	475979 384 33820 45990 33.5 39 12 -0.47647231351505 0.39455886501766 -1.2081549440764 0.94717170714553
+265	476363 310 33820 45990 33.5 39 12 0.973 1.8692707610764 15.137073972805 20.165186555292
+266	476673 327 34231 45990 34 39 11 41.961922401401 72.0486283402 584.51698956048 32152.24298127
+267	477000 230 34231 45990 34 39 11 229.95 233.25 2539.35 586232.7075
+268	477230 1048 34259 46213 34 39.2 53 1000 1000 53000 53000000
+269	478278 1048 34288 46245 34 39.2 53 1008 1008 53424 53851392
+270	479326 299 35560 45990 34.5 39 10 3.4409833476374 9.9864744249335 72.948209343074 588.31604099287
+271	479625 269 35988 45990 35 39 9 43.027695856197 60.923279596964 459.07695232059 23762.934273915
+272	479894 188 35988 45990 35 39 9 233.25 233.25 2099.25 489650.0625
+273	480082 274 35988 45990 35 39 9 -0.14402203758713 2.1425147073623 12.872094042714 24.886930116993
+274	480356 269 35988 45990 35 39 9 1.3326557020758 6.3701927772634 35.964859024763 170.34021713207
+275	480625 850 36018 46214 35 39.2 43 1000 1000 43000 43000000
+276	481475 850 36049 46246 35 39.2 43 1008 1008 43344 43690752
+277	482325 239 37732 45990 35.5 39 8 4.9389001969659 5.2710154697629 40.698660774297 207.14362813379
+278	482564 222 38532 45990 36 39 7 -0.39376179683851 0.36426184658765 -0.57261218550865 0.43530684606664
+279	482786 179 38532 45990 36 39 7 0.973 1.8302045612584 8.7770324173655 11.628230975049
+280	482965 179 38985 45990 36.5 39 6 42.187150603982 50.961687133529 272.79513860736 12464.673886254
+281	483144 126 38985 45990 36.5 39 6 229.95 233.25 1389.6 321847.695
+282	483270 554 39015 46215 36.5 39.2 28 1000 1000 28000 28000000
+283	483824 554 39046 46247 36.5 39.2 28 1008 1008 28224 28449792
+284	484378 149 40732 45990 37 39 5 3.3002844088786 7.0664271084341 26.002151421812 143.67981241803
+285	484527 120 41551 45990 37.5 39 4 43.433435815584 48.395783485363 181.19071605703 8224.4653344096
+286	484647 84 41551 45990 37.5 39 4 233.25 233.25 933 217622.25
+287	484731 119 41551 45990 37.5 39 4 1.4588873086311 2.1240170644037 7.532285399111 14.476052717269
+288	484850 119 41551 45990 37.5 39 4 3.5307556900816 5.100701081506 15.890355806836 64.843639787605
+289	484969 356 41582 46216 37.5 39.2 18 1000 1000 18000 18000000
+290	485325 356 41614 46248 37.5 39.2 18 1008 1008 18144 18289152
+291	485681 89 43356 45990 38 39 3 4.8348063467941 4.9975266585782 14.756112913873 72.594233701556
+292	485770 64 44191 45990 38.5 39 2 -0.17794712341339 -0.14749350015496 -0.32544062356835 0.053419511319062
+293	485834 40 44191 45990 38.5 39 2 0.973 0.973 1.946 1.893458
+294	485874 29 45990 45990 39 39 1 42.187079082621 42.187079082621 42.187079082621 1779.7496415233
+295	485903 20 45990 45990 39 39 1 233.25 233.25 233.25 54405.5625
+296	485923 58 46022 46217 39 39.2 3 1000 1000 3000 3000000
+297	485981 58 46055 46249 39 39.2 3 1008 1008 3024 3048192
+

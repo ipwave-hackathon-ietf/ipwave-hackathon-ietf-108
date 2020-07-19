@@ -1,0 +1,2801 @@
+version 2
+run Speed_30-0-20200520-15:41:43-3135
+attr configname Speed_30
+attr datetime 20200520-15:41:43
+attr experiment Speed_30
+attr inifile omnetppTestPmipv6.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network TestPmipv6
+attr processid 3135
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param *.manager.launchConfig "xmldoc(\"notlsvm30.launchd.xml\")"
+param *.manager.seed 0
+param *.n 3
+param **.debug false
+param **.coreDebug false
+param *.playgroundSizeX 1400m
+param *.playgroundSizeY 700m
+param *.playgroundSizeZ 50m
+param *.annotations.draw true
+param *.obstacles.debug false
+param *.obstacles.obstacles "xmldoc(\"config.xml\", \"//AnalogueModel[@type='SimpleObstacleShadowing']/obstacles\")"
+param *.manager.updateInterval 0.5s
+param *.manager.host "\"localhost\""
+param *.manager.port 9999
+param *.manager.autoShutdown true
+param *.manager.launchConfig "xmldoc(\"test2.launchd.xml\")"
+param **.rsu[*].numApps 1
+param *.rsu[0].mobility.x 200
+param *.rsu[0].mobility.y 130
+param *.rsu[0].mobility.z 1.895
+param *.rsu[1].mobility.x 650
+param *.rsu[1].mobility.y 130
+param *.rsu[1].mobility.z 1.895
+param *.rsu[2].mobility.x 1100
+param *.rsu[2].mobility.y 130
+param *.rsu[2].mobility.z 1.895
+param *.rsu[*].applType "\"TraCIDemoRSU11p\""
+param **.rsu[*].app[*].typename "\"UdpSink\""
+param **.rsu[*].app[0].destPort 1000
+param **.rsu[*].app[0].messageLength 1000B
+param **.rsu[*].app[0].sendInterval "uniform(5s, 10s)"
+param **.rsu[*].app[0].sendInterval 100ms
+param **.rsu[*].app[0].destAddresses "\"node[3]\""
+param **.rsu[*].app[0].localAddress "\"\""
+param **.rsu[*].app[0].localPort 1000
+param **.rsu[*].app[0].replyDelay 0s
+param **.app[*].dataTransferMode "\"object\""
+param **.eth[*].queue.typename "\"EtherQosQueue\""
+param **.eth[*].queue.dataQueue.typename "\"DropTailQueue\""
+param **.eth[*].queue.dataQueue.frameCapacity 10
+param **.eth[*].mac.duplexMode true
+param *.rsu[*].app[0].headerLength "80 bit"
+param *.rsu[*].app[0].sendBeacons false
+param *.rsu[*].app[0].dataOnSch false
+param *.rsu[*].app[0].beaconInterval 1s
+param *.rsu[*].app[0].beaconUserPriority 7
+param *.rsu[*].app[0].dataUserPriority 5
+param *.connectionManager.sendDirect true
+param *.connectionManager.maxInterfDist 700m
+param *.connectionManager.drawMaxIntfDist true
+param *.**.nic.mac1609_4.useServiceChannel false
+param *.node[*].nic.mac1609_4.txPower 8mW
+param *.rsu[*].nic.mac1609_4.txPower 8mW
+param *.**.nic.mac1609_4.bitrate 6Mbps
+param *.**.nic.phy80211p.sensitivity -89dBm
+param *.**.nic.phy80211p.useThermalNoise false
+param *.**.nic.phy80211p.thermalNoise -110dBm
+param *.**.nic.phy80211p.decider "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.analogueModels "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.usePropagationDelay true
+param *.**.nic.phy80211p.antenna "xmldoc(\"antenna.xml\", \"/root/Antenna[@id='monopole']\")"
+param *.node[*].applType "\"TraCIDemo11p\""
+param *.node[*].appl.headerLength "80 bit"
+param *.node[*].appl.sendBeacons false
+param *.node[*].appl.dataOnSch false
+param *.node[*].appl.beaconInterval 1s
+param *.node[*].numApps 1
+param **.node[*].app[*].typename "\"UdpBasicApp\""
+param **.node[*].app[0].destPort 1000
+param **.node[*].app[0].messageLength 1000B
+param **.node[*].app[0].sendInterval 100ms
+param **.node[*].app[0].destAddresses "\"rsu[0]\""
+param **.node[*].app[0].connectPort 1000
+param **.node[0].app[0].startTime uniform(1700s,1700.5s)
+param **.node[1].app[0].startTime uniform(1700.5s,1800s)
+param **.node[2].app[0].startTime uniform(1800s,1800.5s)
+param **.node[3].app[0].startTime uniform(1800.5s,1900s)
+param **.node[*].app[0].sendInterval 200ms
+param **.node[*].app[0].numCommands int(exponential(10))
+param **.node[*].app[0].commandLength intWithUnit(exponential(10B))
+param **.node[*].app[0].keyPressDelay exponential(0.1s)
+param **.node[*].app[0].commandOutputLength intWithUnit(exponential(40B))
+param **.node[*].app[0].thinkTime truncnormal(2s,3s)
+param **.node[*].app[0].idleInterval truncnormal(3600s,1200s)
+param **.node[*].app[0].reconnectInterval 30s
+param *.node[*].veinsmobilityType.debug true
+param *.node[*].veinsmobility.x 0
+param *.node[*].veinsmobility.y 0
+param *.node[*].veinsmobility.z 1.895
+param *.node[*0].veinsmobility.accidentCount 1
+param *.node[*0].veinsmobility.accidentStart 75s
+param *.node[*0].veinsmobility.accidentDuration 50s
+param **.CN*.numApps 1
+param **.CN*.app[*].typename "\"PingApp\""
+param **.CN[0].app[0].destAddr "\"node[0]\""
+param **.CN[1].app[0].destAddr "\"\""
+param **.CN*.app[0].srcAddr "\"\""
+param **.CN*.app[0].packetSize 56B
+param **.CN*.app[0].sendInterval 5s
+param **.CN*.app[0].hopLimit 32
+param **.CN[0].app[0].count -1
+param **.CN[1].app[0].count 0
+param **.CN*.app[0].startTime 5s
+param **.CN*.app[0].stopTime 2000s
+param **.CN*.app[0].printPing true
+
+scalar TestPmipv6.node[0].lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar TestPmipv6.node[0].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar TestPmipv6.node[0].lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.node[0].lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestPmipv6.node[0].ipv6.neighbourDiscovery startDad:count 0
+attr title "DAD started, count"
+scalar TestPmipv6.node[0].udp packetReceived:count 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar TestPmipv6.node[0].udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar TestPmipv6.node[0].udp packetSent:count 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar TestPmipv6.node[0].udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar TestPmipv6.node[0].udp passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar TestPmipv6.node[0].udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar TestPmipv6.node[0].udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar TestPmipv6.node[0].app[0] "packets sent" 0
+scalar TestPmipv6.node[0].app[0] "packets received" 0
+scalar TestPmipv6.node[0].app[0] packetReceived:count 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar TestPmipv6.node[0].app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic TestPmipv6.node[0].app[0] rcvdPkLifetime:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "received packet lifetime, stats"
+attr unit s
+scalar TestPmipv6.node[0].app[0] packetSent:count 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar TestPmipv6.node[0].app[0] packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar TestPmipv6.node[0].nic.phy80211p busyTime 2.4875e-05
+scalar TestPmipv6.node[0].nic.mac1609_4 ReceivedUnicastPackets 30
+scalar TestPmipv6.node[0].nic.mac1609_4 ReceivedBroadcasts 3
+scalar TestPmipv6.node[0].nic.mac1609_4 SentPackets 38
+scalar TestPmipv6.node[0].nic.mac1609_4 SentAcknowledgements 0
+scalar TestPmipv6.node[0].nic.mac1609_4 SNIRLostPackets 0
+scalar TestPmipv6.node[0].nic.mac1609_4 RXTXLostPackets 0
+scalar TestPmipv6.node[0].nic.mac1609_4 TotalLostPackets 0
+scalar TestPmipv6.node[0].nic.mac1609_4 DroppedPacketsInMac 0
+scalar TestPmipv6.node[0].nic.mac1609_4 TooLittleTime 0
+scalar TestPmipv6.node[0].nic.mac1609_4 TimesIntoBackoff 38
+scalar TestPmipv6.node[0].nic.mac1609_4 SlotsBackoff 322
+scalar TestPmipv6.node[0].nic.mac1609_4 NumInternalContention 0
+scalar TestPmipv6.node[0].nic.mac1609_4 totalBusyTime 0.010214
+scalar TestPmipv6.node[0].veinsmobility startTime 0.5
+scalar TestPmipv6.node[0].veinsmobility totalTime 191.5
+scalar TestPmipv6.node[0].veinsmobility stopTime 192.5
+scalar TestPmipv6.node[0].veinsmobility minSpeed 0
+scalar TestPmipv6.node[0].veinsmobility maxSpeed 8.3326895873288
+scalar TestPmipv6.node[0].veinsmobility totalDistance 1064.7981248016
+scalar TestPmipv6.node[0].veinsmobility totalCO2Emission 327.05043718385
+scalar TestPmipv6.manager roiArea 0
+scalar TestPmipv6.rsu[0].lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar TestPmipv6.rsu[0].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.rsu[0].lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+statistic TestPmipv6.rsu[0].eth[0].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[0].eth[0].queue.pauseQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[0].eth[0].queue.pauseQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[0].eth[0].queue.pauseQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[0].eth[0].queue.pauseQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[0].queue.pauseQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[0].eth[0].queue.pauseQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+statistic TestPmipv6.rsu[0].eth[0].queue.dataQueue queueingTime:histogram
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar TestPmipv6.rsu[0].eth[0].queue.dataQueue queueLength:max 1
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[0].eth[0].queue.dataQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[0].eth[0].queue.dataQueue packetReceived:count 1
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[0].eth[0].queue.dataQueue packetReceived:sum(packetBytes) 90
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[0].queue.dataQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[0].eth[0].queue.dataQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[0].mac "simulated time" 200
+scalar TestPmipv6.rsu[0].eth[0].mac full-duplex 1
+scalar TestPmipv6.rsu[0].eth[0].mac "frames/sec sent" 0.005
+scalar TestPmipv6.rsu[0].eth[0].mac "frames/sec rcvd" 0
+scalar TestPmipv6.rsu[0].eth[0].mac "bits/sec sent" 3.6
+scalar TestPmipv6.rsu[0].eth[0].mac "bits/sec rcvd" 0
+scalar TestPmipv6.rsu[0].eth[0].mac "rx channel idle (%)" 100
+scalar TestPmipv6.rsu[0].eth[0].mac "rx channel utilization (%)" 0
+scalar TestPmipv6.rsu[0].eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar TestPmipv6.rsu[0].eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar TestPmipv6.rsu[0].eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar TestPmipv6.rsu[0].eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar TestPmipv6.rsu[0].eth[0].mac rxPkOk:count 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar TestPmipv6.rsu[0].eth[0].mac rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[0].mac txPk:count 1
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar TestPmipv6.rsu[0].eth[0].mac txPk:sum(packetBytes) 90
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[0].mac packetReceivedFromUpper:count 1
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar TestPmipv6.rsu[0].eth[0].mac packetReceivedFromUpper:sum(packetBytes) 90
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[0].mac passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.rsu[0].eth[0].mac passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar TestPmipv6.rsu[0].eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar TestPmipv6.rsu[0].eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar TestPmipv6.rsu[0].eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[0].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar TestPmipv6.rsu[0].eth[0].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar TestPmipv6.rsu[0].eth[0].encap decapPk:count 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar TestPmipv6.rsu[0].eth[0].encap decapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[0].encap encapPk:count 1
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar TestPmipv6.rsu[0].eth[0].encap encapPk:sum(packetBytes) 72
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+statistic TestPmipv6.rsu[0].eth[1].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[0].eth[1].queue.pauseQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[0].eth[1].queue.pauseQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[0].eth[1].queue.pauseQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[0].eth[1].queue.pauseQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[1].queue.pauseQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[0].eth[1].queue.pauseQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+statistic TestPmipv6.rsu[0].eth[1].queue.dataQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[0].eth[1].queue.dataQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[0].eth[1].queue.dataQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[0].eth[1].queue.dataQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[0].eth[1].queue.dataQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[1].queue.dataQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[0].eth[1].queue.dataQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[1].mac "simulated time" 200
+scalar TestPmipv6.rsu[0].eth[1].mac full-duplex 1
+scalar TestPmipv6.rsu[0].eth[1].mac "frames/sec sent" 0
+scalar TestPmipv6.rsu[0].eth[1].mac "frames/sec rcvd" 0
+scalar TestPmipv6.rsu[0].eth[1].mac "bits/sec sent" 0
+scalar TestPmipv6.rsu[0].eth[1].mac "bits/sec rcvd" 0
+scalar TestPmipv6.rsu[0].eth[1].mac "rx channel idle (%)" 100
+scalar TestPmipv6.rsu[0].eth[1].mac "rx channel utilization (%)" 0
+scalar TestPmipv6.rsu[0].eth[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar TestPmipv6.rsu[0].eth[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar TestPmipv6.rsu[0].eth[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar TestPmipv6.rsu[0].eth[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar TestPmipv6.rsu[0].eth[1].mac rxPkOk:count 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar TestPmipv6.rsu[0].eth[1].mac rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[1].mac txPk:count 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar TestPmipv6.rsu[0].eth[1].mac txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[1].mac packetReceivedFromUpper:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar TestPmipv6.rsu[0].eth[1].mac packetReceivedFromUpper:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[1].mac passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.rsu[0].eth[1].mac passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[1].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar TestPmipv6.rsu[0].eth[1].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[1].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar TestPmipv6.rsu[0].eth[1].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[1].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar TestPmipv6.rsu[0].eth[1].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[1].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar TestPmipv6.rsu[0].eth[1].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar TestPmipv6.rsu[0].eth[1].encap decapPk:count 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar TestPmipv6.rsu[0].eth[1].encap decapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].eth[1].encap encapPk:count 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar TestPmipv6.rsu[0].eth[1].encap encapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].ipv6.neighbourDiscovery startDad:count 0
+attr title "DAD started, count"
+scalar TestPmipv6.rsu[0].udp packetReceived:count 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar TestPmipv6.rsu[0].udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].udp packetSent:count 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar TestPmipv6.rsu[0].udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar TestPmipv6.rsu[0].udp passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar TestPmipv6.rsu[0].udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar TestPmipv6.rsu[0].udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar TestPmipv6.rsu[0].app[0] packetReceived:count 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar TestPmipv6.rsu[0].app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic TestPmipv6.rsu[0].app[0] endToEndDelay:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[0].nic.phy80211p busyTime 4.92e-06
+scalar TestPmipv6.rsu[0].nic.mac1609_4 ReceivedUnicastPackets 6
+scalar TestPmipv6.rsu[0].nic.mac1609_4 ReceivedBroadcasts 1
+scalar TestPmipv6.rsu[0].nic.mac1609_4 SentPackets 6
+scalar TestPmipv6.rsu[0].nic.mac1609_4 SentAcknowledgements 0
+scalar TestPmipv6.rsu[0].nic.mac1609_4 SNIRLostPackets 0
+scalar TestPmipv6.rsu[0].nic.mac1609_4 RXTXLostPackets 0
+scalar TestPmipv6.rsu[0].nic.mac1609_4 TotalLostPackets 0
+scalar TestPmipv6.rsu[0].nic.mac1609_4 DroppedPacketsInMac 0
+scalar TestPmipv6.rsu[0].nic.mac1609_4 TooLittleTime 0
+scalar TestPmipv6.rsu[0].nic.mac1609_4 TimesIntoBackoff 6
+scalar TestPmipv6.rsu[0].nic.mac1609_4 SlotsBackoff 42
+scalar TestPmipv6.rsu[0].nic.mac1609_4 NumInternalContention 0
+scalar TestPmipv6.rsu[0].nic.mac1609_4 totalBusyTime 0.001862
+scalar TestPmipv6.rsu[1].lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar TestPmipv6.rsu[1].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.rsu[1].lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+statistic TestPmipv6.rsu[1].eth[0].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[1].eth[0].queue.pauseQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[1].eth[0].queue.pauseQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[1].eth[0].queue.pauseQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[1].eth[0].queue.pauseQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[0].queue.pauseQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[1].eth[0].queue.pauseQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+statistic TestPmipv6.rsu[1].eth[0].queue.dataQueue queueingTime:histogram
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar TestPmipv6.rsu[1].eth[0].queue.dataQueue queueLength:max 1
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[1].eth[0].queue.dataQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[1].eth[0].queue.dataQueue packetReceived:count 1
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[1].eth[0].queue.dataQueue packetReceived:sum(packetBytes) 90
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[0].queue.dataQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[1].eth[0].queue.dataQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[0].mac "simulated time" 200
+scalar TestPmipv6.rsu[1].eth[0].mac full-duplex 1
+scalar TestPmipv6.rsu[1].eth[0].mac "frames/sec sent" 0.005
+scalar TestPmipv6.rsu[1].eth[0].mac "frames/sec rcvd" 0
+scalar TestPmipv6.rsu[1].eth[0].mac "bits/sec sent" 3.6
+scalar TestPmipv6.rsu[1].eth[0].mac "bits/sec rcvd" 0
+scalar TestPmipv6.rsu[1].eth[0].mac "rx channel idle (%)" 100
+scalar TestPmipv6.rsu[1].eth[0].mac "rx channel utilization (%)" 0
+scalar TestPmipv6.rsu[1].eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar TestPmipv6.rsu[1].eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar TestPmipv6.rsu[1].eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar TestPmipv6.rsu[1].eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar TestPmipv6.rsu[1].eth[0].mac rxPkOk:count 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar TestPmipv6.rsu[1].eth[0].mac rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[0].mac txPk:count 1
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar TestPmipv6.rsu[1].eth[0].mac txPk:sum(packetBytes) 90
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[0].mac packetReceivedFromUpper:count 1
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar TestPmipv6.rsu[1].eth[0].mac packetReceivedFromUpper:sum(packetBytes) 90
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[0].mac passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.rsu[1].eth[0].mac passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar TestPmipv6.rsu[1].eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar TestPmipv6.rsu[1].eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar TestPmipv6.rsu[1].eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[0].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar TestPmipv6.rsu[1].eth[0].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar TestPmipv6.rsu[1].eth[0].encap decapPk:count 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar TestPmipv6.rsu[1].eth[0].encap decapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[0].encap encapPk:count 1
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar TestPmipv6.rsu[1].eth[0].encap encapPk:sum(packetBytes) 72
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+statistic TestPmipv6.rsu[1].eth[1].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[1].eth[1].queue.pauseQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[1].eth[1].queue.pauseQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[1].eth[1].queue.pauseQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[1].eth[1].queue.pauseQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[1].queue.pauseQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[1].eth[1].queue.pauseQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+statistic TestPmipv6.rsu[1].eth[1].queue.dataQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[1].eth[1].queue.dataQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[1].eth[1].queue.dataQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[1].eth[1].queue.dataQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[1].eth[1].queue.dataQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[1].queue.dataQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[1].eth[1].queue.dataQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[1].mac "simulated time" 200
+scalar TestPmipv6.rsu[1].eth[1].mac full-duplex 1
+scalar TestPmipv6.rsu[1].eth[1].mac "frames/sec sent" 0
+scalar TestPmipv6.rsu[1].eth[1].mac "frames/sec rcvd" 0
+scalar TestPmipv6.rsu[1].eth[1].mac "bits/sec sent" 0
+scalar TestPmipv6.rsu[1].eth[1].mac "bits/sec rcvd" 0
+scalar TestPmipv6.rsu[1].eth[1].mac "rx channel idle (%)" 100
+scalar TestPmipv6.rsu[1].eth[1].mac "rx channel utilization (%)" 0
+scalar TestPmipv6.rsu[1].eth[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar TestPmipv6.rsu[1].eth[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar TestPmipv6.rsu[1].eth[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar TestPmipv6.rsu[1].eth[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar TestPmipv6.rsu[1].eth[1].mac rxPkOk:count 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar TestPmipv6.rsu[1].eth[1].mac rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[1].mac txPk:count 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar TestPmipv6.rsu[1].eth[1].mac txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[1].mac packetReceivedFromUpper:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar TestPmipv6.rsu[1].eth[1].mac packetReceivedFromUpper:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[1].mac passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.rsu[1].eth[1].mac passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[1].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar TestPmipv6.rsu[1].eth[1].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[1].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar TestPmipv6.rsu[1].eth[1].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[1].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar TestPmipv6.rsu[1].eth[1].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[1].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar TestPmipv6.rsu[1].eth[1].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar TestPmipv6.rsu[1].eth[1].encap decapPk:count 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar TestPmipv6.rsu[1].eth[1].encap decapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[1].encap encapPk:count 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar TestPmipv6.rsu[1].eth[1].encap encapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+statistic TestPmipv6.rsu[1].eth[2].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[1].eth[2].queue.pauseQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[1].eth[2].queue.pauseQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[1].eth[2].queue.pauseQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[1].eth[2].queue.pauseQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[2].queue.pauseQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[1].eth[2].queue.pauseQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+statistic TestPmipv6.rsu[1].eth[2].queue.dataQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[1].eth[2].queue.dataQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[1].eth[2].queue.dataQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[1].eth[2].queue.dataQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[1].eth[2].queue.dataQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[2].queue.dataQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[1].eth[2].queue.dataQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[2].mac "simulated time" 200
+scalar TestPmipv6.rsu[1].eth[2].mac full-duplex 1
+scalar TestPmipv6.rsu[1].eth[2].mac "frames/sec sent" 0
+scalar TestPmipv6.rsu[1].eth[2].mac "frames/sec rcvd" 0
+scalar TestPmipv6.rsu[1].eth[2].mac "bits/sec sent" 0
+scalar TestPmipv6.rsu[1].eth[2].mac "bits/sec rcvd" 0
+scalar TestPmipv6.rsu[1].eth[2].mac "rx channel idle (%)" 100
+scalar TestPmipv6.rsu[1].eth[2].mac "rx channel utilization (%)" 0
+scalar TestPmipv6.rsu[1].eth[2].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar TestPmipv6.rsu[1].eth[2].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar TestPmipv6.rsu[1].eth[2].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar TestPmipv6.rsu[1].eth[2].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar TestPmipv6.rsu[1].eth[2].mac rxPkOk:count 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar TestPmipv6.rsu[1].eth[2].mac rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[2].mac txPk:count 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar TestPmipv6.rsu[1].eth[2].mac txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[2].mac packetReceivedFromUpper:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar TestPmipv6.rsu[1].eth[2].mac packetReceivedFromUpper:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[2].mac passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.rsu[1].eth[2].mac passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[2].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar TestPmipv6.rsu[1].eth[2].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[2].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar TestPmipv6.rsu[1].eth[2].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[2].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar TestPmipv6.rsu[1].eth[2].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[2].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar TestPmipv6.rsu[1].eth[2].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar TestPmipv6.rsu[1].eth[2].encap decapPk:count 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar TestPmipv6.rsu[1].eth[2].encap decapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].eth[2].encap encapPk:count 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar TestPmipv6.rsu[1].eth[2].encap encapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].ipv6.neighbourDiscovery startDad:count 0
+attr title "DAD started, count"
+scalar TestPmipv6.rsu[1].udp packetReceived:count 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar TestPmipv6.rsu[1].udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].udp packetSent:count 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar TestPmipv6.rsu[1].udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar TestPmipv6.rsu[1].udp passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar TestPmipv6.rsu[1].udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar TestPmipv6.rsu[1].udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar TestPmipv6.rsu[1].app[0] packetReceived:count 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar TestPmipv6.rsu[1].app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic TestPmipv6.rsu[1].app[0] endToEndDelay:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[1].nic.phy80211p busyTime 1.788e-05
+scalar TestPmipv6.rsu[1].nic.mac1609_4 ReceivedUnicastPackets 24
+scalar TestPmipv6.rsu[1].nic.mac1609_4 ReceivedBroadcasts 1
+scalar TestPmipv6.rsu[1].nic.mac1609_4 SentPackets 25
+scalar TestPmipv6.rsu[1].nic.mac1609_4 SentAcknowledgements 0
+scalar TestPmipv6.rsu[1].nic.mac1609_4 SNIRLostPackets 0
+scalar TestPmipv6.rsu[1].nic.mac1609_4 RXTXLostPackets 0
+scalar TestPmipv6.rsu[1].nic.mac1609_4 TotalLostPackets 0
+scalar TestPmipv6.rsu[1].nic.mac1609_4 DroppedPacketsInMac 0
+scalar TestPmipv6.rsu[1].nic.mac1609_4 TooLittleTime 0
+scalar TestPmipv6.rsu[1].nic.mac1609_4 TimesIntoBackoff 25
+scalar TestPmipv6.rsu[1].nic.mac1609_4 SlotsBackoff 219
+scalar TestPmipv6.rsu[1].nic.mac1609_4 NumInternalContention 0
+scalar TestPmipv6.rsu[1].nic.mac1609_4 totalBusyTime 0.007209
+scalar TestPmipv6.rsu[2].lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar TestPmipv6.rsu[2].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.rsu[2].lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+statistic TestPmipv6.rsu[2].eth[0].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[2].eth[0].queue.pauseQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[2].eth[0].queue.pauseQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[2].eth[0].queue.pauseQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[2].eth[0].queue.pauseQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[0].queue.pauseQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[2].eth[0].queue.pauseQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+statistic TestPmipv6.rsu[2].eth[0].queue.dataQueue queueingTime:histogram
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar TestPmipv6.rsu[2].eth[0].queue.dataQueue queueLength:max 1
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[2].eth[0].queue.dataQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[2].eth[0].queue.dataQueue packetReceived:count 1
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[2].eth[0].queue.dataQueue packetReceived:sum(packetBytes) 90
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[0].queue.dataQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[2].eth[0].queue.dataQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[0].mac "simulated time" 200
+scalar TestPmipv6.rsu[2].eth[0].mac full-duplex 1
+scalar TestPmipv6.rsu[2].eth[0].mac "frames/sec sent" 0.005
+scalar TestPmipv6.rsu[2].eth[0].mac "frames/sec rcvd" 0.615
+scalar TestPmipv6.rsu[2].eth[0].mac "bits/sec sent" 3.6
+scalar TestPmipv6.rsu[2].eth[0].mac "bits/sec rcvd" 482.16
+scalar TestPmipv6.rsu[2].eth[0].mac "rx channel idle (%)" 100
+scalar TestPmipv6.rsu[2].eth[0].mac "rx channel utilization (%)" 0
+scalar TestPmipv6.rsu[2].eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar TestPmipv6.rsu[2].eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar TestPmipv6.rsu[2].eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar TestPmipv6.rsu[2].eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar TestPmipv6.rsu[2].eth[0].mac rxPkOk:count 123
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar TestPmipv6.rsu[2].eth[0].mac rxPkOk:sum(packetBytes) 12054
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[0].mac txPk:count 1
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar TestPmipv6.rsu[2].eth[0].mac txPk:sum(packetBytes) 90
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[0].mac packetReceivedFromUpper:count 1
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar TestPmipv6.rsu[2].eth[0].mac packetReceivedFromUpper:sum(packetBytes) 90
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[0].mac passedUpPk:count 123
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.rsu[2].eth[0].mac passedUpPk:sum(packetBytes) 12054
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar TestPmipv6.rsu[2].eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar TestPmipv6.rsu[2].eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar TestPmipv6.rsu[2].eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[0].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar TestPmipv6.rsu[2].eth[0].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar TestPmipv6.rsu[2].eth[0].encap decapPk:count 123
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar TestPmipv6.rsu[2].eth[0].encap decapPk:sum(packetBytes) 9840
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[0].encap encapPk:count 1
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar TestPmipv6.rsu[2].eth[0].encap encapPk:sum(packetBytes) 72
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+statistic TestPmipv6.rsu[2].eth[1].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[2].eth[1].queue.pauseQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[2].eth[1].queue.pauseQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[2].eth[1].queue.pauseQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[2].eth[1].queue.pauseQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[1].queue.pauseQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[2].eth[1].queue.pauseQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+statistic TestPmipv6.rsu[2].eth[1].queue.dataQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[2].eth[1].queue.dataQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.rsu[2].eth[1].queue.dataQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.rsu[2].eth[1].queue.dataQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.rsu[2].eth[1].queue.dataQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[1].queue.dataQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.rsu[2].eth[1].queue.dataQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[1].mac "simulated time" 200
+scalar TestPmipv6.rsu[2].eth[1].mac full-duplex 1
+scalar TestPmipv6.rsu[2].eth[1].mac "frames/sec sent" 0
+scalar TestPmipv6.rsu[2].eth[1].mac "frames/sec rcvd" 0
+scalar TestPmipv6.rsu[2].eth[1].mac "bits/sec sent" 0
+scalar TestPmipv6.rsu[2].eth[1].mac "bits/sec rcvd" 0
+scalar TestPmipv6.rsu[2].eth[1].mac "rx channel idle (%)" 100
+scalar TestPmipv6.rsu[2].eth[1].mac "rx channel utilization (%)" 0
+scalar TestPmipv6.rsu[2].eth[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar TestPmipv6.rsu[2].eth[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar TestPmipv6.rsu[2].eth[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar TestPmipv6.rsu[2].eth[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar TestPmipv6.rsu[2].eth[1].mac rxPkOk:count 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar TestPmipv6.rsu[2].eth[1].mac rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[1].mac txPk:count 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar TestPmipv6.rsu[2].eth[1].mac txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[1].mac packetReceivedFromUpper:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar TestPmipv6.rsu[2].eth[1].mac packetReceivedFromUpper:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[1].mac passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.rsu[2].eth[1].mac passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[1].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar TestPmipv6.rsu[2].eth[1].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[1].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar TestPmipv6.rsu[2].eth[1].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[1].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar TestPmipv6.rsu[2].eth[1].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[1].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar TestPmipv6.rsu[2].eth[1].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar TestPmipv6.rsu[2].eth[1].encap decapPk:count 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar TestPmipv6.rsu[2].eth[1].encap decapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].eth[1].encap encapPk:count 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar TestPmipv6.rsu[2].eth[1].encap encapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].ipv6.neighbourDiscovery startDad:count 0
+attr title "DAD started, count"
+scalar TestPmipv6.rsu[2].udp packetReceived:count 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar TestPmipv6.rsu[2].udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].udp packetSent:count 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar TestPmipv6.rsu[2].udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar TestPmipv6.rsu[2].udp passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar TestPmipv6.rsu[2].udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar TestPmipv6.rsu[2].udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar TestPmipv6.rsu[2].app[0] packetReceived:count 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar TestPmipv6.rsu[2].app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic TestPmipv6.rsu[2].app[0] endToEndDelay:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.rsu[2].nic.phy80211p busyTime 1.32e-06
+scalar TestPmipv6.rsu[2].nic.mac1609_4 ReceivedUnicastPackets 1
+scalar TestPmipv6.rsu[2].nic.mac1609_4 ReceivedBroadcasts 1
+scalar TestPmipv6.rsu[2].nic.mac1609_4 SentPackets 2
+scalar TestPmipv6.rsu[2].nic.mac1609_4 SentAcknowledgements 0
+scalar TestPmipv6.rsu[2].nic.mac1609_4 SNIRLostPackets 0
+scalar TestPmipv6.rsu[2].nic.mac1609_4 RXTXLostPackets 0
+scalar TestPmipv6.rsu[2].nic.mac1609_4 TotalLostPackets 0
+scalar TestPmipv6.rsu[2].nic.mac1609_4 DroppedPacketsInMac 0
+scalar TestPmipv6.rsu[2].nic.mac1609_4 TooLittleTime 0
+scalar TestPmipv6.rsu[2].nic.mac1609_4 TimesIntoBackoff 2
+scalar TestPmipv6.rsu[2].nic.mac1609_4 SlotsBackoff 19
+scalar TestPmipv6.rsu[2].nic.mac1609_4 NumInternalContention 0
+scalar TestPmipv6.rsu[2].nic.mac1609_4 totalBusyTime 0.000562
+scalar TestPmipv6.MA[0].lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar TestPmipv6.MA[0].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar TestPmipv6.MA[0].lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.MA[0].lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+statistic TestPmipv6.MA[0].eth[0].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.MA[0].eth[0].queue.pauseQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.MA[0].eth[0].queue.pauseQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.MA[0].eth[0].queue.pauseQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.MA[0].eth[0].queue.pauseQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[0].queue.pauseQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.MA[0].eth[0].queue.pauseQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+statistic TestPmipv6.MA[0].eth[0].queue.dataQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.MA[0].eth[0].queue.dataQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.MA[0].eth[0].queue.dataQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.MA[0].eth[0].queue.dataQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.MA[0].eth[0].queue.dataQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[0].queue.dataQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.MA[0].eth[0].queue.dataQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[0].mac "simulated time" 200
+scalar TestPmipv6.MA[0].eth[0].mac full-duplex 1
+scalar TestPmipv6.MA[0].eth[0].mac "frames/sec sent" 0
+scalar TestPmipv6.MA[0].eth[0].mac "frames/sec rcvd" 0.005
+scalar TestPmipv6.MA[0].eth[0].mac "bits/sec sent" 0
+scalar TestPmipv6.MA[0].eth[0].mac "bits/sec rcvd" 3.6
+scalar TestPmipv6.MA[0].eth[0].mac "rx channel idle (%)" 100
+scalar TestPmipv6.MA[0].eth[0].mac "rx channel utilization (%)" 0
+scalar TestPmipv6.MA[0].eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar TestPmipv6.MA[0].eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar TestPmipv6.MA[0].eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar TestPmipv6.MA[0].eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar TestPmipv6.MA[0].eth[0].mac rxPkOk:count 1
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar TestPmipv6.MA[0].eth[0].mac rxPkOk:sum(packetBytes) 90
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[0].mac txPk:count 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar TestPmipv6.MA[0].eth[0].mac txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[0].mac packetReceivedFromUpper:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar TestPmipv6.MA[0].eth[0].mac packetReceivedFromUpper:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[0].mac passedUpPk:count 1
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.MA[0].eth[0].mac passedUpPk:sum(packetBytes) 90
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar TestPmipv6.MA[0].eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar TestPmipv6.MA[0].eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar TestPmipv6.MA[0].eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[0].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar TestPmipv6.MA[0].eth[0].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar TestPmipv6.MA[0].eth[0].encap decapPk:count 1
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar TestPmipv6.MA[0].eth[0].encap decapPk:sum(packetBytes) 72
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[0].encap encapPk:count 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar TestPmipv6.MA[0].eth[0].encap encapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+statistic TestPmipv6.MA[0].eth[1].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.MA[0].eth[1].queue.pauseQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.MA[0].eth[1].queue.pauseQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.MA[0].eth[1].queue.pauseQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.MA[0].eth[1].queue.pauseQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[1].queue.pauseQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.MA[0].eth[1].queue.pauseQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+statistic TestPmipv6.MA[0].eth[1].queue.dataQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.MA[0].eth[1].queue.dataQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.MA[0].eth[1].queue.dataQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.MA[0].eth[1].queue.dataQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.MA[0].eth[1].queue.dataQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[1].queue.dataQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.MA[0].eth[1].queue.dataQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[1].mac "simulated time" 200
+scalar TestPmipv6.MA[0].eth[1].mac full-duplex 1
+scalar TestPmipv6.MA[0].eth[1].mac "frames/sec sent" 0
+scalar TestPmipv6.MA[0].eth[1].mac "frames/sec rcvd" 0.005
+scalar TestPmipv6.MA[0].eth[1].mac "bits/sec sent" 0
+scalar TestPmipv6.MA[0].eth[1].mac "bits/sec rcvd" 3.6
+scalar TestPmipv6.MA[0].eth[1].mac "rx channel idle (%)" 100
+scalar TestPmipv6.MA[0].eth[1].mac "rx channel utilization (%)" 0
+scalar TestPmipv6.MA[0].eth[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar TestPmipv6.MA[0].eth[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar TestPmipv6.MA[0].eth[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar TestPmipv6.MA[0].eth[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar TestPmipv6.MA[0].eth[1].mac rxPkOk:count 1
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar TestPmipv6.MA[0].eth[1].mac rxPkOk:sum(packetBytes) 90
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[1].mac txPk:count 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar TestPmipv6.MA[0].eth[1].mac txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[1].mac packetReceivedFromUpper:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar TestPmipv6.MA[0].eth[1].mac packetReceivedFromUpper:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[1].mac passedUpPk:count 1
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.MA[0].eth[1].mac passedUpPk:sum(packetBytes) 90
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[1].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar TestPmipv6.MA[0].eth[1].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[1].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar TestPmipv6.MA[0].eth[1].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[1].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar TestPmipv6.MA[0].eth[1].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[1].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar TestPmipv6.MA[0].eth[1].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar TestPmipv6.MA[0].eth[1].encap decapPk:count 1
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar TestPmipv6.MA[0].eth[1].encap decapPk:sum(packetBytes) 72
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[1].encap encapPk:count 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar TestPmipv6.MA[0].eth[1].encap encapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+statistic TestPmipv6.MA[0].eth[2].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.MA[0].eth[2].queue.pauseQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.MA[0].eth[2].queue.pauseQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.MA[0].eth[2].queue.pauseQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.MA[0].eth[2].queue.pauseQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[2].queue.pauseQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.MA[0].eth[2].queue.pauseQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+statistic TestPmipv6.MA[0].eth[2].queue.dataQueue queueingTime:histogram
+field count 123
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	123
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar TestPmipv6.MA[0].eth[2].queue.dataQueue queueLength:max 1
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.MA[0].eth[2].queue.dataQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.MA[0].eth[2].queue.dataQueue packetReceived:count 123
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.MA[0].eth[2].queue.dataQueue packetReceived:sum(packetBytes) 12054
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[2].queue.dataQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.MA[0].eth[2].queue.dataQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[2].mac "simulated time" 200
+scalar TestPmipv6.MA[0].eth[2].mac full-duplex 1
+scalar TestPmipv6.MA[0].eth[2].mac "frames/sec sent" 0.615
+scalar TestPmipv6.MA[0].eth[2].mac "frames/sec rcvd" 0.005
+scalar TestPmipv6.MA[0].eth[2].mac "bits/sec sent" 482.16
+scalar TestPmipv6.MA[0].eth[2].mac "bits/sec rcvd" 3.6
+scalar TestPmipv6.MA[0].eth[2].mac "rx channel idle (%)" 100
+scalar TestPmipv6.MA[0].eth[2].mac "rx channel utilization (%)" 0
+scalar TestPmipv6.MA[0].eth[2].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar TestPmipv6.MA[0].eth[2].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar TestPmipv6.MA[0].eth[2].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar TestPmipv6.MA[0].eth[2].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar TestPmipv6.MA[0].eth[2].mac rxPkOk:count 1
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar TestPmipv6.MA[0].eth[2].mac rxPkOk:sum(packetBytes) 90
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[2].mac txPk:count 123
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar TestPmipv6.MA[0].eth[2].mac txPk:sum(packetBytes) 12054
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[2].mac packetReceivedFromUpper:count 123
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar TestPmipv6.MA[0].eth[2].mac packetReceivedFromUpper:sum(packetBytes) 12054
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[2].mac passedUpPk:count 1
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.MA[0].eth[2].mac passedUpPk:sum(packetBytes) 90
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[2].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar TestPmipv6.MA[0].eth[2].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[2].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar TestPmipv6.MA[0].eth[2].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[2].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar TestPmipv6.MA[0].eth[2].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[2].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar TestPmipv6.MA[0].eth[2].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar TestPmipv6.MA[0].eth[2].encap decapPk:count 1
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar TestPmipv6.MA[0].eth[2].encap decapPk:sum(packetBytes) 72
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[2].encap encapPk:count 123
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar TestPmipv6.MA[0].eth[2].encap encapPk:sum(packetBytes) 9840
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+statistic TestPmipv6.MA[0].eth[3].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.MA[0].eth[3].queue.pauseQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.MA[0].eth[3].queue.pauseQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.MA[0].eth[3].queue.pauseQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.MA[0].eth[3].queue.pauseQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[3].queue.pauseQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.MA[0].eth[3].queue.pauseQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+statistic TestPmipv6.MA[0].eth[3].queue.dataQueue queueingTime:histogram
+field count 2
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	2
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar TestPmipv6.MA[0].eth[3].queue.dataQueue queueLength:max 1
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.MA[0].eth[3].queue.dataQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.MA[0].eth[3].queue.dataQueue packetReceived:count 2
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.MA[0].eth[3].queue.dataQueue packetReceived:sum(packetBytes) 188
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[3].queue.dataQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.MA[0].eth[3].queue.dataQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[3].mac "simulated time" 200
+scalar TestPmipv6.MA[0].eth[3].mac full-duplex 1
+scalar TestPmipv6.MA[0].eth[3].mac "frames/sec sent" 0.01
+scalar TestPmipv6.MA[0].eth[3].mac "frames/sec rcvd" 0.205
+scalar TestPmipv6.MA[0].eth[3].mac "bits/sec sent" 7.52
+scalar TestPmipv6.MA[0].eth[3].mac "bits/sec rcvd" 196.88
+scalar TestPmipv6.MA[0].eth[3].mac "rx channel idle (%)" 100
+scalar TestPmipv6.MA[0].eth[3].mac "rx channel utilization (%)" 0
+scalar TestPmipv6.MA[0].eth[3].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar TestPmipv6.MA[0].eth[3].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar TestPmipv6.MA[0].eth[3].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar TestPmipv6.MA[0].eth[3].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar TestPmipv6.MA[0].eth[3].mac rxPkOk:count 41
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar TestPmipv6.MA[0].eth[3].mac rxPkOk:sum(packetBytes) 4922
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[3].mac txPk:count 2
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar TestPmipv6.MA[0].eth[3].mac txPk:sum(packetBytes) 188
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[3].mac packetReceivedFromUpper:count 2
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar TestPmipv6.MA[0].eth[3].mac packetReceivedFromUpper:sum(packetBytes) 188
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[3].mac passedUpPk:count 41
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.MA[0].eth[3].mac passedUpPk:sum(packetBytes) 4922
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[3].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar TestPmipv6.MA[0].eth[3].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[3].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar TestPmipv6.MA[0].eth[3].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[3].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar TestPmipv6.MA[0].eth[3].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[3].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar TestPmipv6.MA[0].eth[3].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar TestPmipv6.MA[0].eth[3].encap decapPk:count 41
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar TestPmipv6.MA[0].eth[3].encap decapPk:sum(packetBytes) 4184
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar TestPmipv6.MA[0].eth[3].encap encapPk:count 2
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar TestPmipv6.MA[0].eth[3].encap encapPk:sum(packetBytes) 152
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar TestPmipv6.MA[0].ipv6.neighbourDiscovery startDad:count 0
+attr title "DAD started, count"
+scalar TestPmipv6.CN[0].lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar TestPmipv6.CN[0].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar TestPmipv6.CN[0].lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.CN[0].lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+statistic TestPmipv6.CN[0].eth[0].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestPmipv6.CN[0].eth[0].queue.pauseQueue queueLength:max 0
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.CN[0].eth[0].queue.pauseQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.CN[0].eth[0].queue.pauseQueue packetReceived:count 0
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.CN[0].eth[0].queue.pauseQueue packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.CN[0].eth[0].queue.pauseQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.CN[0].eth[0].queue.pauseQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+statistic TestPmipv6.CN[0].eth[0].queue.dataQueue queueingTime:histogram
+field count 42
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "queueing time, histogram"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	42
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar TestPmipv6.CN[0].eth[0].queue.dataQueue queueLength:max 1
+attr interpolationmode sample-hold
+attr title "queue length, max"
+scalar TestPmipv6.CN[0].eth[0].queue.dataQueue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr title "queue length, timeavg"
+scalar TestPmipv6.CN[0].eth[0].queue.dataQueue packetReceived:count 42
+attr interpolationmode none
+attr title "received packets, count"
+scalar TestPmipv6.CN[0].eth[0].queue.dataQueue packetReceived:sum(packetBytes) 5044
+attr interpolationmode none
+attr title "received packets, sum(packetBytes)"
+scalar TestPmipv6.CN[0].eth[0].queue.dataQueue dropPk:count 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, count"
+scalar TestPmipv6.CN[0].eth[0].queue.dataQueue dropPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropped
+attr title "dropped packets, sum(packetBytes)"
+scalar TestPmipv6.CN[0].eth[0].mac "simulated time" 200
+scalar TestPmipv6.CN[0].eth[0].mac full-duplex 1
+scalar TestPmipv6.CN[0].eth[0].mac "frames/sec sent" 0.205
+scalar TestPmipv6.CN[0].eth[0].mac "frames/sec rcvd" 0.01
+scalar TestPmipv6.CN[0].eth[0].mac "bits/sec sent" 196.88
+scalar TestPmipv6.CN[0].eth[0].mac "bits/sec rcvd" 7.52
+scalar TestPmipv6.CN[0].eth[0].mac "rx channel idle (%)" 100
+scalar TestPmipv6.CN[0].eth[0].mac "rx channel utilization (%)" 0
+scalar TestPmipv6.CN[0].eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar TestPmipv6.CN[0].eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar TestPmipv6.CN[0].eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar TestPmipv6.CN[0].eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar TestPmipv6.CN[0].eth[0].mac rxPkOk:count 2
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar TestPmipv6.CN[0].eth[0].mac rxPkOk:sum(packetBytes) 188
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar TestPmipv6.CN[0].eth[0].mac txPk:count 41
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar TestPmipv6.CN[0].eth[0].mac txPk:sum(packetBytes) 4922
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar TestPmipv6.CN[0].eth[0].mac packetReceivedFromUpper:count 42
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar TestPmipv6.CN[0].eth[0].mac packetReceivedFromUpper:sum(packetBytes) 5044
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar TestPmipv6.CN[0].eth[0].mac passedUpPk:count 2
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestPmipv6.CN[0].eth[0].mac passedUpPk:sum(packetBytes) 188
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestPmipv6.CN[0].eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar TestPmipv6.CN[0].eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar TestPmipv6.CN[0].eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar TestPmipv6.CN[0].eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar TestPmipv6.CN[0].eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar TestPmipv6.CN[0].eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar TestPmipv6.CN[0].eth[0].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar TestPmipv6.CN[0].eth[0].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar TestPmipv6.CN[0].eth[0].encap decapPk:count 2
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar TestPmipv6.CN[0].eth[0].encap decapPk:sum(packetBytes) 152
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar TestPmipv6.CN[0].eth[0].encap encapPk:count 42
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar TestPmipv6.CN[0].eth[0].encap encapPk:sum(packetBytes) 4288
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar TestPmipv6.CN[0].ipv6.neighbourDiscovery startDad:count 0
+attr title "DAD started, count"
+scalar TestPmipv6.CN[0].udp packetReceived:count 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar TestPmipv6.CN[0].udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar TestPmipv6.CN[0].udp packetSent:count 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar TestPmipv6.CN[0].udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar TestPmipv6.CN[0].udp passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar TestPmipv6.CN[0].udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar TestPmipv6.CN[0].udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar TestPmipv6.CN[0].app[0] "Pings sent" 40
+scalar TestPmipv6.CN[0].app[0] "ping loss rate (%)" 100
+scalar TestPmipv6.CN[0].app[0] "ping out-of-order rate (%)" 0
+scalar TestPmipv6.CN[0].app[0] pingRxSeq:count 0
+attr interpolationmode none
+attr title "ping rx seq, count"
+scalar TestPmipv6.CN[0].app[0] pingTxSeq:count 40
+attr interpolationmode none
+attr title "ping tx seq, count"
+scalar TestPmipv6.CN[0].app[0] numOutOfOrderArrivals:last -nan
+attr interpolationmode none
+attr title "ping out-of-order arrivals, last"
+scalar TestPmipv6.CN[0].app[0] numLost:last -nan
+attr interpolationmode none
+attr title "pings lost, last"
+statistic TestPmipv6.CN[0].app[0] rtt:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "ping round-trip time, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+

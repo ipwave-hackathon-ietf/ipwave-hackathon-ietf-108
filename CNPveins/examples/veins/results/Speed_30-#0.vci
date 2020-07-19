@@ -1,0 +1,485 @@
+file 100809 1589957448                                          
+version 2
+run Speed_30-0-20200520-15:41:43-3135
+attr configname Speed_30
+attr datetime 20200520-15:41:43
+attr experiment Speed_30
+attr inifile omnetppTestPmipv6.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network TestPmipv6
+attr processid 3135
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param *.manager.launchConfig "xmldoc(\"notlsvm30.launchd.xml\")"
+param *.manager.seed 0
+param *.n 3
+param **.debug false
+param **.coreDebug false
+param *.playgroundSizeX 1400m
+param *.playgroundSizeY 700m
+param *.playgroundSizeZ 50m
+param *.annotations.draw true
+param *.obstacles.debug false
+param *.obstacles.obstacles "xmldoc(\"config.xml\", \"//AnalogueModel[@type='SimpleObstacleShadowing']/obstacles\")"
+param *.manager.updateInterval 0.5s
+param *.manager.host "\"localhost\""
+param *.manager.port 9999
+param *.manager.autoShutdown true
+param *.manager.launchConfig "xmldoc(\"test2.launchd.xml\")"
+param **.rsu[*].numApps 1
+param *.rsu[0].mobility.x 200
+param *.rsu[0].mobility.y 130
+param *.rsu[0].mobility.z 1.895
+param *.rsu[1].mobility.x 650
+param *.rsu[1].mobility.y 130
+param *.rsu[1].mobility.z 1.895
+param *.rsu[2].mobility.x 1100
+param *.rsu[2].mobility.y 130
+param *.rsu[2].mobility.z 1.895
+param *.rsu[*].applType "\"TraCIDemoRSU11p\""
+param **.rsu[*].app[*].typename "\"UdpSink\""
+param **.rsu[*].app[0].destPort 1000
+param **.rsu[*].app[0].messageLength 1000B
+param **.rsu[*].app[0].sendInterval "uniform(5s, 10s)"
+param **.rsu[*].app[0].sendInterval 100ms
+param **.rsu[*].app[0].destAddresses "\"node[3]\""
+param **.rsu[*].app[0].localAddress "\"\""
+param **.rsu[*].app[0].localPort 1000
+param **.rsu[*].app[0].replyDelay 0s
+param **.app[*].dataTransferMode "\"object\""
+param **.eth[*].queue.typename "\"EtherQosQueue\""
+param **.eth[*].queue.dataQueue.typename "\"DropTailQueue\""
+param **.eth[*].queue.dataQueue.frameCapacity 10
+param **.eth[*].mac.duplexMode true
+param *.rsu[*].app[0].headerLength "80 bit"
+param *.rsu[*].app[0].sendBeacons false
+param *.rsu[*].app[0].dataOnSch false
+param *.rsu[*].app[0].beaconInterval 1s
+param *.rsu[*].app[0].beaconUserPriority 7
+param *.rsu[*].app[0].dataUserPriority 5
+param *.connectionManager.sendDirect true
+param *.connectionManager.maxInterfDist 700m
+param *.connectionManager.drawMaxIntfDist true
+param *.**.nic.mac1609_4.useServiceChannel false
+param *.node[*].nic.mac1609_4.txPower 8mW
+param *.rsu[*].nic.mac1609_4.txPower 8mW
+param *.**.nic.mac1609_4.bitrate 6Mbps
+param *.**.nic.phy80211p.sensitivity -89dBm
+param *.**.nic.phy80211p.useThermalNoise false
+param *.**.nic.phy80211p.thermalNoise -110dBm
+param *.**.nic.phy80211p.decider "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.analogueModels "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.usePropagationDelay true
+param *.**.nic.phy80211p.antenna "xmldoc(\"antenna.xml\", \"/root/Antenna[@id='monopole']\")"
+param *.node[*].applType "\"TraCIDemo11p\""
+param *.node[*].appl.headerLength "80 bit"
+param *.node[*].appl.sendBeacons false
+param *.node[*].appl.dataOnSch false
+param *.node[*].appl.beaconInterval 1s
+param *.node[*].numApps 1
+param **.node[*].app[*].typename "\"UdpBasicApp\""
+param **.node[*].app[0].destPort 1000
+param **.node[*].app[0].messageLength 1000B
+param **.node[*].app[0].sendInterval 100ms
+param **.node[*].app[0].destAddresses "\"rsu[0]\""
+param **.node[*].app[0].connectPort 1000
+param **.node[0].app[0].startTime uniform(1700s,1700.5s)
+param **.node[1].app[0].startTime uniform(1700.5s,1800s)
+param **.node[2].app[0].startTime uniform(1800s,1800.5s)
+param **.node[3].app[0].startTime uniform(1800.5s,1900s)
+param **.node[*].app[0].sendInterval 200ms
+param **.node[*].app[0].numCommands int(exponential(10))
+param **.node[*].app[0].commandLength intWithUnit(exponential(10B))
+param **.node[*].app[0].keyPressDelay exponential(0.1s)
+param **.node[*].app[0].commandOutputLength intWithUnit(exponential(40B))
+param **.node[*].app[0].thinkTime truncnormal(2s,3s)
+param **.node[*].app[0].idleInterval truncnormal(3600s,1200s)
+param **.node[*].app[0].reconnectInterval 30s
+param *.node[*].veinsmobilityType.debug true
+param *.node[*].veinsmobility.x 0
+param *.node[*].veinsmobility.y 0
+param *.node[*].veinsmobility.z 1.895
+param *.node[*0].veinsmobility.accidentCount 1
+param *.node[*0].veinsmobility.accidentStart 75s
+param *.node[*0].veinsmobility.accidentDuration 50s
+param **.CN*.numApps 1
+param **.CN*.app[*].typename "\"PingApp\""
+param **.CN[0].app[0].destAddr "\"node[0]\""
+param **.CN[1].app[0].destAddr "\"\""
+param **.CN*.app[0].srcAddr "\"\""
+param **.CN*.app[0].packetSize 56B
+param **.CN*.app[0].sendInterval 5s
+param **.CN*.app[0].hopLimit 32
+param **.CN[0].app[0].count -1
+param **.CN[1].app[0].count 0
+param **.CN*.app[0].startTime 5s
+param **.CN*.app[0].stopTime 2000s
+param **.CN*.app[0].printPing true
+
+vector 0 TestPmipv6.rsu[0].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+0	8268 8 0 0 0 0 1 0 0 0 0
+vector 1 TestPmipv6.rsu[0].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+1	8276 8 0 0 0 0 1 0 0 0 0
+1	15954 46 124 124 1.989549797552 1.989549797552 2 0 1 1 1
+vector 2 TestPmipv6.rsu[0].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+2	8284 8 0 0 0 0 1 0 0 0 0
+vector 3 TestPmipv6.rsu[0].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+3	8292 8 0 0 0 0 1 0 0 0 0
+vector 4 TestPmipv6.rsu[1].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+4	8300 8 0 0 0 0 1 0 0 0 0
+vector 5 TestPmipv6.rsu[1].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+5	8308 8 0 0 0 0 1 0 0 0 0
+5	16000 50 1200 1200 67.620653994487 67.620653994487 2 0 1 1 1
+vector 6 TestPmipv6.rsu[1].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+6	8316 8 0 0 0 0 1 0 0 0 0
+vector 7 TestPmipv6.rsu[1].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+7	8324 8 0 0 0 0 1 0 0 0 0
+vector 8 TestPmipv6.rsu[1].eth[2].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+8	8332 8 0 0 0 0 1 0 0 0 0
+vector 9 TestPmipv6.rsu[1].eth[2].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+9	8340 8 0 0 0 0 1 0 0 0 0
+vector 10 TestPmipv6.rsu[2].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+10	8348 9 0 0 0 0 1 0 0 0 0
+vector 11 TestPmipv6.rsu[2].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+11	8357 9 0 0 0 0 1 0 0 0 0
+11	80793 54 3624 3624 178.075002467845 178.075002467845 2 0 1 1 1
+vector 12 TestPmipv6.rsu[2].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+12	8366 9 0 0 0 0 1 0 0 0 0
+vector 13 TestPmipv6.rsu[2].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+13	8375 9 0 0 0 0 1 0 0 0 0
+vector 14 TestPmipv6.MA[0].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+14	8384 9 0 0 0 0 1 0 0 0 0
+vector 15 TestPmipv6.MA[0].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+15	8393 9 0 0 0 0 1 0 0 0 0
+vector 16 TestPmipv6.MA[0].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+16	8402 9 0 0 0 0 1 0 0 0 0
+vector 17 TestPmipv6.MA[0].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+17	8411 9 0 0 0 0 1 0 0 0 0
+vector 18 TestPmipv6.MA[0].eth[2].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+18	8420 9 0 0 0 0 1 0 0 0 0
+vector 19 TestPmipv6.MA[0].eth[2].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+19	8429 9 0 0 0 0 1 0 0 0 0
+19	16050 2354 208 1637 5.0000105 92.0000105 114 0 1 57 57
+19	80847 2928 1708 3906 95.0000105 197.0000105 132 0 1 66 66
+vector 20 TestPmipv6.MA[0].eth[3].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+20	8438 9 0 0 0 0 1 0 0 0 0
+vector 21 TestPmipv6.MA[0].eth[3].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+21	8447 9 0 0 0 0 1 0 0 0 0
+21	18404 92 32 56 1.565950000631 1.565966520631 4 0 1 2 2
+vector 22 TestPmipv6.CN[0].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+22	8456 9 0 0 0 0 1 0 0 0 0
+vector 23 TestPmipv6.CN[0].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+23	18496 536 21 1556 1.565943340631 90 40 0 1 20 20
+23	83775 614 1697 3919 95 200 44 0 1 22 22
+vector 24 TestPmipv6.node[0].veinsmobility posx ETV
+24	19032 5007 12 1632 0.5 92 184 44.748205528039 609.62120406422 69137.514175958 32240483.525639
+24	75015 5778 1645 3851 92.5 192 200 609.62120406422 1105.4267818961 154335.16508124 124520317.34354
+vector 25 TestPmipv6.node[0].veinsmobility posy ETV
+25	24039 3362 12 1632 0.5 92 184 233.25 233.25 42918 10010623.5
+25	71030 3985 1645 3851 92.5 192 200 233.25 233.25 46650 10881112.5
+vector 26 TestPmipv6.node[0].veinsmobility speed ETV
+26	27401 4510 14 1632 1 92 183 0 8.3326895873288 1126.2246711136 8756.4611346805
+26	66219 4811 1645 3851 92.5 192 200 0 8.3281454403202 1002.9942850171 7807.9223126159
+vector 27 TestPmipv6.node[0].veinsmobility acceleration ETV
+27	31911 4680 16 1632 1.5 92 182 -4.5 2.6 -16.556449752835 268.3969317461
+27	61230 4989 1645 3851 92.5 192 200 -2.8521599856043 2.6 16.435343544002 206.66814179565
+vector 28 TestPmipv6.node[0].veinsmobility co2emission ETV
+28	36591 4332 16 1632 1.5 92 182 0.973 5.1925955444447 318.58547772272 793.21396144534
+28	56317 4913 1645 3851 92.5 192 200 0.973 5.7251962675826 335.51539664497 825.18619004335
+vector 29 TestPmipv6.CN[0].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+29	40923 306 19 1554 1.565943340631 90 20 56 104 2000 203008
+29	84389 351 1695 3917 95 200 22 104 104 2288 237952
+vector 30 TestPmipv6.CN[0].eth[0].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+30	41229 306 21 1556 1.565943340631 90 20 74 122 2360 281488
+30	84740 351 1697 3919 95 200 22 122 122 2684 327448
+vector 31 TestPmipv6.CN[0].eth[0].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+31	41535 268 21 1556 1.565943340631 90 20 0 0 0 0
+31	85091 307 1697 3919 95 200 22 0 0 0 0
+vector 32 TestPmipv6.CN[0].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+32	41803 306 23 1558 1.565943340631 90 20 74 122 2360 281488
+32	85398 351 1699 3921 95 200 22 122 122 2684 327448
+vector 33 TestPmipv6.CN[0].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+33	42109 450 24 1559 1.565949900631 90.0000104 20 74 122 2360 281488
+33	85749 503 1700 3873 95.0000104 195.0000104 21 122 122 2562 312564
+vector 34 TestPmipv6.MA[0].eth[3].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+34	42559 450 25 1560 1.565950000631 90.0000105 20 74 122 2360 281488
+34	86252 503 1701 3874 95.0000105 195.0000105 21 122 122 2562 312564
+vector 35 TestPmipv6.MA[0].eth[3].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+35	43009 450 25 1560 1.565950000631 90.0000105 20 74 122 2360 281488
+35	86755 503 1701 3874 95.0000105 195.0000105 21 122 122 2562 312564
+vector 36 TestPmipv6.MA[0].eth[3].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+36	43459 450 26 1561 1.565950000631 90.0000105 20 56 104 2000 203008
+36	87258 503 1702 3875 95.0000105 195.0000105 21 104 104 2184 227136
+vector 37 TestPmipv6.MA[0].eth[3].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+37	43909 48 30 54 1.565950000631 1.565966520631 2 72 80 152 11584
+vector 38 TestPmipv6.MA[0].eth[3].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+38	43957 48 32 56 1.565950000631 1.565966520631 2 90 98 188 17704
+vector 39 TestPmipv6.MA[0].eth[3].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+39	44005 46 32 56 1.565950000631 1.565966520631 2 0 0 0 0
+vector 40 TestPmipv6.MA[0].eth[3].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+40	44051 48 34 58 1.565950000631 1.565966520631 2 90 98 188 17704
+vector 41 TestPmipv6.MA[0].eth[3].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+41	44099 48 36 60 1.565958480631 1.565974360631 2 90 98 188 17704
+vector 42 TestPmipv6.CN[0].eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+42	44147 48 37 61 1.565958580631 1.565974460631 2 90 98 188 17704
+vector 43 TestPmipv6.CN[0].eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+43	44195 48 37 61 1.565958580631 1.565974460631 2 90 98 188 17704
+vector 44 TestPmipv6.CN[0].eth[0].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+44	44243 48 38 62 1.565958580631 1.565974460631 2 72 80 152 11584
+vector 45 TestPmipv6.rsu[0].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+45	44291 25 122 122 1.989549797552 1.989549797552 1 72 72 72 5184
+vector 46 TestPmipv6.rsu[0].eth[0].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+46	44316 25 124 124 1.989549797552 1.989549797552 1 90 90 90 8100
+vector 47 TestPmipv6.rsu[0].eth[0].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+47	44341 24 124 124 1.989549797552 1.989549797552 1 0 0 0 0
+vector 48 TestPmipv6.rsu[0].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+48	44365 25 126 126 1.989549797552 1.989549797552 1 90 90 90 8100
+vector 49 TestPmipv6.rsu[0].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+49	44390 25 128 128 1.989557637552 1.989557637552 1 90 90 90 8100
+vector 50 TestPmipv6.MA[0].eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+50	44415 25 129 129 1.989557737552 1.989557737552 1 90 90 90 8100
+vector 51 TestPmipv6.MA[0].eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+51	44440 25 129 129 1.989557737552 1.989557737552 1 90 90 90 8100
+vector 52 TestPmipv6.MA[0].eth[0].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+52	44465 25 130 130 1.989557737552 1.989557737552 1 72 72 72 5184
+vector 53 TestPmipv6.CN[0].app[0] pingTxSeq:vector ETV
+attr interpolationmode none
+attr title "ping tx seq, vector"
+53	44490 230 191 1551 5 90 18 0 17 153 1785
+53	87761 329 1692 3915 95 200 22 18 39 627 18755
+vector 54 TestPmipv6.MA[0].eth[2].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+54	44720 1234 206 1635 5.0000105 92.0000105 57 80 80 4560 364800
+54	88090 1530 1706 3904 95.0000105 197.0000105 66 80 80 5280 422400
+vector 55 TestPmipv6.MA[0].eth[2].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+55	45954 1234 208 1637 5.0000105 92.0000105 57 98 98 5586 547428
+55	89620 1530 1708 3906 95.0000105 197.0000105 66 98 98 6468 633864
+vector 56 TestPmipv6.MA[0].eth[2].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+56	47188 1177 208 1637 5.0000105 92.0000105 57 0 0 0 0
+56	91150 1464 1708 3906 95.0000105 197.0000105 66 0 0 0 0
+vector 57 TestPmipv6.MA[0].eth[2].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+57	48365 1234 210 1639 5.0000105 92.0000105 57 98 98 5586 547428
+57	92614 1530 1710 3908 95.0000105 197.0000105 66 98 98 6468 633864
+vector 58 TestPmipv6.MA[0].eth[2].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+58	49599 1288 212 1640 5.00001898 92.00001898 57 98 98 5586 547428
+58	94144 1593 1712 3909 95.00001898 197.00001898 66 98 98 6468 633864
+vector 59 TestPmipv6.rsu[2].eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+59	50887 1265 213 1627 5.00001908 91.00001908 56 98 98 5488 537824
+59	95737 1616 1641 3910 92.00001908 197.00001908 67 98 98 6566 643468
+vector 60 TestPmipv6.rsu[2].eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+60	52152 1265 213 1627 5.00001908 91.00001908 56 98 98 5488 537824
+60	97353 1616 1641 3910 92.00001908 197.00001908 67 98 98 6566 643468
+vector 61 TestPmipv6.rsu[2].eth[0].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+61	53417 1265 214 1628 5.00001908 91.00001908 56 80 80 4480 358400
+61	98969 1616 1642 3911 92.00001908 197.00001908 67 80 80 5360 428800
+vector 62 TestPmipv6.rsu[1].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+62	54682 27 1197 1197 67.620653994487 67.620653994487 1 72 72 72 5184
+vector 63 TestPmipv6.rsu[1].eth[0].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+63	54709 27 1200 1200 67.620653994487 67.620653994487 1 90 90 90 8100
+vector 64 TestPmipv6.rsu[1].eth[0].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+64	54736 26 1200 1200 67.620653994487 67.620653994487 1 0 0 0 0
+vector 65 TestPmipv6.rsu[1].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+65	54762 27 1202 1202 67.620653994487 67.620653994487 1 90 90 90 8100
+vector 66 TestPmipv6.rsu[1].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+66	54789 27 1205 1205 67.620661834487 67.620661834487 1 90 90 90 8100
+vector 67 TestPmipv6.MA[0].eth[1].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+67	54816 27 1206 1206 67.620661934487 67.620661934487 1 90 90 90 8100
+vector 68 TestPmipv6.MA[0].eth[1].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+68	54843 27 1206 1206 67.620661934487 67.620661934487 1 90 90 90 8100
+vector 70 TestPmipv6.rsu[2].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+70	100585 28 3621 3621 178.075002467845 178.075002467845 1 72 72 72 5184
+vector 71 TestPmipv6.rsu[2].eth[0].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+71	100613 28 3624 3624 178.075002467845 178.075002467845 1 90 90 90 8100
+vector 72 TestPmipv6.rsu[2].eth[0].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+72	100641 27 3624 3624 178.075002467845 178.075002467845 1 0 0 0 0
+vector 73 TestPmipv6.rsu[2].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+73	100668 28 3626 3626 178.075002467845 178.075002467845 1 90 90 90 8100
+vector 74 TestPmipv6.rsu[2].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+74	100696 28 3628 3628 178.075010307845 178.075010307845 1 90 90 90 8100
+vector 75 TestPmipv6.MA[0].eth[2].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+75	100724 28 3629 3629 178.075010407845 178.075010407845 1 90 90 90 8100
+vector 76 TestPmipv6.MA[0].eth[2].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+76	100752 28 3629 3629 178.075010407845 178.075010407845 1 90 90 90 8100
+vector 77 TestPmipv6.MA[0].eth[2].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+77	100780 29 3630 3630 178.075010407845 178.075010407845 1 72 72 72 5184
