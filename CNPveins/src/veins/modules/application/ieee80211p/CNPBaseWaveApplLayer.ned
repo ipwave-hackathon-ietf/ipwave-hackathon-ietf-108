@@ -63,10 +63,10 @@ simple CNPBaseWaveApplLayer like IBaseApplLayer
         bool communicateWhileParked = default(false); //whether the car should communicate when it is parked in SUMO
         
 //         CAN Configurations
-		double maxt2cThresh = default (1.0);
-		double maxivtThresh = default (1.5);
-		double mint2cThresh = default(0.5);
-		double minivtThresh = default(0.5);
+//		double maxt2cThresh = default (1.0);
+//		double maxivtThresh = default (1.5);
+//		double mint2cThresh = default(0.5);
+//		double minivtThresh = default(0.5);
 		double maximumAcceleration = default (10.0); //unit m/s^2
 		double emergentManeuverTime = default(3.0); //unit s
 		double AccidentTime = default(1.0);

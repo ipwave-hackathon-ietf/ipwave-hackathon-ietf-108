@@ -64,6 +64,22 @@ using omnetpp::simTime;
 
 #define DBG_MAC EV
 //#define DBG_MAC std::cerr << "[" << simTime().raw() << "] " << myId << " "
+//BAM
+vehicle ObstacleInfo;
+TraCIMobility* obMob;
+std::vector<Clusterstruct> AllClustInfo;
+static int clusterValue = 1; //This value will keep increasing the number of cluster increases
+double nextClusterFormationStartTime = 0;
+bool isFirstClustVeh = false;
+double clusterFormationStart = 0;
+bool AheadCHinEmMan = false;
+double AheadManeuverStartTime = 0;
+int glManLane = 0;
+bool sortLaneVehs(const TraCIMobility* Mob1, const TraCIMobility* Mob2){
+    return (Mob1->getCurrentPosition().y <= Mob2->getCurrentPosition().y);
+}
+//BAM
+
 
 Define_Module(Mac1609_4);
 
@@ -98,6 +114,10 @@ void Mac1609_4::initialize(int stage) {
 		ignoreChannelState = false;
 		waitUntilAckRXorTimeout = false;
 		stopIgnoreChannelStateMsg = new cMessage("ChannelStateMsg");
+        maxIvTThresh = par("maxivtThresh").doubleValue();
+        minIvTThresh = par("minivtThresh").doubleValue();
+        maxT2CThresh = par("maxt2cThresh").doubleValue();
+        minT2CThresh = par("mint2cThresh").doubleValue();
 
 		//mac-adresses
 //		myMacAddress = getParentModule()->getParentModule()->getIndex();
@@ -149,6 +169,19 @@ void Mac1609_4::initialize(int stage) {
 		headerLength = par("headerLength");
 
 		nextMacEvent = new cMessage("next Mac Event");
+        stopvehicle  = new cMessage ("artificial accident");
+        triggerManeuverEvt = new cMessage("Emergency maneuver");
+        planManEvt = new cMessage("maneuver");
+
+        mobility = (Veins::TraCIMobility*)getOwner()->getOwner()->findObject("veinsmobility",true);
+        std::cout << " -- -- - "<< findHost()->getName() <<std::endl;
+        if (std::strcmp(findHost()->getName(), "node") ==0){
+            scheduleAt(simTime() + 20, planManEvt);
+            std::cout <<"+++++++++ Position is: ("
+                    <<mobility->getCurrentPosition().x <<"; "
+                    <<mobility->getCurrentPosition().z <<"; "
+                    <<std::endl;
+        }
 
 		if (useSCH) {
 			uint64_t currenTime = simTime().raw();
@@ -180,6 +213,53 @@ void Mac1609_4::initialize(int stage) {
 
 	    /*------------------------------END-----------------------------------------*/
 
+		/* -----    BAM     ------*/
+
+
+        if (strcmp(findHost()->getFullName(), "node[2]") == 0){
+            scheduleAt(simTime() + 20, stopvehicle);
+        }
+        if (strcmp(findHost()->getName(), "node") == 0){//Assign Newly injected Vehicles to a Corresponding Cluster
+            InjTime = simTime().dbl();
+            if  (!isFirstClustVeh){
+                std::cout<<"-------------------> " << findHost()->getFullName() <<std::endl;
+                isFirstClustVeh = true;
+                Clusterstruct tmpClust;
+                tmpClust.cluster_id = clusterValue;
+                clusterFormationStart = simTime().dbl();
+                tmpClust.cluster_Hid = mobility->getExternalId();
+                tmpClust.cluster_id = clusterValue;
+                tmpClust.clusterMembMob.insert(std::make_pair(mobility->getExternalId(),mobility));
+                AllClustInfo.push_back(tmpClust);
+//                std::cout <<" Cluster = " << clusterValue << "  started by " << mobility->getExternalId() <<std::endl;
+            }
+            else if (simTime().dbl() - clusterFormationStart < clustFormPeriod){
+//                std::cout <<"{********** } Cluster Before: " <<AllClustInfo.back().cluster_id <<" ; VID = " <<mobility->getExternalId() << " ;  Its size = " <<AllClustInfo.back().clusterMembMob.size() << std::endl;
+                AllClustInfo.back().clusterMembMob.insert(std::make_pair(mobility->getExternalId(),mobility));
+                std::string CHID = getClusterHeadID(AllClustInfo.back().clusterMembMob);
+//                std::cout <<"{**********} Cluster After: " <<AllClustInfo.back().cluster_id <<" ; VID = " <<mobility->getExternalId() << " ;  Its size = " <<AllClustInfo.back().clusterMembMob.size()<< std::endl<< std::endl << std::endl;
+                AllClustInfo.back().cluster_Hid = CHID;
+            }
+            else{
+//                std::cout <<"{########## Prev } Cluster ID : " <<AllClustInfo.back().cluster_id <<" ; CSize = "<<AllClustInfo.back().clusterMembMob.size()<<" ; CH = " <<AllClustInfo.back().cluster_Hid <<std::endl;
+                Clusterstruct tmpClust;
+                clusterValue = clusterValue + 1;
+                tmpClust.cluster_id = clusterValue;
+                tmpClust.cluster_Hid = mobility->getExternalId();
+                tmpClust.cluster_id = clusterValue;
+                tmpClust.clusterMembMob.insert(std::make_pair(mobility->getExternalId(),mobility));
+                AllClustInfo.push_back(tmpClust);
+                clusterFormationStart = simTime().dbl();
+//                std::cout <<"{########## Next }  Cluster ID = " << clusterValue <<" ; CSize = "<<AllClustInfo.back().clusterMembMob.size()<< " ;  started by " << mobility->getExternalId() <<std::endl;
+            }
+            mycluster = AllClustInfo.back();
+//            std::cout <<std::endl<<std::endl;
+//            std::cout << " 111111111  Vehicle  "<<mobility->getExternalId() <<"  Cluster ID = " << AllClustInfo.back().cluster_id<<std::endl;
+        }
+
+
+        /* -----    BAM     ------*/
+
 		//stats
 		statsReceivedPackets = 0;
 		statsReceivedBroadcasts = 0;
@@ -198,7 +278,6 @@ void Mac1609_4::initialize(int stage) {
 		lastBusy = simTime();
 		channelIdle(true);
 	}
-
 
 }
 
@@ -394,6 +473,28 @@ void Mac1609_4::handleSelfMsg(cMessage* msg) {
 			//do nothing. contention will automatically start after channel switch
 		}
 	}
+	else if (msg == stopvehicle){
+        mobility->getVehicleCommandInterface()->setSpeed(0);
+        reorganizethisCluster(mobility->getExternalId());
+
+        Coord pos;
+        pos.x = mobility->getVehicleCommandInterface()->ReturnSumoCurrentposition(mobility->getCurrentPosition()).x;
+        pos.y = mobility->getVehicleCommandInterface()->ReturnSumoCurrentposition(mobility->getCurrentPosition()).y;
+        ObstacleInfo.vehicleId = mobility->getExternalId();
+        ObstacleInfo.vehiclePosition = pos;
+        int li = mobility->getVehicleCommandInterface()->getLaneIndex();
+        ObstacleInfo.laneID = li;
+        obMob = mobility;
+//        scheduleAt(simTime() + 0.1, triggerAccEvt);
+    }
+	else if (msg == planManEvt){
+	    if (checkIsCH(mobility->getExternalId())){
+	        memberManeuver();
+	    }
+	}
+    else if (msg == triggerManeuverEvt){
+        clusterManeuverHandler();
+    }
 }
 
 void Mac1609_4::handleUpperControl(cMessage* msg) {
@@ -750,6 +851,7 @@ void Mac1609_4::handleLowerMsg(cMessage* msg) {
 
     if (dest == myMacAddress) {
         if (auto* ack = dynamic_cast<Mac80211Ack*>(macPkt)) {
+            std::cout <<"111111111111111" <<std::endl;
             if (useAcks){
                 handleAck(ack);
             }
@@ -781,6 +883,7 @@ void Mac1609_4::handleLowerMsg(cMessage* msg) {
         //handle lower packet
         if (inet::Packet* pkt = dynamic_cast<inet::Packet*>(macPkt->decapsulate()))
         {
+            std::cout <<"22222222222222222222" <<std::endl;
             EV_INFO<<"handle broadcast Pkt"<< endl;
             pkt->setControlInfo(new PhyToMacControlInfo(res));
             pkt->addTagIfAbsent<inet::PacketProtocolTag>()->setProtocol(&inet::Protocol::ipv6);
@@ -792,6 +895,7 @@ void Mac1609_4::handleLowerMsg(cMessage* msg) {
         //handle lower wsm
         else if (WSM_ipwave* wsm = dynamic_cast<WSM_ipwave*>(macPkt->decapsulate()))
         {
+            std::cout <<"3333333333333" <<std::endl;
             EV_INFO<<"handle broadcast wsm"<< endl;
             wsm->setControlInfo(new PhyToMacControlInfo(res));
             sendUp(wsm);
@@ -1413,4 +1517,605 @@ Mac1609_4::EDCA::EDCAQueue::~EDCAQueue() {
 		queue.pop();
 	}
 	// ackTimeOut needs to be deleted in EDCA
+}
+
+
+void Mac1609_4::clusterManeuverHandler(){
+    UpdateMyClusterMembers();
+    if (isMyClusterInManeuver == true){
+        bool continueClusterManeuvers = false;
+        for (std::map<std::string, Veins::TraCIMobility*>::iterator it = mycluster.clusterMembMob.begin(); it != mycluster.clusterMembMob.end(); it++){
+            if (it->second->getVehicleCommandInterface()->ReturnSumoCurrentposition(it->second->getCurrentPosition()).y >  ObstacleInfo.vehiclePosition.y){
+                continueClusterManeuvers = true;
+                if (it->second->getSpeed() > 0){
+                    continueClusterManeuvers = true;
+                }
+            }
+        }
+//        Alternative needed
+        /*if (continueClusterManeuvers){
+            scheduleAt(simTime() + 0.1, triggerManeuverEvt);
+        }*/
+     /*   else{
+            if (triggerAccEvt->isScheduled() == true) {
+                cancelEvent(triggerAccEvt);
+            }
+            std::cout <<"VEHICLE <------------> " <<mobility->getExternalId() <<" ENDS MANEUVER PROCESS " <<std::endl;
+            #ifdef DEBUG_ACCIDENTPACKET
+                std::cout <<"^^^^^^> Stop processing Maneuver! CMs are: " <<findHost()->getFullName() <<std::endl;
+            for (std::map<std::string, Veins::TraCIMobility*>::iterator it = mycluster.clusterMembMob.begin(); it != mycluster.clusterMembMob.end(); it++){
+                std::cout <<it->first<<" <--> " <<it->second->getExternalId() <<" :  ";
+            }
+            std::cout <<"CH -->" <<findHost()->getFullName() <<std::endl<<std::endl;
+            #endif
+        }*/
+    }
+    else{
+        bool flag1 = false; //In risky status
+        bool flag2 = false; //Not yet in risks
+        bool flag3 = false; //Member Collided
+        double maxManeuverableCP = 0;
+        double manTime = 0;
+        Veins::TraCIMobility* nextManVMob;
+        Veins::TraCIMobility* CollMob;
+        //            std::cout <<"====>> VEHICLE " <<mobility->getExternalId() <<"  ABOUT TO START MANEUVER " <<std::endl;
+        for (std::map<std::string, Veins::TraCIMobility*>::iterator it = mycluster.clusterMembMob.begin(); it != mycluster.clusterMembMob.end(); it++){
+            Coord pos = it->second->getCurrentPosition();
+            TraCICoord vpos = it->second->getVehicleCommandInterface()->ReturnSumoCurrentposition(it->second->getCurrentPosition());
+            if (it->second->getVehicleCommandInterface()->getLaneIndex() == ObstacleInfo.laneID){
+                if (vpos.y >= ObstacleInfo.vehiclePosition.y){//Check headind to obstacle
+                    cp2obstacle vcp = CP2Obstacle(it->second);
+                    std::cout <<"   CH %%%%% " << mobility->getExternalId()<<" --- > CP to " <<it->second->getExternalId()<<", With Speed = " << it->second->getSpeed() <<" ;  =  "
+                    << vcp.cp <<" Obstacle Pos : (" <<ObstacleInfo.vehiclePosition.x <<" ; " <<ObstacleInfo.vehiclePosition.y <<"); My Pos : (" <<vpos.x <<" ;" <<vpos.y <<")"<<std::endl;
+                    if (vcp.cp == 1){//Certainly this vehicle collides with an obstacle
+                        // it->second->getVehicleCommandInterface()->setSpeed(0); //Leave it till hit the obstacle
+                        // updateObstacleInformation();
+                        maxManeuverableCP = vcp.cp;
+/*                        collisionRecords tmpc;
+                        tmpc.collNum = 1;
+                        double vm1 = 2000, vm2 = 2000;//considering vehicle of same mass
+                        double Dy = vpos.y - ObstacleInfo.vehiclePosition.y;
+                        double vo = it->second->getSpeed();
+                        // double t = requiredTimeToCollision(Dy, vo);
+                        double t = vcp.ManT;
+                        double vc = (-5) * t + vo;
+                        tmpc.CollStrength = ComputeEquivalentEnergySpeed(vm1,vm2,ObstacleInfo.vehicleSpeed, vc);
+                        myMembersInAccident.insert(std::make_pair(it->first,it->second));
+                        recordedCollisions.push_back(tmpc);
+                        std::cout <<"________>>> " <<"     Colliding Vehicle  =   " <<it->second->getExternalId() << std::endl;
+                        CollMob = it->second;
+                        ObstacleInfo.vehiclePosition.y = ObstacleInfo.vehiclePosition.y + 5.0;//5.0 is Vehicle Length
+                        // error("Collision");
+                        flag1 = true;*/
+                    }
+                    else if (maxManeuverableCP == 0){
+                        maxManeuverableCP = vcp.cp;
+                        nextManVMob = it->second;
+                        manTime = vcp.ManT;
+                        flag2 = true;
+                    }
+                    else if(vcp.cp > maxManeuverableCP){
+                        std::cout <<"<-----> Current CP  =  " <<vcp.cp <<std::endl;
+                        maxManeuverableCP = vcp.cp;
+                        nextManVMob = it->second;
+                        manTime = vcp.ManT;
+                        flag2 = true;
+                    }
+                }
+            }
+            else{
+                if (vpos.y >= ObstacleInfo.vehiclePosition.y){//Check headind to obstacle
+                    flag3=true;
+                }
+            }
+        }
+        if (flag1){
+            double closey = 0;
+            for (std::map<std::string, Veins::TraCIMobility*>::iterator it = mycluster.clusterMembMob.begin(); it != mycluster.clusterMembMob.end(); it++){
+                std::map<std::string, Veins::TraCIMobility*>::iterator it2 = myMembersInAccident.find(it->first);
+                if (it2 == myMembersInAccident.end()){
+                    TraCICoord vpos = it->second->getVehicleCommandInterface()->ReturnSumoCurrentposition(it->second->getCurrentPosition());
+                    if (closey == 0){
+                        closey = vpos.y;
+                        nextManVMob = it->second;
+                    }
+                    else if(closey > vpos.y){
+                        closey = vpos.y;
+                        nextManVMob = it->second;
+                    }
+                }
+            }
+
+            CMManeuverPlanningBasedLaneProbability(mycluster, 1, nextManVMob, minIvTThresh);
+            AheadCHinEmMan = true;
+            isMyClusterInManeuver = true;
+            std::cout <<"<----------------- Maneuver Called by   ----------------->"<<findHost()->getFullName() <<std::endl<<std::endl;
+
+            scheduleAt(simTime() + 0.1, triggerManeuverEvt);
+        }
+        else if (flag2){
+            std::cout <<"^^^^^^  The most risky vehicle Probability = " <<maxManeuverableCP <<std::endl;
+            if (maxManeuverableCP > 0){
+                CMManeuverPlanningBasedLaneProbability(mycluster, maxManeuverableCP, nextManVMob, manTime);
+                AheadCHinEmMan = true;
+                isMyClusterInManeuver = true;
+                std::cout <<"<----------------- Maneuver Called by   ----------------->"<<findHost()->getFullName() <<std::endl<<std::endl;
+            }
+            scheduleAt(simTime() + 0.1, triggerManeuverEvt);
+        }
+        else if (flag3){
+            scheduleAt(simTime() + 0.1, triggerManeuverEvt);
+        }
+    }
+}
+
+void Mac1609_4::CMManeuverPlanningBasedLaneProbability (Clusterstruct CMembers, double CP2Obst, TraCIMobility*  emvmob, double ManTime){
+    classifyClusterMembersbyLane(CMembers, 3);
+    std::map<int,  std::vector<Veins::TraCIMobility*>>::iterator it = ClusterMembersbyLane.find(ObstacleInfo.laneID);
+    std::map<int,double> NeighbLaneCP = CPManeuverLanes(CMembers, CP2Obst, emvmob, ManTime);
+    CANDataCollection tmpdata;
+    tmpdata.cid = CMembers.cluster_id;
+    tmpdata.emcp = CP2Obst;
+    tmpdata.recordTime = simTime().dbl();
+    tmpdata.ncm = CMembers.clusterMembMob.size();
+
+    if (it != ClusterMembersbyLane.end()){
+
+        std::cout <<"!!!!! Number of possible maneuver Lane = " <<NeighbLaneCP.size() <<std::endl;
+        int nem = it->second.size();
+        if (NeighbLaneCP.size() == 1){
+            int ManLane;
+            double tmpcp = 0;
+            for (auto j:NeighbLaneCP){
+                if (tmpcp == 0){
+                    ManLane = j.first;
+                    tmpcp = j.second;
+                }
+                else if(tmpcp > j.second){
+                    ManLane = j.first;
+                    tmpcp = j.second;
+                }
+            }
+            for (auto i:it->second){
+//                i->getVehicleCommandInterface()->changeLane(ManLane, ManTime);
+                i->getVehicleCommandInterface()->changeLane(ManLane, 2000);
+            }
+            if (ManLane > ObstacleInfo.laneID){
+                tmpdata.leftmanlcp = tmpcp;
+                tmpdata.rightmanlcp = 0;
+            }
+            else{
+                tmpdata.leftmanlcp = 0;
+                tmpdata.rightmanlcp = tmpcp;
+            }
+
+        }
+        else{
+            bool NonManProbFlag = false;
+            if (NonManProbFlag){
+                for (auto i:it->second){
+                    int curlane = i->getVehicleCommandInterface()->getLaneIndex();
+                    if (glManLane < curlane){
+                        i->getVehicleCommandInterface()->changeLane(glManLane, 2000);
+                        std::cout <<" .........> Change Lane (VID): " << i->getExternalId() << "LID = " <<
+                                glManLane<< std::endl;
+                        glManLane = curlane+1;
+                    }
+                    else{
+                        i->getVehicleCommandInterface()->changeLane(glManLane, 2000);
+                        std::cout <<" ----------> Change Lane (VID): " << i->getExternalId() << "LID = " <<
+                                glManLane << std::endl;
+                        glManLane = curlane - 1;
+                    }
+                }
+            }
+            else{
+                double cpleft = 0 ;
+                double cpright = 0;
+                int l = ObstacleInfo.laneID + 1;
+                int r = ObstacleInfo.laneID - 1;
+                std::map<int,double>::iterator t1 = NeighbLaneCP.find(l);
+                if (t1 != NeighbLaneCP.end()){
+                    cpleft = t1->second;
+                }
+                std::map<int,double>::iterator t2 = NeighbLaneCP.find(r);
+                if (t2 != NeighbLaneCP.end()){
+                    cpright = t2->second;
+                }
+                tmpdata.leftmanlcp = cpleft;
+                tmpdata.rightmanlcp = cpright;
+                int nl = round(nem * cpright)/(cpright + cpleft);
+                int nr = round(nem * cpleft)/(cpright + cpleft);
+                int nexl = l;
+                int lc = 0, rc = 0 ;
+                for (auto i:it->second){
+                    std::map<std::string, Veins::TraCIMobility*>::iterator it2;
+                    it2 = myMembersInAccident.find(i->getExternalId());
+                    if (it2 == myMembersInAccident.end()){
+                        if (nexl == l && lc < nl){
+        //                    i->getVehicleCommandInterface()->changeLane(nexl, ManTime);
+                            i->getVehicleCommandInterface()->changeLane(nexl, 2000);
+                            std::cout <<"<<+++++++++>> vehicle : " << i->getExternalId() << "changes Lane towards : " << nexl << std::endl;
+                            nexl = r;
+                            rc++;
+                        }
+                        else if(rc < nr){
+        //                    i->getVehicleCommandInterface()->changeLane(nexl, ManTime);
+                            i->getVehicleCommandInterface()->changeLane(nexl, 2000);
+                            std::cout <<"<<---------->> vehicle : " << i->getExternalId() << "changes Lane towards : " << nexl << std::endl;
+                            nexl = l;
+                            lc++;
+                        }
+                        else{
+        //                    i->getVehicleCommandInterface()->changeLane(nexl, ManTime);
+                            i->getVehicleCommandInterface()->changeLane(nexl, 2000);
+                            std::cout <<"<<xxxxxxxxxxx>> vehicle : " <<i->getExternalId() << "changes Lane towards : " << nexl << std::endl;
+                            if (nexl == l){
+                                nexl = r;
+                            }
+                            else{
+                                nexl = l;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+cp2obstacle Mac1609_4::CP2Obstacle(TraCIMobility* vehMob){
+    vehicle membveh;
+    cp2obstacle vcp;
+    membveh.vehiclePosition.x = vehMob->getVehicleCommandInterface()->ReturnSumoCurrentposition(vehMob->getCurrentPosition()).x;
+    membveh.vehiclePosition.y = vehMob->getVehicleCommandInterface()->ReturnSumoCurrentposition(vehMob->getCurrentPosition()).y;
+    membveh.vehiclePosition.z = vehMob->getCurrentPosition().z;
+    membveh.vehicleSpeed = vehMob->getSpeed();
+    double t2c = mp.computeTimeToCollision(membveh.vehiclePosition, ObstacleInfo.vehiclePosition, membveh.vehicleSpeed, ObstacleInfo.vehicleSpeed);
+
+    std::cout << "-->  T2C = " <<t2c <<"  ";
+    if (t2c >= maxT2CThresh){
+        // std::cout <<" !!!!! Higher than Max T2C  =  " << t2c << std::endl;
+        vcp.ManT = INFINITY;
+        vcp.cp = 0;
+    }
+    else if (t2c <= minT2CThresh){
+        // std::cout <<" ?????????? under minimal T2C  =  " << t2c << std::endl;
+        vcp.ManT = t2c; //use it to compute the speed during collision
+        vcp.cp = 1;
+    }
+    else{
+        vcp.ManT = t2c;
+        vcp.cp = (maxT2CThresh - t2c)/(maxT2CThresh-minT2CThresh);
+    }
+    std::cout<<std::endl;
+    return vcp;
+}
+std::map<int,double>  Mac1609_4::CPManeuverLanes(Clusterstruct CMs, double CP2Obst, TraCIMobility*  emvmob, double MT){
+    std::map <int,double> LanesCP;
+    std::vector<TraCIMobility*> RightLaneVehs;
+    std::vector<TraCIMobility*> LeftLaneVehs;
+    bool accInMostLeftLane = false;
+    bool accInMostRightLane = false;
+    vehicle emv;
+    TraCICoord tpos = emvmob->getVehicleCommandInterface()->ReturnSumoCurrentposition(emvmob->getCurrentPosition());
+    emv.vehiclePosition.x = tpos.x;
+    emv.vehiclePosition.y = tpos.y;
+    emv.vehiclePosition.z = 0;
+    emv.vehicleSpeed = emvmob->getSpeed();
+    emv.laneID = emvmob->getVehicleCommandInterface()->getLaneIndex();
+//    std::cout <<" <<<<+++++++++++>>>>>> mycluster number of Members: " <<mycluster.clusterMembMob.size() <<std::endl;
+    for (auto i:mycluster.clusterMembMob){
+        if(strcmp(emvmob->getExternalId().c_str(), i.second->getExternalId().c_str()) != 0){
+            if (ObstacleInfo.laneID == 0){
+                if (i.second->getVehicleCommandInterface()->getLaneIndex() == ObstacleInfo.laneID + 1){
+                    LeftLaneVehs.push_back(i.second);
+                    accInMostLeftLane = true;
+                }
+            }
+            else if (ObstacleInfo.laneID == 2){
+                if (i.second->getVehicleCommandInterface()->getLaneIndex() == ObstacleInfo.laneID - 1){
+                    RightLaneVehs.push_back(i.second);
+                    accInMostRightLane = true;
+                }
+            }
+            else{
+                if (i.second->getVehicleCommandInterface()->getLaneIndex() == ObstacleInfo.laneID + 1){
+                    LeftLaneVehs.push_back(i.second);
+                }
+                else if (i.second->getVehicleCommandInterface()->getLaneIndex() == ObstacleInfo.laneID - 1){
+                    RightLaneVehs.push_back(i.second);
+                }
+            }
+        }
+    }
+
+//    Initialize the Contour info to the Obstacle's
+//    std::cout <<" >>> Emergency Vehicle  :   " <<emvmob->getExternalId() <<" About to Compute Its Convex Hull !! " << std::endl;
+    std::map<double,std::vector<Coord>> PrevCont = mp.compute_contour_polygon(emv, MT);
+    std::vector<Coord> PrevContPolygon;
+    for (auto j:PrevCont){
+        int n = j.second.size()-1;
+        Coord pos = j.second[n];
+        PrevContPolygon.push_back(pos);
+    }
+    vector<Coord> emvcvx = mp.getContourConvex(PrevContPolygon); //Emergence vehicle convex Hull
+
+//    Compute Contours info Lane by Lane
+    std::cout <<" >>>  Left Lane vehicles = " <<LeftLaneVehs.size()<<std::endl;
+    std::cout <<">>> Right Lane vehicles = "  <<RightLaneVehs.size() <<std::endl;
+    if (RightLaneVehs.size() > 0){
+        std::sort(RightLaneVehs.begin(), RightLaneVehs.end(),sortLaneVehs);
+        double LaneCP = 0;
+        for (auto j:RightLaneVehs){
+            vehicle tmpveh;
+            tmpveh.laneID=j->getVehicleCommandInterface()->getLaneIndex();
+            tmpveh.vehicleSpeed = j->getSpeed();
+            TraCICoord tmp1 = j->getVehicleCommandInterface()->ReturnSumoCurrentposition(j->getCurrentPosition());
+            tmpveh.vehiclePosition.x = tmp1.x;
+            tmpveh.vehiclePosition.y = tmp1.y;
+            tmpveh.vehiclePosition.z = 0;
+            std::cout <<" >>> Vehicle  :   " <<j->getExternalId() <<" About to Compute Its Convex Hull !! " << std::endl;
+            std::map<double,std::vector<Coord>> Cont = mp.compute_contour_polygon(tmpveh, MT);
+            std::vector<Coord> ContPolygon1;
+            for (std::map<double,std::vector<Coord>>::iterator it = Cont.begin(); it!= Cont.end(); it++){
+                int ind = it->second.size()-1;
+                Coord pos1 = it->second[ind];
+                ContPolygon1.push_back(pos1);
+            }
+            vector<Coord> cvx1 = mp.getContourConvex(ContPolygon1);
+            std::cout <<"------>cvx1 ----------> = " <<cvx1.size() <<std::endl;
+
+//            Intersection and Probabilities Calculations
+            vector<Coord> inter1 = mp.returnConvexesIntersection(emvcvx, cvx1);
+            std::cout <<"------> 11111 : inter1 size = " <<inter1.size() <<std::endl;
+            vector<Coord> inter2 = mp.returnConvexesIntersection(emvcvx, cvx1);
+            std::cout <<"------> 22222 : inter2 size = " <<inter2.size() <<std::endl;
+            vector<Coord> convexIntes = inter1;
+            convexIntes.insert(convexIntes.end(), inter2.begin(), inter2.end());
+            if (convexIntes.size() > 2){
+                double frontArea = mp.returnConvexArea(emvcvx);
+                double intersArea = mp.returnConvexArea(convexIntes);
+                LaneCP = LaneCP * (intersArea/frontArea);
+            }
+            else{
+                std::cout <<">>>  No Convex Intersection Available!" <<std::endl;
+                break;
+            }
+        }
+        LanesCP.insert(std::make_pair(ObstacleInfo.laneID - 1, LaneCP));
+    }
+    if (LeftLaneVehs.size() > 0){
+        std::sort(LeftLaneVehs.begin(), LeftLaneVehs.end(),sortLaneVehs);
+        double LaneCP = 0;
+        for (auto j:LeftLaneVehs){
+            vehicle tmpveh;
+            tmpveh.laneID=j->getVehicleCommandInterface()->getLaneIndex();
+            tmpveh.vehicleSpeed = j->getSpeed();
+            TraCICoord tmp1 = j->getVehicleCommandInterface()->ReturnSumoCurrentposition(j->getCurrentPosition());
+            tmpveh.vehiclePosition.x = tmp1.x;
+            tmpveh.vehiclePosition.y = tmp1.y;
+            tmpveh.vehiclePosition.z = 0;
+            std::cout <<" >>> Vehicle  :   " <<j->getExternalId() <<" About to Compute Its Convex Hull !! " << std::endl;
+            std::map<double,std::vector<Coord>> Cont = mp.compute_contour_polygon(tmpveh, MT);
+            std::vector<Coord> ContPolygon2;
+            for (auto j:Cont){
+                int n = j.second.size()-1;
+                Coord pos2 = j.second[n];
+                ContPolygon2.push_back(pos2);
+            }
+            vector<Coord> cvx2= mp.getContourConvex(ContPolygon2);
+            std::cout <<"------>cvx2 ----------> = " <<cvx2.size() <<std::endl;
+
+
+//            Intersection and Probabilities Calculations
+            vector<Coord> inter1 = mp.returnConvexesIntersection(emvcvx, cvx2);
+            std::cout <<"------> 33333 : inter1 size = " <<inter1.size() <<std::endl;
+            vector<Coord> inter2 = mp.returnConvexesIntersection(emvcvx, cvx2);
+            std::cout <<"------> 44444 : inter2 size = " <<inter2.size() <<std::endl;
+            vector<Coord> convexIntes = inter1;
+            convexIntes.insert(convexIntes.end(), inter2.begin(), inter2.end());
+            if (convexIntes.size() > 2){
+                double frontArea = mp.returnConvexArea(emvcvx);
+                double intersArea = mp.returnConvexArea(convexIntes);
+                LaneCP = LaneCP * (intersArea/frontArea);
+            }
+            else{
+                std::cout <<">>>  No Convex Intersection Available!" <<std::endl;
+                break;
+            }
+        }
+        LanesCP.insert(std::make_pair(ObstacleInfo.laneID + 1, LaneCP));
+    }
+    return LanesCP;
+}
+
+std::string Mac1609_4::getClusterHeadID (std::map<std::string,Veins::TraCIMobility*> Allvehicles){
+    std::string CHID;
+    std::map<std::string,Veins::TraCIMobility*>::iterator mit;
+    if(Allvehicles.size() == 0){
+        error("Empty Cluster!@");
+    }
+    if (Allvehicles.size() == 1){
+        mit = Allvehicles.begin();
+        CHID = mit->first;
+//        std::cout <<"*** 111 CHID = "  <<CHID<<std::endl;
+    }
+    else if (Allvehicles.size() == 2){
+        double prevY = 0;
+        for (mit = Allvehicles.begin(); mit != Allvehicles.end(); mit++){
+            Coord vpos = mit->second->getCurrentPosition();
+            if (prevY == 0){
+                prevY = vpos.y;
+                CHID = mit->first;
+            }
+            else if (prevY > vpos.y){
+                CHID = mit->first;
+            }
+//            std::cout <<"*** 222 CHID = "  <<CHID<<std::endl;
+        }
+    }
+    else{
+        CHID = getInterVehiclesAveragedistances(Allvehicles);
+//        std::cout <<"*** 333 CHID = "  <<CHID<<std::endl;
+    }
+    return CHID;
+}
+void Mac1609_4::UpdateMyClusterMembers(){//Remove from Clusters vehicles that exited from Road
+    for (unsigned int i = 0; i < AllClustInfo.size(); i++){
+        if(AllClustInfo[i].cluster_id == mycluster.cluster_id){
+            mycluster = AllClustInfo[i];
+        }
+    }
+}
+std::string Mac1609_4::getInterVehiclesAveragedistances(std::map<std::string,Veins::TraCIMobility*> Allvehicles){
+    std::map <std::string,double> AverageDistances;
+//    std::cout<<"Size = " <<Allvehicles.size()<<" and Cluster Members are: " <<std::endl;
+    for (std::map<std::string,Veins::TraCIMobility*>::iterator mpit1 = Allvehicles.begin(); mpit1 != Allvehicles.end(); mpit1++){
+        Coord curPos = mpit1->second->getCurrentPosition();
+//        std::cout <<mpit1->first <<"  , Pos  ("<<curPos.x <<"; "<<curPos.y <<"; " <<curPos.z <<") || ";
+        std::vector <double> distToOtherVehs;
+        for (std::map<std::string,Veins::TraCIMobility*>::iterator mpit2 = Allvehicles.begin(); mpit2 != Allvehicles.end(); mpit2++){
+            if (mpit2->first != mpit1->first){
+                Coord NextVehPos = mpit2->second->getCurrentPosition();
+                double distance = sqrt(pow(NextVehPos.x - curPos.x, 2) + pow(NextVehPos.y - curPos.y, 2) + pow(NextVehPos.z - curPos.z, 2));
+                distToOtherVehs.push_back(distance);
+            }
+        }
+        double Tot = 0;
+        double AvrDist = 0;
+        for (unsigned int i = 0; i < distToOtherVehs.size(); i++){
+            Tot = Tot + distToOtherVehs[i];
+        }
+        AvrDist = Tot/distToOtherVehs.size();
+        AverageDistances.insert(std::make_pair(mpit1->first,AvrDist));
+    }
+//    std::cout<<std::endl<<std::endl;
+    std::string ClustHead = "";
+    double smallAvDst = 0;
+    for (std::map <std::string,double>::iterator it = AverageDistances.begin(); it != AverageDistances.end(); it++){
+        if (smallAvDst == 0){
+            smallAvDst = it->second;
+            ClustHead = it->first;
+        }
+        else if (it->second < smallAvDst){
+            smallAvDst = it->second;
+            ClustHead = it->first;
+        }
+    }
+    return ClustHead;
+}
+void Mac1609_4::classifyClusterMembersbyLane(Clusterstruct clust, int nl){
+//    std::cout <<"--------- my Cluster ID = " <<clust.cluster_id << "  And Members are: "<<std::endl;
+    if (ClusterMembersbyLane.empty() == false){
+        ClusterMembersbyLane.clear();
+    }
+    for (int i =0; i <nl; i++){
+       std::vector<Veins::TraCIMobility*> tmpv;
+       ClusterMembersbyLane.insert(std::make_pair(i, tmpv));
+    }
+    for (std::map<std::string, Veins::TraCIMobility*>::iterator j = clust.clusterMembMob.begin(); j != clust.clusterMembMob.end(); j++){
+        int tmpLane = j->second->getVehicleCommandInterface()->getLaneIndex();
+        std::map<int,  std::vector<Veins::TraCIMobility*>>::iterator mit;
+        mit = ClusterMembersbyLane.find(tmpLane);
+        if (mit != ClusterMembersbyLane.end()){
+            mit->second.push_back(j->second);
+        }
+    }
+}
+void Mac1609_4::unregisteringFromClusters(){
+    for (unsigned int i = 0; i < AllClustInfo.size(); i++){
+        if (AllClustInfo[i].cluster_id == mycluster.cluster_id){
+//            std::cout<<std::endl <<"VVVVVVVVV condition Satisfied" <<std::endl;
+            std::map<std::string, Veins::TraCIMobility*>::iterator it;
+
+            for (it = AllClustInfo[i].clusterMembMob.begin(); it != AllClustInfo[i].clusterMembMob.end(); it++){
+                if (strcmp(it->first.c_str(), mobility->getExternalId().c_str()) == 0){
+                    std::cout <<" Remove Vehicle " <<mobility->getExternalId().c_str() <<std::endl;
+                    AllClustInfo[i].clusterMembMob.erase(mobility->getExternalId().c_str());
+                }
+            }
+        }
+    }
+}
+void Mac1609_4::reorganizethisCluster(std::string MID){
+    Clusterstruct clustVeh;
+    for (unsigned int i = 0; i < AllClustInfo.size(); i++){
+        if (strcmp(MID.c_str(), AllClustInfo[i].cluster_Hid.c_str()) == 0){
+            for (std::map<std::string, Veins::TraCIMobility*>::iterator iter = AllClustInfo[i].clusterMembMob.begin(); iter != AllClustInfo[i].clusterMembMob.end(); iter++){
+                if (strcmp(iter->first.c_str(), MID.c_str()) == 0){
+                    AllClustInfo[i].clusterMembMob.erase(iter->first);
+                    std::string CH = getClusterHeadID(AllClustInfo[i].clusterMembMob);
+                    AllClustInfo[i].cluster_Hid = CH;
+                    std::cout <<"reorganizethisCluster : "<<AllClustInfo[i].cluster_id  <<"  ; CHID 1 = " << CH <<std::endl;
+//                    error("Newly Chosen CH");
+                    break;
+                    break;
+                }
+            }
+        }
+        else{
+            for (std::map<std::string, Veins::TraCIMobility*>::iterator iter = AllClustInfo[i].clusterMembMob.begin(); iter != AllClustInfo[i].clusterMembMob.end(); iter++){
+                if (strcmp(iter->first.c_str(), MID.c_str()) == 0){
+                    AllClustInfo[i].clusterMembMob.erase(iter);
+                    break;
+                    break;
+                }
+            }
+        }
+    }
+}
+void Mac1609_4::memberManeuver(){
+    classifyClusterMembersbyLane(mycluster, 3);
+    std::map<int,  std::vector<Veins::TraCIMobility*>>::iterator it = ClusterMembersbyLane.find(ObstacleInfo.laneID);
+    if (it != ClusterMembersbyLane.end()){
+        if (ObstacleInfo.laneID == 0){
+
+            for (auto i:it->second){
+                std::map<std::string, Veins::TraCIMobility*>::iterator it2;
+                it2 = myMembersInAccident.find(i->getExternalId());
+                if (it2 == myMembersInAccident.end()){
+                    i->getVehicleCommandInterface()->changeLane(ObstacleInfo.laneID+1, 2000);
+                }
+            }
+        }
+        else if (ObstacleInfo.laneID == 2){
+
+            for (auto i:it->second){
+                std::map<std::string, Veins::TraCIMobility*>::iterator it2;
+                it2 = myMembersInAccident.find(i->getExternalId());
+                if (it2 == myMembersInAccident.end()){
+                    i->getVehicleCommandInterface()->changeLane(ObstacleInfo.laneID-1, 2000);
+                }
+            }
+        }
+        else{
+            int nexl = ObstacleInfo.laneID - 1;
+            for (auto i:it->second){
+                std::map<std::string, Veins::TraCIMobility*>::iterator it2;
+                it2 = myMembersInAccident.find(i->getExternalId());
+                if (it2 == myMembersInAccident.end()){
+                    if (nexl == ObstacleInfo.laneID - 1){
+                        i->getVehicleCommandInterface()->changeLane(nexl, 2000);
+                        nexl = ObstacleInfo.laneID + 1;
+                    }
+                    else {
+                        i->getVehicleCommandInterface()->changeLane(nexl, 2000);
+                        nexl = ObstacleInfo.laneID - 1;
+                    }
+                }
+            }
+        }
+    }
+}
+bool Mac1609_4::checkIsCH(std::string vehID){
+    bool flag = false;
+    for (unsigned int i = 0; i < AllClustInfo.size(); i++){
+        if (strcmp(vehID.c_str(), AllClustInfo[i].cluster_Hid.c_str()) == 0){
+            flag = true;
+            mycluster = AllClustInfo[i];
+            break;
+        }
+    }
+   return flag;
 }

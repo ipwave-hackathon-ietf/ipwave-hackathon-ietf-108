@@ -22,10 +22,10 @@ import org.car2x.veins.modules.nic.Nic80211p;
 
 module CNPCar extends StandardHost6
 {
-    parameters:       
+    parameters:
         hasTcp = true;
         forwarding = true;
-        isRouter = false; 
+        isRouter = false;
         string applType; //type of the application layer
         bool hasAppl = default(false);
 
@@ -33,11 +33,11 @@ module CNPCar extends StandardHost6
         string nicType = default("Nic80211p"); // type of network interface card
         numApps = 1;
         string veinsmobilityType = default("org.car2x.veins.modules.mobility.traci.TraCIMobility");
-        
+
         //XIANG ZHONG 19.09.05
         ipv6.xMIPv6Support = true;
         ipv6.mipv6support.isMobileNode = true; //is Mobile Node
-    	ipv6.mipv6support.isHomeAgent = false; //is Home Agent
+        ipv6.mipv6support.isHomeAgent = false; //is Home Agent
 
 
         @display("bgb=1376.5499,778.05");

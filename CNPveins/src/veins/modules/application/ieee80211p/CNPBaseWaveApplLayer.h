@@ -32,8 +32,8 @@
 #include "veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h"
 #include "veins/modules/mobility/traci/TraCIMobility.h"
 #include "veins/modules/mobility/traci/TraCICommandInterface.h"
-#include "veins/modules/MCTA/MCTAmotionPlanning.h"
-#include "veins/modules/mobility/traci/TraCICoord.h" //BAM
+//#include "veins/modules/MCTA/MCTAmotionPlanning.h"
+//#include "veins/modules/mobility/traci/TraCICoord.h" //BAM
 #include <algorithm>
 
 //BAM
@@ -71,25 +71,11 @@ using Veins::TraCICoord;//BAM
  */
 
 
-struct NeighborInfo{
-    vehicle vehicle_t;
-    simtime_t ReceptionTime;
-};
-struct RemoteSensedVehicles{
-    std::string vehID;
-    simtime_t sensTime;
-    double Dst;
-    std::vector <double> vehPos;
-};
 struct Clusterstruct{
     int cluster_id;
     std::string cluster_Hid;
     int cluster_HMac;
     std::map<std::string, Veins::TraCIMobility*> clusterMembMob; //Member Vehicle Id and its corresponding mobility
-};
-struct cp2obstacle{
-    double ManT;
-    double cp;
 };
 struct CANDataCollection{
     int cid;
@@ -243,24 +229,16 @@ class CNPBaseWaveApplLayer : public BaseApplLayer{
         double vSpeed;
 
 
-        std::vector<RemoteSensedVehicles> SensedVehicles;
-        std::vector<NeighborInfo> NeighborInformation;
         std::string LastRecvAccPktSenderID = "";
-        motionPlanning mp;
-        vehicle actualVeh;
+
         void callForManeuver(double Time2Maneuver);
-        std::vector<vehicle> returnNeigbourVehicles(std::vector<NeighborInfo> NeigbourInf);
         double returnDst(Coord Pos1, Coord Pos2);
         double AccidentDetectionDst = 0;
         Coord obstPosition;
         double tmaneuver = 0; //Time To maneuver The Current Vehicle
-        int returnTheManeuverLane(std::vector<vehicle> NeighborVehs, vehicle curVehicle);
-        int chooseLanebyLaneDrivingKinnematics(std::vector<vehicle> NeighborVehs,  vehicle curVehicle);
-        int chooseLanebyDrivingDensity(std::vector<vehicle> NeighborVehs, int actualLane);
-        void NeigborsRecording(NeighborInfo recInf);
+
         bool ckeckLaneChange = false;
         void clusterManeuverHandler();
-//        BAM
 
         /* stats */
         uint32_t generatedWSMs;
@@ -274,36 +252,25 @@ class CNPBaseWaveApplLayer : public BaseApplLayer{
         cMessage* sendCCMEvt;
         cMessage* sendWSAEvt;
 
-        cMessage* stopvehicle;
+//        cMessage* stopvehicle;
         cMessage* triggerAccEvt;
-        cMessage* triggerManeuverEvt;
+//        cMessage* triggerManeuverEvt;
         cMessage* updateManeuverPath;
         cMessage* rearVehManEvt;
         cMessage* checkProximitySensorEvt;
-        std::string getClusterHeadID (std::map<std::string,Veins::TraCIMobility*> Allvehicles);
-        std::string getInterVehiclesAveragedistances(std::map<std::string,Veins::TraCIMobility*> Allvehicles);
-        void reorganizethisCluster(std::string MemberID);
-        bool checkIsCH(std::string vehID);
+
         bool ManeuverProcessEnabled = false;
-//        bool checkIsthereAClusterMemberHeadingToOstaclePosition(vehicle Obstacle, int ClustID);
-        int returnCID(std::string vehID);
         Clusterstruct mycluster;
         std::map<std::string, Veins::TraCIMobility*> myMembersInAccident; 
         bool isMyClusterInManeuver = false;
         double ExpTimeToCollision = 0;
         double InjTime = 0;
         double CollDetTime = 0;
-        std::map<int,  std::vector<Veins::TraCIMobility*>> ClusterMembersbyLane;
         void classifyClusterMembersbyLane(Clusterstruct clust, int numLanes);
-        void UpdateMyClusterMembers();
-        void unregisteringFromClusters();
-        cp2obstacle CP2Obstacle(TraCIMobility* tmob);
-        void CMManeuverPlanning(int ManLanes, double ManT);
-        void CMManeuverPlanningBasedLaneProbability (Clusterstruct CMembers, double CP2Obst, TraCIMobility*  emvmob, double ManTime);
-        void updateObstacleInformation();
+
         double ComputeEquivalentEnergySpeed(double m1, double m2, double v1, double v2);
         int returnManLane(std::map<int,double> NeighCP);
-        std::map<int,double> CPManeuverLanes(Clusterstruct CMembers, double CP2Obst, TraCIMobility*  emvmob, double ManTime);
+//        std::map<int,double> CPManeuverLanes(Clusterstruct CMembers, double CP2Obst, TraCIMobility*  emvmob, double ManTime);
         double requiredTimeToCollision(double dx, double vo);
 };
 #endif /* BASEWAVEAPPLLAYER_H_ */

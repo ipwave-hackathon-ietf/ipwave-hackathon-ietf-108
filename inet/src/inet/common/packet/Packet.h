@@ -90,7 +90,12 @@ class INET_API Packet : public cPacket
     b dataLength;
     const b frontOffset;
     b backOffset;
-
+//    BAM
+//    int laneIndex;
+//    double xpos;
+//    double ypos;
+//    std::string VID;
+//    BAM
 
 
   protected:

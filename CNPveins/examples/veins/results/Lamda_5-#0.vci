@@ -1,0 +1,1189 @@
+file 2867428 1595573058                                         
+version 2
+run Lamda_5-0-20200724-15:43:53-13014
+attr configname Lamda_5
+attr datetime 20200724-15:43:53
+attr experiment Lamda_5
+attr inifile CNPOMNeTPP.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network CNPNet
+attr processid 13014
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param *.manager.launchConfig "xmldoc(\"CAN2Mapd6.launchd.xml\")"
+param *.node[*].appl.lambda 5
+param *.manager.seed 0
+param *.n 3
+param **.debug false
+param **.coreDebug false
+param *.playgroundSizeX 2500m
+param *.playgroundSizeY 2500m
+param *.playgroundSizeZ 50m
+param *.annotations.draw true
+param *.obstacles.debug false
+param *.obstacles.obstacles "xmldoc(\"config.xml\", \"//AnalogueModel[@type='SimpleObstacleShadowing']/obstacles\")"
+param *.manager.updateInterval 0.1s
+param *.manager.host "\"localhost\""
+param *.manager.port 9999
+param *.manager.autoShutdown true
+param *.rsu[0].mobility.x 50
+param *.rsu[0].mobility.y 1025
+param *.rsu[0].mobility.z 0
+param *.rsu[1].mobility.x 50
+param *.rsu[1].mobility.y 684
+param *.rsu[1].mobility.z 0
+param *.rsu[2].mobility.x 50
+param *.rsu[2].mobility.y 340
+param *.rsu[2].mobility.z 0
+param *.rsu[0].mobility.x 325
+param *.rsu[0].mobility.y 1025
+param *.rsu[0].mobility.z 0
+param *.rsu[*].applType "\"CNPTraCIDemoRSU11p\""
+param **.rsu[*].app[*].typename "\"UdpBasicApp\""
+param **.rsu[*].app[0].destPort 1000
+param **.rsu[*].app[0].messageLength 1000B
+param **.node[*].app[0].sendInterval 100ms
+param **.rsu[*].app[0].sendInterval "uniform(5s, 10s)"
+param **.rsu[*].app[0].sendInterval 100ms
+param **.rsu[*].app[0].destAddresses "\"node[*]\""
+param **.rsu[*].app[0].localAddress "\"\""
+param **.rsu[*].app[0].localPort 1000
+param **.*.app[0].localPort 1000
+param **.rsu[*].app[0].replyDelay 0s
+param **.eth[*].queue.typename "\"EtherQosQueue\""
+param **.eth[*].queue.dataQueue.typename "\"DropTailQueue\""
+param **.eth[*].queue.dataQueue.frameCapacity 10
+param **.eth[*].mac.duplexMode true
+param *.rsu[*].appl.headerLength "80 bit"
+param *.rsu[*].appl.sendCCM true
+param *.rsu[*].appl.dataOnSch true
+param *.rsu[*].appl.CCMInterval 1s
+param *.rsu[*].appl.CCMUserPriority 7
+param *.rsu[*].appl.dataUserPriority 5
+param *.connectionManager.sendDirect true
+param *.connectionManager.maxInterfDist 700m
+param *.connectionManager.drawMaxIntfDist true
+param *.**.nic.mac1609_4.useServiceChannel true
+param *.**.nic.mac1609_4.txPower 20mW
+param *.**.nic.mac1609_4.bitrate 6Mbps
+param *.**.nic.phy80211p.sensitivity -89dBm
+param *.**.nic.phy80211p.useThermalNoise true
+param *.**.nic.phy80211p.thermalNoise -110dBm
+param *.**.nic.phy80211p.decider "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.analogueModels "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.usePropagationDelay true
+param *.**.nic.phy80211p.maxt2cThresh 3.0
+param *.**.nic.phy80211p.mint2cThresh 1.0
+param *.**.nic.phy80211p.antenna "xmldoc(\"antenna.xml\", \"/root/Antenna[@id='monopole']\")"
+param **.node[*].app[*].typename "\"UdpBasicApp\""
+param **.node[*].app[0].destPort 1000
+param **.node[*].app[0].messageLength 1000B
+param **.node[*].app[0].sendInterval 100ms
+param **.node[*].app[0].destAddresses "\"rsu[0]\""
+param **.node[*].app[0].connectPort 1000
+param **.node[0].app[0].startTime uniform(1700s,1700.5s)
+param **.node[1].app[0].startTime uniform(1700.5s,1800s)
+param **.node[2].app[0].startTime uniform(1800s,1800.5s)
+param **.node[3].app[0].startTime uniform(1800.5s,1900s)
+param **.node[*].app[0].sendInterval 200ms
+param **.node[*].app[0].numCommands int(exponential(10))
+param **.node[*].app[0].commandLength intWithUnit(exponential(10B))
+param **.node[*].app[0].keyPressDelay exponential(0.1s)
+param **.node[*].app[0].commandOutputLength intWithUnit(exponential(40B))
+param **.node[*].app[0].thinkTime truncnormal(2s,3s)
+param **.node[*].app[0].idleInterval truncnormal(3600s,1200s)
+param **.node[*].app[0].reconnectInterval 30s
+param *.node[*].applType "\"CNPTraCIDemo11p\""
+param *.node[*].appl.headerLength "80 bit"
+param *.node[*].appl.sendCCM true
+param *.node[*].appl.dataOnSch true
+param *.node[*].appl.CCMInterval 0.5s
+param *.node[*].appl.maximumAcceleration 5.0
+param *.node[*].appl.emergentManeuverTime 3.0
+param *.node[*].appl.singleClusterFormationPeriod 12.0
+param *.node[*3].appl.tesVeh false
+param *.node[*].veinsmobilityType.debug true
+param *.node[*].veinsmobility.x 0
+param *.node[*].veinsmobility.y 0
+param *.node[*].veinsmobility.z 1.895
+
+vector 0 CNPNet.rsu[0].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 1 CNPNet.rsu[0].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 2 CNPNet.rsu[0].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 3 CNPNet.rsu[0].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 4 CNPNet.rsu[1].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 5 CNPNet.rsu[1].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 6 CNPNet.rsu[1].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 7 CNPNet.rsu[1].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 8 CNPNet.rsu[1].eth[2].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 9 CNPNet.rsu[1].eth[2].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 10 CNPNet.rsu[2].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 11 CNPNet.rsu[2].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 12 CNPNet.rsu[2].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 13 CNPNet.rsu[2].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 14 CNPNet.MA[0].eth[0].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 15 CNPNet.MA[0].eth[0].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 16 CNPNet.MA[0].eth[1].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 17 CNPNet.MA[0].eth[1].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 18 CNPNet.MA[0].eth[2].queue.pauseQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 19 CNPNet.MA[0].eth[2].queue.dataQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 20 CNPNet.node[0].veinsmobility posx ETV
+vector 21 CNPNet.node[0].veinsmobility posy ETV
+vector 22 CNPNet.node[0].veinsmobility speed ETV
+vector 23 CNPNet.node[0].veinsmobility acceleration ETV
+vector 24 CNPNet.node[0].veinsmobility co2emission ETV
+vector 25 CNPNet.rsu[2].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 26 CNPNet.rsu[2].eth[0].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+vector 27 CNPNet.rsu[2].eth[0].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 28 CNPNet.rsu[2].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 29 CNPNet.rsu[2].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 30 CNPNet.MA[0].eth[2].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 31 CNPNet.MA[0].eth[2].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 32 CNPNet.MA[0].eth[2].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 33 CNPNet.node[1].veinsmobility posx ETV
+vector 34 CNPNet.node[1].veinsmobility posy ETV
+vector 35 CNPNet.node[1].veinsmobility speed ETV
+vector 36 CNPNet.node[1].veinsmobility acceleration ETV
+vector 37 CNPNet.node[1].veinsmobility co2emission ETV
+vector 38 CNPNet.node[2].veinsmobility posx ETV
+vector 39 CNPNet.node[2].veinsmobility posy ETV
+vector 40 CNPNet.node[2].veinsmobility speed ETV
+vector 41 CNPNet.node[2].veinsmobility acceleration ETV
+vector 42 CNPNet.node[2].veinsmobility co2emission ETV
+vector 43 CNPNet.node[3].veinsmobility posx ETV
+vector 44 CNPNet.node[3].veinsmobility posy ETV
+vector 45 CNPNet.node[3].veinsmobility speed ETV
+vector 46 CNPNet.node[3].veinsmobility acceleration ETV
+vector 47 CNPNet.node[3].veinsmobility co2emission ETV
+vector 48 CNPNet.node[4].veinsmobility posx ETV
+vector 49 CNPNet.node[4].veinsmobility posy ETV
+vector 50 CNPNet.node[4].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 51 CNPNet.node[4].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 52 CNPNet.node[4].veinsmobility speed ETV
+vector 53 CNPNet.node[4].veinsmobility acceleration ETV
+vector 54 CNPNet.node[4].veinsmobility co2emission ETV
+vector 55 CNPNet.rsu[0].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 56 CNPNet.rsu[0].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 57 CNPNet.rsu[0].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 58 CNPNet.rsu[0].eth[0].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+vector 59 CNPNet.rsu[0].eth[0].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 60 CNPNet.rsu[0].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 61 CNPNet.rsu[0].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 62 CNPNet.MA[0].eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 63 CNPNet.MA[0].eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 64 CNPNet.MA[0].eth[0].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 65 CNPNet.rsu[1].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 66 CNPNet.rsu[1].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 67 CNPNet.rsu[1].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 68 CNPNet.rsu[1].eth[0].queue.dataQueue packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+vector 69 CNPNet.rsu[1].eth[0].queue.dataQueue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 70 CNPNet.rsu[1].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 71 CNPNet.rsu[1].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 72 CNPNet.MA[0].eth[1].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 73 CNPNet.MA[0].eth[1].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 74 CNPNet.MA[0].eth[1].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 75 CNPNet.node[5].veinsmobility posx ETV
+vector 76 CNPNet.node[5].veinsmobility posy ETV
+vector 77 CNPNet.node[5].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 78 CNPNet.node[5].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 79 CNPNet.node[5].veinsmobility speed ETV
+vector 80 CNPNet.rsu[2].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 81 CNPNet.rsu[2].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 82 CNPNet.node[5].veinsmobility acceleration ETV
+vector 83 CNPNet.node[5].veinsmobility co2emission ETV
+vector 84 CNPNet.node[0].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 85 CNPNet.node[0].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), vector(count)"
+vector 86 CNPNet.node[6].veinsmobility posx ETV
+vector 87 CNPNet.node[6].veinsmobility posy ETV
+vector 88 CNPNet.node[6].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 89 CNPNet.node[6].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 90 CNPNet.node[6].veinsmobility speed ETV
+vector 91 CNPNet.node[6].veinsmobility acceleration ETV
+vector 92 CNPNet.node[6].veinsmobility co2emission ETV
+vector 93 CNPNet.node[7].veinsmobility posx ETV
+vector 94 CNPNet.node[7].veinsmobility posy ETV
+vector 95 CNPNet.node[7].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 96 CNPNet.node[7].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 97 CNPNet.node[7].veinsmobility speed ETV
+vector 98 CNPNet.node[7].veinsmobility acceleration ETV
+vector 99 CNPNet.node[7].veinsmobility co2emission ETV
+vector 100 CNPNet.node[8].veinsmobility posx ETV
+vector 101 CNPNet.node[8].veinsmobility posy ETV
+vector 102 CNPNet.node[8].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 103 CNPNet.node[8].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 104 CNPNet.node[8].veinsmobility speed ETV
+vector 105 CNPNet.node[8].veinsmobility acceleration ETV
+vector 106 CNPNet.node[8].veinsmobility co2emission ETV
+vector 107 CNPNet.node[9].veinsmobility posx ETV
+vector 108 CNPNet.node[9].veinsmobility posy ETV
+vector 109 CNPNet.node[9].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 110 CNPNet.node[9].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 111 CNPNet.node[9].veinsmobility speed ETV
+vector 112 CNPNet.node[9].veinsmobility acceleration ETV
+vector 113 CNPNet.node[9].veinsmobility co2emission ETV
+vector 114 CNPNet.node[10].veinsmobility posx ETV
+vector 115 CNPNet.node[10].veinsmobility posy ETV
+vector 116 CNPNet.node[10].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 117 CNPNet.node[10].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 118 CNPNet.node[10].veinsmobility speed ETV
+vector 119 CNPNet.node[10].veinsmobility acceleration ETV
+vector 120 CNPNet.node[10].veinsmobility co2emission ETV
+vector 121 CNPNet.node[11].veinsmobility posx ETV
+vector 122 CNPNet.node[11].veinsmobility posy ETV
+vector 123 CNPNet.node[11].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 124 CNPNet.node[11].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 125 CNPNet.node[11].veinsmobility speed ETV
+vector 126 CNPNet.node[11].veinsmobility acceleration ETV
+vector 127 CNPNet.node[11].veinsmobility co2emission ETV
+vector 128 CNPNet.node[12].veinsmobility posx ETV
+vector 129 CNPNet.node[12].veinsmobility posy ETV
+vector 130 CNPNet.node[12].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 131 CNPNet.node[12].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 132 CNPNet.node[12].veinsmobility speed ETV
+vector 133 CNPNet.node[12].veinsmobility acceleration ETV
+vector 134 CNPNet.node[12].veinsmobility co2emission ETV
+vector 135 CNPNet.node[13].veinsmobility posx ETV
+vector 136 CNPNet.node[13].veinsmobility posy ETV
+vector 137 CNPNet.node[13].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 138 CNPNet.node[13].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 139 CNPNet.node[13].veinsmobility speed ETV
+vector 140 CNPNet.node[13].veinsmobility acceleration ETV
+vector 141 CNPNet.node[13].veinsmobility co2emission ETV
+vector 142 CNPNet.node[14].veinsmobility posx ETV
+vector 143 CNPNet.node[14].veinsmobility posy ETV
+vector 144 CNPNet.node[14].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 145 CNPNet.node[14].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 146 CNPNet.node[14].veinsmobility speed ETV
+vector 147 CNPNet.node[14].veinsmobility acceleration ETV
+vector 148 CNPNet.node[14].veinsmobility co2emission ETV
+vector 149 CNPNet.node[15].veinsmobility posx ETV
+vector 150 CNPNet.node[15].veinsmobility posy ETV
+vector 151 CNPNet.node[15].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 152 CNPNet.node[15].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 153 CNPNet.node[15].veinsmobility speed ETV
+vector 154 CNPNet.node[15].veinsmobility acceleration ETV
+vector 155 CNPNet.node[15].veinsmobility co2emission ETV
+vector 156 CNPNet.node[16].veinsmobility posx ETV
+vector 157 CNPNet.node[16].veinsmobility posy ETV
+vector 158 CNPNet.node[16].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 159 CNPNet.node[16].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 160 CNPNet.node[16].veinsmobility speed ETV
+vector 161 CNPNet.node[16].veinsmobility acceleration ETV
+vector 162 CNPNet.node[16].veinsmobility co2emission ETV
+vector 163 CNPNet.node[17].veinsmobility posx ETV
+vector 164 CNPNet.node[17].veinsmobility posy ETV
+vector 165 CNPNet.node[17].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 166 CNPNet.node[17].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 167 CNPNet.node[17].veinsmobility speed ETV
+vector 168 CNPNet.node[17].veinsmobility acceleration ETV
+vector 169 CNPNet.node[17].veinsmobility co2emission ETV
+vector 170 CNPNet.node[18].veinsmobility posx ETV
+vector 171 CNPNet.node[18].veinsmobility posy ETV
+vector 172 CNPNet.node[18].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 173 CNPNet.node[18].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 174 CNPNet.node[18].veinsmobility speed ETV
+vector 175 CNPNet.node[18].veinsmobility acceleration ETV
+vector 176 CNPNet.node[18].veinsmobility co2emission ETV
+vector 177 CNPNet.node[19].veinsmobility posx ETV
+vector 178 CNPNet.node[19].veinsmobility posy ETV
+vector 179 CNPNet.node[19].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 180 CNPNet.node[19].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 181 CNPNet.node[19].veinsmobility speed ETV
+vector 182 CNPNet.node[19].veinsmobility acceleration ETV
+vector 183 CNPNet.node[19].veinsmobility co2emission ETV
+vector 184 CNPNet.node[20].veinsmobility posx ETV
+vector 185 CNPNet.node[20].veinsmobility posy ETV
+vector 186 CNPNet.node[20].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 187 CNPNet.node[20].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 188 CNPNet.node[20].veinsmobility speed ETV
+vector 189 CNPNet.node[20].veinsmobility acceleration ETV
+vector 190 CNPNet.node[20].veinsmobility co2emission ETV
+vector 191 CNPNet.node[21].veinsmobility posx ETV
+vector 192 CNPNet.node[21].veinsmobility posy ETV
+vector 193 CNPNet.node[21].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 194 CNPNet.node[21].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 195 CNPNet.node[21].veinsmobility speed ETV
+vector 196 CNPNet.node[21].veinsmobility acceleration ETV
+vector 197 CNPNet.node[21].veinsmobility co2emission ETV
+vector 198 CNPNet.node[22].veinsmobility posx ETV
+vector 199 CNPNet.node[22].veinsmobility posy ETV
+vector 200 CNPNet.node[22].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 201 CNPNet.node[22].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 202 CNPNet.node[22].veinsmobility speed ETV
+vector 203 CNPNet.node[22].veinsmobility acceleration ETV
+vector 204 CNPNet.node[22].veinsmobility co2emission ETV
+vector 205 CNPNet.node[23].veinsmobility posx ETV
+vector 206 CNPNet.node[23].veinsmobility posy ETV
+vector 207 CNPNet.node[23].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 208 CNPNet.node[23].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 209 CNPNet.node[23].veinsmobility speed ETV
+vector 210 CNPNet.node[23].veinsmobility acceleration ETV
+vector 211 CNPNet.node[23].veinsmobility co2emission ETV
+vector 212 CNPNet.node[24].veinsmobility posx ETV
+vector 213 CNPNet.node[24].veinsmobility posy ETV
+vector 214 CNPNet.node[24].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 215 CNPNet.node[24].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 216 CNPNet.node[24].veinsmobility speed ETV
+vector 217 CNPNet.node[24].veinsmobility acceleration ETV
+vector 218 CNPNet.node[24].veinsmobility co2emission ETV
+vector 219 CNPNet.node[25].veinsmobility posx ETV
+vector 220 CNPNet.node[25].veinsmobility posy ETV
+vector 221 CNPNet.node[25].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 222 CNPNet.node[25].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 223 CNPNet.node[25].veinsmobility speed ETV
+vector 224 CNPNet.node[25].veinsmobility acceleration ETV
+vector 225 CNPNet.node[25].veinsmobility co2emission ETV
+vector 226 CNPNet.node[26].veinsmobility posx ETV
+vector 227 CNPNet.node[26].veinsmobility posy ETV
+vector 228 CNPNet.node[26].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 229 CNPNet.node[26].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 230 CNPNet.node[26].veinsmobility speed ETV
+vector 231 CNPNet.node[26].veinsmobility acceleration ETV
+vector 232 CNPNet.node[26].veinsmobility co2emission ETV
+vector 233 CNPNet.node[27].veinsmobility posx ETV
+vector 234 CNPNet.node[27].veinsmobility posy ETV
+vector 235 CNPNet.node[27].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 236 CNPNet.node[27].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 237 CNPNet.node[27].veinsmobility speed ETV
+vector 238 CNPNet.node[27].veinsmobility acceleration ETV
+vector 239 CNPNet.node[27].veinsmobility co2emission ETV
+vector 240 CNPNet.node[28].veinsmobility posx ETV
+vector 241 CNPNet.node[28].veinsmobility posy ETV
+vector 242 CNPNet.node[28].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 243 CNPNet.node[28].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 244 CNPNet.node[28].veinsmobility speed ETV
+vector 245 CNPNet.node[28].veinsmobility acceleration ETV
+vector 246 CNPNet.node[28].veinsmobility co2emission ETV
+vector 247 CNPNet.node[29].veinsmobility posx ETV
+vector 248 CNPNet.node[29].veinsmobility posy ETV
+vector 249 CNPNet.node[29].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 250 CNPNet.node[29].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 251 CNPNet.node[29].veinsmobility speed ETV
+vector 252 CNPNet.node[29].veinsmobility acceleration ETV
+vector 253 CNPNet.node[29].veinsmobility co2emission ETV
+vector 254 CNPNet.node[30].veinsmobility posx ETV
+vector 255 CNPNet.node[30].veinsmobility posy ETV
+vector 256 CNPNet.node[30].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 257 CNPNet.node[30].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 258 CNPNet.node[30].veinsmobility speed ETV
+vector 259 CNPNet.node[30].veinsmobility acceleration ETV
+vector 260 CNPNet.node[30].veinsmobility co2emission ETV
+vector 261 CNPNet.node[31].veinsmobility posx ETV
+vector 262 CNPNet.node[31].veinsmobility posy ETV
+vector 263 CNPNet.node[31].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 264 CNPNet.node[31].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 265 CNPNet.node[31].veinsmobility speed ETV
+vector 266 CNPNet.node[31].veinsmobility acceleration ETV
+vector 267 CNPNet.node[31].veinsmobility co2emission ETV
+vector 268 CNPNet.node[32].veinsmobility posx ETV
+vector 269 CNPNet.node[32].veinsmobility posy ETV
+vector 270 CNPNet.node[32].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 271 CNPNet.node[32].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 272 CNPNet.node[32].veinsmobility speed ETV
+vector 273 CNPNet.node[32].veinsmobility acceleration ETV
+vector 274 CNPNet.node[32].veinsmobility co2emission ETV
+vector 275 CNPNet.node[33].veinsmobility posx ETV
+vector 276 CNPNet.node[33].veinsmobility posy ETV
+vector 277 CNPNet.node[33].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 278 CNPNet.node[33].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 279 CNPNet.node[33].veinsmobility speed ETV
+vector 280 CNPNet.node[33].veinsmobility acceleration ETV
+vector 281 CNPNet.node[33].veinsmobility co2emission ETV
+vector 282 CNPNet.node[34].veinsmobility posx ETV
+vector 283 CNPNet.node[34].veinsmobility posy ETV
+vector 284 CNPNet.node[34].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 285 CNPNet.node[34].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 286 CNPNet.node[34].veinsmobility speed ETV
+vector 287 CNPNet.node[34].veinsmobility acceleration ETV
+vector 288 CNPNet.node[34].veinsmobility co2emission ETV
+vector 289 CNPNet.node[35].veinsmobility posx ETV
+vector 290 CNPNet.node[35].veinsmobility posy ETV
+vector 291 CNPNet.node[35].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 292 CNPNet.node[35].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 293 CNPNet.node[35].veinsmobility speed ETV
+vector 294 CNPNet.node[35].veinsmobility acceleration ETV
+vector 295 CNPNet.node[35].veinsmobility co2emission ETV
+vector 296 CNPNet.node[36].veinsmobility posx ETV
+vector 297 CNPNet.node[36].veinsmobility posy ETV
+vector 298 CNPNet.node[36].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 299 CNPNet.node[36].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 300 CNPNet.node[36].veinsmobility speed ETV
+vector 301 CNPNet.node[36].veinsmobility acceleration ETV
+vector 302 CNPNet.node[36].veinsmobility co2emission ETV
+vector 303 CNPNet.node[37].veinsmobility posx ETV
+vector 304 CNPNet.node[37].veinsmobility posy ETV
+vector 305 CNPNet.node[37].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 306 CNPNet.node[37].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 307 CNPNet.node[37].veinsmobility speed ETV
+vector 308 CNPNet.node[37].veinsmobility acceleration ETV
+vector 309 CNPNet.node[37].veinsmobility co2emission ETV
+vector 310 CNPNet.node[38].veinsmobility posx ETV
+vector 311 CNPNet.node[38].veinsmobility posy ETV
+vector 312 CNPNet.node[38].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 313 CNPNet.node[38].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 314 CNPNet.node[38].veinsmobility speed ETV
+vector 315 CNPNet.node[38].veinsmobility acceleration ETV
+vector 316 CNPNet.node[38].veinsmobility co2emission ETV
+vector 317 CNPNet.node[39].veinsmobility posx ETV
+vector 318 CNPNet.node[39].veinsmobility posy ETV
+vector 319 CNPNet.node[39].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 320 CNPNet.node[39].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 321 CNPNet.node[39].veinsmobility speed ETV
+vector 322 CNPNet.node[39].veinsmobility acceleration ETV
+vector 323 CNPNet.node[39].veinsmobility co2emission ETV
+vector 324 CNPNet.node[40].veinsmobility posx ETV
+vector 325 CNPNet.node[40].veinsmobility posy ETV
+vector 326 CNPNet.node[40].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 327 CNPNet.node[40].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 328 CNPNet.node[40].veinsmobility speed ETV
+vector 329 CNPNet.node[40].veinsmobility acceleration ETV
+vector 330 CNPNet.node[40].veinsmobility co2emission ETV
+vector 331 CNPNet.node[41].veinsmobility posx ETV
+vector 332 CNPNet.node[41].veinsmobility posy ETV
+vector 333 CNPNet.node[41].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 334 CNPNet.node[41].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 335 CNPNet.node[41].veinsmobility speed ETV
+vector 336 CNPNet.node[41].veinsmobility acceleration ETV
+vector 337 CNPNet.node[41].veinsmobility co2emission ETV
+vector 338 CNPNet.node[42].veinsmobility posx ETV
+vector 339 CNPNet.node[42].veinsmobility posy ETV
+vector 340 CNPNet.node[42].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 341 CNPNet.node[42].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 342 CNPNet.node[42].veinsmobility speed ETV
+vector 343 CNPNet.node[42].veinsmobility acceleration ETV
+vector 344 CNPNet.node[42].veinsmobility co2emission ETV
+vector 345 CNPNet.node[43].veinsmobility posx ETV
+vector 346 CNPNet.node[43].veinsmobility posy ETV
+vector 347 CNPNet.node[43].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 348 CNPNet.node[43].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 349 CNPNet.node[43].veinsmobility speed ETV
+vector 350 CNPNet.node[43].veinsmobility acceleration ETV
+vector 351 CNPNet.node[43].veinsmobility co2emission ETV
+0	37581 8 0 0 0 0 1 0 0 0 0
+1	37589 1388 0 162351 0 72.600418596296 55 0 1 27 27
+2	38977 8 0 0 0 0 1 0 0 0 0
+3	38985 8 0 0 0 0 1 0 0 0 0
+4	38993 8 0 0 0 0 1 0 0 0 0
+5	39001 1400 0 147948 0 69.733776699752 55 0 1 27 27
+6	40401 8 0 0 0 0 1 0 0 0 0
+7	40409 8 0 0 0 0 1 0 0 0 0
+8	40417 8 0 0 0 0 1 0 0 0 0
+9	40425 8 0 0 0 0 1 0 0 0 0
+10	40433 9 0 0 0 0 1 0 0 0 0
+11	40442 2351 0 163536 0 72.922416626318 89 0 1 44 44
+12	42793 9 0 0 0 0 1 0 0 0 0
+13	42802 9 0 0 0 0 1 0 0 0 0
+14	42811 9 0 0 0 0 1 0 0 0 0
+15	42820 9 0 0 0 0 1 0 0 0 0
+16	42829 9 0 0 0 0 1 0 0 0 0
+17	42838 9 0 0 0 0 1 0 0 0 0
+18	42847 9 0 0 0 0 1 0 0 0 0
+19	42856 9 0 0 0 0 1 0 0 0 0
+20	42865 14231 6 163977 0.1 73 730 20.05 20.05 14636.5 293461.825
+21	57096 21441 6 163977 0.1 73 730 39.95 1019.2003118506 377912.66692304 256831430.76113
+22	78537 21420 15 163977 0.2 73 729 0.48627966244239 13.899485810578 9806.1696757715 133892.80397668
+23	99957 22226 26 163977 0.3 73 728 -2.3989976453595 4.9494540021988 131.80277603329 1278.7622379961
+24	122183 18639 26 163977 0.3 73 728 0.973 16.096184739255 2366.5537054108 12895.668081502
+25	140822 1215 156 163534 1.005160603747 72.922416626318 44 72 72 3168 228096
+26	142037 1215 158 163536 1.005160603747 72.922416626318 44 90 90 3960 356400
+27	143252 1171 158 163536 1.005160603747 72.922416626318 44 0 0 0 0
+28	144423 1215 160 163538 1.005160603747 72.922416626318 44 90 90 3960 356400
+29	145638 1215 162 163567 1.005168443747 72.922424466318 44 90 90 3960 356400
+30	146853 1215 163 163568 1.005168543747 72.922424566318 44 90 90 3960 356400
+31	148068 1215 163 163568 1.005168543747 72.922424566318 44 90 90 3960 356400
+32	149283 1215 164 163569 1.005168543747 72.922424566318 44 72 72 3168 228096
+33	150498 13972 268 163977 1.7 73 714 20.05 20.05 14315.7 287029.785
+34	164470 21006 268 163977 1.7 73 714 39.95 997.36469814701 361824.31780333 240623231.59203
+35	185476 21005 278 163977 1.8 73 713 0.49318359263707 13.899994992511 9587.8969068275 130913.14860858
+36	206481 21823 289 163977 1.9 73 712 -2.3302440403495 4.7627954241644 132.5674176492 1222.317599803
+37	228304 18461 289 163977 1.9 73 712 0.973 17.75740606944 2271.1744939609 12385.702153553
+38	246765 13687 610 163977 3.4 73 697 20.05 20.05 13974.85 280195.7425
+39	260452 20615 610 163977 3.4 73 697 39.95 309.58825904717 184556.15252457 53483373.591986
+40	281067 14039 622 163977 3.5 73 696 0 13.899654161278 2696.3825904717 35078.416105345
+41	295106 13853 635 163977 3.6 73 695 -5 4.8203402552013 -4.9641616786248 1393.8477689802
+42	308959 14903 635 163977 3.6 73 695 0.973 17.996729206998 1268.3809613533 5785.4541451883
+43	323862 13402 831 163977 5.1 73 680 20.05 20.05 13634 273361.7
+44	337264 20152 831 163977 5.1 73 680 39.95 304.58725901167 176675.72476956 50286476.480293
+45	357416 14276 845 163977 5.2 73 679 0 13.89802897434 2646.3725901167 33514.514421108
+46	371692 14449 863 163977 5.3 73 678 -5 4.988261294784 -4.7529065420385 1110.5322882682
+47	386141 14696 863 163977 5.3 73 678 0.973 17.604153198793 1216.9951901372 5522.5763486824
+48	400837 13119 1463 163977 6.7 73 664 16.75 20.05 11841.4 212767.42
+49	413956 19661 1463 163977 6.7 73 664 39.95 893.96619080102 298072.98409193 175408104.94259
+50	433617 12455 1464 163978 6.7 73 664 1000 1000 664000 664000000
+51	446072 12456 1466 164018 6.7 73 664 1008 1008 669312 674666496
+52	458528 19667 1484 163977 6.8 73 663 0.47837243590038 13.899863507284 8554.0463852729 114178.60471522
+53	478195 20350 1505 163977 6.9 73 662 -5 4.9707622420287 134.06104826927 1739.7445411623
+54	498545 17090 1505 163977 6.9 73 662 0.973 16.350642319737 2215.266157424 13363.814323806
+55	515635 266 1988 152288 7.744067511521 70.600418596296 9 1000 1000 9000 9000000
+56	515901 266 1990 152289 7.744067511521 70.600418596296 9 1008 1008 9072 9144576
+57	516167 744 1994 162349 7.744067511521 72.600418596296 27 80 80 2160 172800
+58	516911 744 1996 162351 7.744067511521 72.600418596296 27 98 98 2646 259308
+59	517655 717 1996 162351 7.744067511521 72.600418596296 27 0 0 0 0
+60	518372 744 1998 162353 7.744067511521 72.600418596296 27 98 98 2646 259308
+61	519116 744 1999 162354 7.744075991521 72.600427076296 27 98 98 2646 259308
+62	519860 744 2000 162355 7.744076091521 72.600427176296 27 98 98 2646 259308
+63	520604 744 2000 162355 7.744076091521 72.600427176296 27 98 98 2646 259308
+64	521348 744 2001 162356 7.744076091521 72.600427176296 27 80 80 2160 172800
+65	522092 268 2052 138814 7.964223081945 67.733776699752 9 1000 1000 9000 9000000
+66	522360 268 2054 138815 7.964223081945 67.733776699752 9 1008 1008 9072 9144576
+67	522628 750 2058 147946 7.964223081945 69.733776699752 27 80 80 2160 172800
+68	523378 750 2060 147948 7.964223081945 69.733776699752 27 98 98 2646 259308
+69	524128 723 2060 147948 7.964223081945 69.733776699752 27 0 0 0 0
+70	524851 750 2062 147950 7.964223081945 69.733776699752 27 98 98 2646 259308
+71	525601 750 2063 147951 7.964231561945 69.733785179752 27 98 98 2646 259308
+72	526351 750 2064 147952 7.964231661945 69.733785279752 27 98 98 2646 259308
+73	527101 750 2064 147952 7.964231661945 69.733785279752 27 98 98 2646 259308
+74	527851 750 2065 147953 7.964231661945 69.733785279752 27 80 80 2160 172800
+75	528601 12817 2148 163977 8.4 73 647 20.05 23.35 14444.15 323971.7375
+76	541418 19198 2148 163977 8.4 73 647 39.95 885.35408792503 289348.1404371 169495541.05344
+77	560616 12170 2150 163979 8.4 73 647 1000 1000 647000 647000000
+78	572786 12171 2153 164019 8.4 73 647 1008 1008 652176 657393408
+79	584957 19195 2174 163977 8.5 73 646 0.48209813666181 13.89972095422 8467.8000106543 113667.57285581
+80	604152 298 2200 154293 8.575946824858 70.999775563832 10 1000 1000 10000 10000000
+81	604450 298 2202 154294 8.575946824858 70.999775563832 10 1008 1008 10080 10160640
+82	604748 19919 2205 163977 8.6 73 645 -5 4.9998616240919 132.7703326742 1608.6567818453
+83	624667 16697 2205 163977 8.6 73 645 0.973 16.752040471653 2147.5837318269 13248.840923211
+84	641364 177 2248 51003 8.605753010153 44.339533033299 6 1008 1008 6048 6096384
+85	641541 159 2248 51003 8.605753010153 44.339533033299 6 1 6 21 91
+86	641700 12514 2937 163977 10.1 73 630 16.75 20.05 11159.7 199099.335
+87	654214 18719 2937 163977 10.1 73 630 39.95 870.59749682767 277900.59503613 160647308.44892
+88	672933 11884 2940 163980 10.1 73 630 1000 1000 630000 630000000
+89	684817 11885 2944 164020 10.1 73 630 1008 1008 635040 640120320
+90	696702 18713 2968 163977 10.2 73 629 0.49920402690186 13.899787265668 8320.2373698416 112255.13544838
+91	715415 19374 2999 163977 10.3 73 628 -4.9225501489702 4.9982075981097 132.63197538169 1498.6441173075
+92	734789 16343 2999 163977 10.3 73 628 0.973 18.044201710223 2147.9253148472 13034.405548221
+93	751132 12212 3436 163977 11.7 73 614 20.05 23.35 13782.5 310705.655
+94	763344 18275 3436 163977 11.7 73 614 39.95 854.53501649747 266691.52182336 151645676.46906
+95	781619 11599 3440 163981 11.7 73 614 1000 1000 614000 614000000
+96	793218 11599 3445 164021 11.7 73 614 1008 1008 618912 623863296
+97	804817 18247 3476 163977 11.8 73 613 0.48173894548672 13.899833946116 8159.6633536188 110589.59518999
+98	823064 18909 3814 163977 11.9 73 612 -4.3504198076134 4.9826754095857 133.31449698674 1346.5204248903
+99	841973 15918 3814 163977 11.9 73 612 0.973 17.61047887702 2068.794802398 12316.755980585
+100	857891 12490 4651 163977 13.4 73 597 16.75 20.05 10719.15 193969.7325
+101	870381 18372 4651 163977 13.4 73 597 39.95 802.92029889333 241689.46691611 127620378.16527
+102	888753 11894 4656 163982 13.4 73 597 1000 1000 597000 597000000
+103	900647 11894 4662 164022 13.4 73 597 1008 1008 601776 606590208
+104	912541 18364 4692 163977 13.5 73 596 0.48981897080666 13.897950214311 7643.3942254867 101762.01034586
+105	930905 18982 4733 163977 13.6 73 595 -5 4.9930968054362 132.01417582709 1846.1500643229
+106	949887 16038 4733 163977 13.6 73 595 0.973 17.425415518173 2042.213011006 12958.066512029
+107	965925 12154 5714 163977 15.1 73 580 20.05 23.35 12879.7 287441.83
+108	978079 17860 5714 163977 15.1 73 580 39.95 795.43804628113 233691.71826488 123040326.23929
+109	995939 11575 5720 163983 15.1 73 580 1000 1000 580000 580000000
+110	1007514 11575 5727 164023 15.1 73 580 1008 1008 584640 589317120
+111	1019089 17861 5760 163977 15.2 73 579 0.48856941364938 13.899774178956 7568.589893097 101557.91608426
+112	1036950 18466 5806 163977 15.3 73 578 -4.8916293628527 4.9787210294744 132.20860872115 1529.5560938869
+113	1055416 15645 5806 163977 15.3 73 578 0.973 17.48024381113 1999.3964729607 12491.941521761
+114	1071061 11836 6827 163977 16.7 73 564 16.75 20.05 10057.5 180703.65
+115	1082897 17402 6827 163977 16.7 73 564 39.95 780.195711984 223675.4073171 115796715.50798
+116	1100299 11273 6834 163984 16.7 73 564 1000 1000 564000 564000000
+117	1111572 11273 6842 164024 16.7 73 564 1008 1008 568512 573060096
+118	1122845 17372 6890 163977 16.8 73 563 0.49064388542902 13.899962406175 7416.2454833806 99840.159390705
+119	1140217 18012 6942 163977 16.9 73 562 -4.161945976578 4.9272499792278 132.97719655209 1325.3994239526
+120	1158229 15282 6942 163977 16.9 73 562 0.973 17.755801391565 1893.0005320098 11544.64060443
+121	1173511 11500 8302 163977 18.4 73 547 20.05 23.35 12218.05 274175.7475
+122	1185011 16876 8302 163977 18.4 73 547 39.95 763.78902969757 212939.97919196 108246189.0839
+123	1201887 10954 8310 163985 18.4 73 547 1000 1000 547000 547000000
+124	1212841 10954 8319 164025 18.4 73 547 1008 1008 551376 555787008
+125	1223795 16890 8358 163977 18.5 73 546 0.48847482928541 13.899844280712 7252.2783225286 98347.251066668
+126	1240685 17485 8414 163977 18.6 73 545 -3.3305351605397 4.9903491180157 133.99550723773 1254.6037057474
+127	1258170 14809 8414 163977 18.6 73 545 0.973 18.058885818088 1848.6308848394 11497.821889681
+128	1272979 11164 9813 163977 20.1 73 530 16.75 20.05 9593.6 175050.605
+129	1284143 16386 9813 163977 20.1 73 530 39.95 711.84673728 191457.12487814 89601483.215428
+130	1300529 10635 9822 163986 20.1 73 530 1000 1000 530000 530000000
+131	1311164 10635 9832 164026 20.1 73 530 1008 1008 534240 538513920
+132	1321799 16384 9874 163977 20.2 73 529 0.48857353104977 13.899981886649 6732.8124440065 89289.640376187
+133	1338183 16872 9935 163977 20.3 73 528 -5 4.9741802125936 133.56497675495 1818.0390641257
+134	1355055 14349 9935 163977 20.3 73 528 0.973 17.719424106441 1886.413283806 12282.468524561
+135	1369404 10834 11403 163977 21.7 73 514 20.05 23.35 11338.6 251457.145
+136	1380238 15905 11403 163977 21.7 73 514 39.95 704.01811088794 184164.37765001 85725337.856021
+137	1396143 10320 11413 163987 21.7 73 514 1000 1000 514000 514000000
+138	1406463 10320 11424 164027 21.7 73 514 1008 1008 518112 522256896
+139	1416783 15878 11469 163977 21.8 73 513 0.48330712771858 13.899435764446 6654.3906177298 88876.482998623
+140	1432661 16425 11535 163977 21.9 73 512 -4.9915653578282 4.9193167779595 132.26201722672 1507.214112591
+141	1449086 13985 11535 163977 21.9 73 512 0.973 18.348719371033 1779.8600906475 11461.844338923
+142	1463071 10481 13376 163977 23.4 73 497 16.75 20.05 8931.95 161784.5225
+143	1473552 15365 13376 163977 23.4 73 497 39.95 688.83618224796 174763.57737919 79874346.915921
+144	1488917 9984 13387 163988 23.4 73 497 1000 1000 497000 497000000
+145	1498901 9984 13399 164028 23.4 73 497 1008 1008 500976 504983808
+146	1508885 15381 13447 163977 23.5 73 496 0.48555726446211 13.899479030666 6502.6245856631 87331.019744545
+147	1524266 15887 13530 163977 23.6 73 495 -4.8036426238272 4.9392049559662 132.7720591902 1250.4794826098
+148	1540153 13534 13530 163977 23.6 73 495 0.973 16.260098564883 1719.4395745642 10578.922229636
+149	1553687 10128 15375 163977 25.1 73 480 20.05 23.35 10656.9 237789.06
+150	1563815 14864 15375 163977 25.1 73 480 39.95 672.68179285396 165358.051677 74036342.096181
+151	1578679 9648 15387 163989 25.1 73 480 1000 1000 480000 480000000
+152	1588327 9648 15400 164029 25.1 73 480 1008 1008 483840 487710720
+153	1597975 14855 15451 163977 25.2 73 479 0.48544200666365 13.899796847056 6341.0423039913 85836.90403146
+154	1612830 15344 15527 163977 25.3 73 478 -3.8552963710523 4.9948384211166 132.38933445112 1173.9174243944
+155	1628174 13058 15527 163977 25.3 73 478 0.973 17.137967591482 1661.0819530211 10385.090460419
+156	1641232 9794 17108 163977 26.7 73 464 16.75 20.05 8491.4 156654.92
+157	1651026 14370 17108 163977 26.7 73 464 39.95 618.20551004381 146845.63055741 59610318.760489
+158	1665396 9330 17121 163990 26.7 73 464 1000 1000 464000 464000000
+159	1674726 9330 17135 164030 26.7 73 464 1008 1008 467712 471453696
+160	1684056 14361 17291 163977 26.8 73 463 0.48992132054409 13.899877258437 5796.4518653687 76307.512586111
+161	1698417 14779 17473 163977 26.9 73 462 -5 4.9645683782093 134.06843610061 1754.6124136584
+162	1713196 12565 17473 163977 26.9 73 462 0.973 16.590203896237 1688.1090243107 11534.875114717
+163	1725761 9441 19454 163977 28.4 73 447 20.05 23.35 9774.1500000001 214927.2375
+164	1735202 13833 19454 163977 28.4 73 447 39.95 611.52856689123 139888.0810491 56540295.824426
+165	1749035 8994 19468 163991 28.4 73 447 1000 1000 447000 447000000
+166	1758029 8994 19483 164031 28.4 73 447 1008 1008 450576 454180608
+167	1767023 13820 19540 163977 28.5 73 446 0.48588431973476 13.899556903203 5729.497274063 76128.089844802
+168	1780843 14271 19626 163977 28.6 73 445 -5 4.8814975557616 132.2572083096 1333.3490320837
+169	1795114 12241 19626 163977 28.6 73 445 0.973 17.366738484291 1577.9755975097 9982.4636394681
+170	1807355 9088 21940 163977 30.1 73 430 16.75 20.05 7809.7 142986.835
+171	1816443 13322 21940 163977 30.1 73 430 39.95 595.92102111269 131354.25831987 51903427.943687
+172	1829765 8658 21955 163992 30.1 73 430 1000 1000 430000 430000000
+173	1838423 8658 21971 164032 30.1 73 430 1008 1008 433440 436907520
+174	1847081 13316 22031 163977 30.2 73 429 0.476620987145 13.899632747902 5573.4567300166 74495.441266436
+175	1860397 13738 22122 163977 30.3 73 428 -4.2228056271405 4.8982248152606 132.69897902623 1174.5342175192
+176	1874135 11758 22122 163977 30.3 73 428 0.973 16.070084775994 1516.8752357161 9446.0751207729
+177	1885893 8754 24565 163977 31.7 73 414 20.05 23.35 9112.5000000001 201661.155
+178	1894647 12836 24565 163977 31.7 73 414 39.95 580.86372880075 123596.58075211 47758609.237896
+179	1907483 8340 24581 163993 31.7 73 414 1000 1000 414000 414000000
+180	1915823 8340 24598 164033 31.7 73 414 1008 1008 417312 420650496
+181	1924163 12816 24661 163977 31.8 73 413 0.4893545613857 13.898892072414 5422.854022291 73134.413963838
+182	1936979 13254 24757 163977 31.9 73 412 -3.0939806697399 4.9861756004884 132.27379722195 1035.382879259
+183	1950233 11195 24757 163977 31.9 73 412 0.973 15.769588063874 1421.5002231371 9022.3648331335
+184	1961428 8401 27063 163977 33.4 73 397 16.75 20.05 7369.15 137857.2325
+185	1969829 12314 27063 163977 33.4 73 397 39.95 527.14177837279 108601.60561373 37729128.025944
+186	1982143 8004 27080 163994 33.4 73 397 1000 1000 397000 397000000
+187	1990147 8004 27098 164034 33.4 73 397 1008 1008 400176 403377408
+188	1998151 12311 27411 163977 33.5 73 396 0.49316628160304 13.899578875606 4885.6569245056 63860.966967648
+189	2010462 12606 27512 163977 33.6 73 395 -5 4.9932348896982 132.45974496106 1681.0215285132
+190	2023068 10680 27512 163977 33.6 73 395 0.973 16.126878741368 1502.2252418495 10609.693505053
+191	2033748 8048 29900 163977 35.1 73 380 20.05 23.35 8209.7000000001 178397.33
+192	2041796 11780 29900 163977 35.1 73 380 39.95 520.3112993634 102218.78665635 35197005.833701
+193	2053576 7668 29918 163995 35.1 73 380 1000 1000 380000 380000000
+194	2061244 7668 29937 164035 35.1 73 380 1008 1008 383040 386104320
+195	2068912 11784 30006 163977 35.2 73 379 0.49849051302881 13.899509463843 4817.47694648 63660.447242725
+196	2080696 12147 30112 163977 35.3 73 378 -5 4.8738089081747 133.6546233304 1320.6159615835
+197	2092843 10336 30112 163977 35.3 73 378 0.973 16.272992850243 1383.22798275 9473.1386099676
+198	2103179 7714 33013 163977 36.7 73 364 16.75 20.05 6707.5 124591.15
+199	2110893 11304 33013 163977 36.7 73 364 39.95 504.63654782085 95138.067499038 31837897.421206
+200	2122197 7350 33032 163996 36.7 73 364 1000 1000 364000 364000000
+201	2129547 7350 33052 164036 36.7 73 364 1008 1008 366912 369847296
+202	2136897 11292 33124 163977 36.8 73 363 0.49448134358972 13.899581252225 4660.7625663673 61866.556591998
+203	2148189 11622 33235 163977 36.9 73 362 -3.9451793772526 4.9998650732576 134.02606815204 1140.1238047424
+204	2159811 9930 33235 163977 36.9 73 362 0.973 17.922132500658 1330.4154303347 8818.5776519764
+205	2169741 7361 36133 163977 38.4 73 347 20.05 23.35 7548.0500000001 165131.2475
+206	2177102 10778 36133 163977 38.4 73 347 39.95 488.73805732794 87797.46881879 28537451.097757
+207	2187880 7014 36153 163997 38.4 73 347 1000 1000 347000 347000000
+208	2194894 7014 36174 164037 38.4 73 347 1008 1008 349776 352574208
+209	2201908 10760 36249 163977 38.5 73 346 0.48234073008061 13.899857596122 4501.5808244263 60428.83109633
+210	2212668 11093 36365 163977 38.6 73 345 -3.907538334208 4.9730555992573 132.17910416756 1037.9948343435
+211	2223761 9412 36365 163977 38.6 73 345 0.973 17.745560030203 1267.3096498958 8526.7372442454
+212	2233173 7008 39517 163977 40.1 73 330 16.75 20.05 6243.6 118938.105
+213	2240181 10253 39517 163977 40.1 73 330 39.95 436.17739441751 76463.776424461 22237149.556782
+214	2250434 6678 39538 163998 40.1 73 330 1000 1000 330000 330000000
+215	2257112 6678 39560 164038 40.1 73 330 1008 1008 332640 335301120
+216	2263790 10240 39638 163977 40.2 73 329 0.48376568181557 13.899719490006 3976.1309178489 51365.349328806
+217	2274030 10517 40041 163977 40.3 73 328 -5 4.9387954536995 133.7320799196 1564.8940205398
+218	2284547 8947 40041 163977 40.3 73 328 0.973 18.142521356041 1272.2805165677 9355.5982370018
+219	2293494 6674 43887 163977 41.7 73 314 20.05 23.35 6668.6000000001 142412.645
+220	2300168 9753 43887 163977 41.7 73 314 39.95 428.68935100688 70914.647795761 20230909.522484
+221	2309921 6360 43909 163999 41.7 73 314 1000 1000 314000 314000000
+222	2316281 6360 43932 164039 41.7 73 314 1008 1008 316512 319044096
+223	2322641 9746 44013 163977 41.8 73 313 0.47948187146685 13.899307261547 3901.1309597063 50984.924719383
+224	2332387 10014 44139 163977 41.9 73 312 -4.8830022295869 4.9542868818389 132.57967766008 1313.9354167396
+225	2342401 8632 44139 163977 41.9 73 312 0.973 17.907991849005 1224.6934256931 8778.5534355011
+226	2351033 6321 47913 163977 43.4 73 297 16.75 20.05 5581.95 105672.0225
+227	2357354 9238 47913 163977 43.4 73 297 39.95 413.41137742083 64572.016798219 17770808.492654
+228	2366592 6024 47936 164000 43.4 73 297 1000 1000 297000 297000000
+229	2372616 6024 47960 164040 43.4 73 297 1008 1008 299376 301771008
+230	2378640 9234 48044 163977 43.5 73 296 0.48101159236976 13.898934574949 3748.2675662707 49345.902753693
+231	2387874 9507 48175 163977 43.6 73 295 -4.473799917803 4.9955449544359 131.7278047009 1064.5408232694
+232	2397381 8126 48175 163977 43.6 73 295 0.973 17.252433235223 1111.3420773059 7666.4348262315
+233	2405507 5968 52547 163977 45.1 73 280 20.05 23.35 5986.9 128744.56
+234	2411475 8718 52547 163977 45.1 73 280 39.95 396.73110317868 58037.30119971 15321957.634412
+235	2420193 5688 52571 164001 45.1 73 280 1000 1000 280000 280000000
+236	2425881 5688 52596 164041 45.1 73 280 1008 1008 282240 284497920
+237	2431569 8699 52683 163977 45.2 73 279 0.48999890277046 13.896457817208 3581.5821588949 47810.263099298
+238	2440268 8951 52819 163977 45.3 73 278 -5 4.9964388592167 132.81128205342 911.8409298934
+239	2449219 7779 52819 163977 45.3 73 278 0.973 15.757576714982 1053.8020379258 7104.4110651604
+240	2456998 5634 56738 163977 46.7 73 264 16.75 20.05 5141.4 100542.42
+241	2462632 8221 56738 163977 46.7 73 264 39.95 343.15140396429 50454.819649039 11998318.477444
+242	2470853 5370 56763 164002 46.7 73 264 1000 1000 264000 264000000
+243	2476223 5370 56789 164042 46.7 73 264 1008 1008 266112 268240896
+244	2481593 8220 56880 163977 46.8 73 263 0.49795965278754 13.899502343475 3045.898612975 38435.005979299
+245	2489813 8381 57659 163977 46.9 73 262 -5 4.959418058861 133.8661367934 1499.1316461969
+246	2498194 7206 57659 163977 46.9 73 262 0.973 15.648139552655 1094.5558094123 8344.8816387077
+247	2505400 5281 62439 163977 48.4 73 247 20.05 23.35 5104.15 105882.7375
+248	2510681 7700 62439 163977 48.4 73 247 39.95 336.4824967871 45198.132929441 10330141.821743
+249	2518381 5034 62465 164003 48.4 73 247 1000 1000 247000 247000000
+250	2523415 5034 62492 164043 48.4 73 247 1008 1008 248976 250967808
+251	2528449 7706 63245 163977 48.5 73 246 0.48383763406891 13.899763172586 2979.104922889 38284.891461997
+252	2536155 7871 63391 163977 48.6 73 245 -4.7729930703925 4.9384920123637 132.96117383928 1241.0820490759
+253	2544026 6696 63391 163977 48.6 73 245 0.973 15.488509773917 1039.7534090608 7983.7901213587
+254	2550722 4928 67247 163977 50.1 73 230 16.75 20.05 4459.7 86874.335
+255	2555650 7178 67247 163977 50.1 73 230 39.95 320.69005622221 39708.968896338 8580516.3121135
+256	2562828 4698 67274 164004 50.1 73 230 1000 1000 230000 230000000
+257	2567526 4698 67302 164044 50.1 73 230 1008 1008 231840 233694720
+258	2572224 7169 68214 163977 50.2 73 229 0.49529980077641 13.899256930838 2821.1931113116 36588.961602873
+259	2579393 7334 68365 163977 50.3 73 228 -4.6355136220815 4.9795930786058 132.97249288729 1007.3523000553
+260	2586727 6341 68365 163977 50.3 73 228 0.973 17.070384941373 952.92877261677 7108.0704654926
+261	2593068 4594 73113 163977 51.7 73 214 20.05 23.35 4442.5 92616.655
+262	2597662 6690 73113 163977 51.7 73 214 39.95 305.99210596042 35096.341413941 7186337.4448052
+263	2604352 4380 73141 164005 51.7 73 214 1000 1000 214000 214000000
+264	2608732 4380 73170 164045 51.7 73 214 1008 1008 215712 217437696
+265	2613112 6684 73270 163977 51.8 73 213 0.48385426775785 13.898079270241 2674.1775882771 35228.161064483
+266	2619796 6864 73427 163977 51.9 73 212 -3.4146856233891 4.9818231485551 132.72674405214 923.26051941698
+267	2626660 5844 73427 163977 51.9 73 212 0.973 18.280683238623 862.56488660907 6683.9325572067
+268	2632504 4241 79922 163977 53.4 73 197 20.05 20.05 3949.85 79194.4925
+269	2636745 6168 79922 163977 53.4 73 197 39.95 282.60409382424 30099.869230956 5728795.0219711
+270	2642913 4044 79951 164006 53.4 73 197 1000 1000 197000 197000000
+271	2646957 4044 79981 164046 53.4 73 197 1008 1008 198576 200164608
+272	2651001 6165 80433 163977 53.5 73 196 0.49935736934422 13.894250685559 2435.5295563336 31964.903603557
+273	2657166 6295 80931 163977 53.6 73 195 -5 4.8849085596157 84.89260721927 949.45302845378
+274	2663461 5366 80931 163977 53.6 73 195 0.973 15.792074701511 761.56115915092 5546.6181630949
+275	2668827 3888 86031 163977 55.1 73 180 20.05 20.05 3609 72360.45
+276	2672715 5647 86031 163977 55.1 73 180 39.95 262.26975007227 25497.479847481 4474759.939387
+277	2678362 3708 86061 164007 55.1 73 180 1000 1000 180000 180000000
+278	2682070 3708 86092 164047 55.1 73 180 1008 1008 181440 182891520
+279	2685778 5645 86197 163977 55.2 73 179 0.47815249362611 13.898628326575 2234.3330700446 29505.031930363
+280	2691423 5781 86713 163977 55.3 73 178 -4.4711984165178 4.9539129693468 106.57416828263 766.84421343149
+281	2697204 5015 86713 163977 55.3 73 178 0.973 15.710258245392 698.92587269952 4737.40564844
+282	2702219 3554 92518 163977 56.7 73 164 20.05 20.05 3288.2 65928.41
+283	2705773 5154 92518 163977 56.7 73 164 39.95 241.15203606887 21436.148543757 3447831.8732729
+284	2710927 3390 92549 164008 56.7 73 164 1000 1000 164000 164000000
+285	2714317 3390 92581 164048 56.7 73 164 1008 1008 165312 166634496
+286	2717707 5142 92856 163977 56.8 73 163 0.48181860140176 13.893591229722 2024.6853988497 26777.933353959
+287	2722849 5276 93212 163977 56.9 73 162 -3.4267521389155 4.9356394738425 121.83219559575 679.12755517661
+288	2728125 4566 93212 163977 56.9 73 162 0.973 15.214931539611 641.70633545577 4454.3100651403
+289	2732691 3201 98504 163977 58.4 73 147 20.05 20.05 2947.35 59094.3675
+290	2735892 4625 98504 163977 58.4 73 147 39.95 216.8826179814 17399.284462131 2512185.2023422
+291	2740517 3054 98536 164009 58.4 73 147 1000 1000 147000 147000000
+292	2743571 3054 98569 164049 58.4 73 147 1008 1008 148176 149361408
+293	2746625 4615 99048 163977 58.5 73 146 0.48402955745696 13.899111831596 1783.1256039103 23414.691754595
+294	2751240 4728 99228 163977 58.6 73 145 -2.2101520630531 4.9694142824058 133.1539453888 624.9885998816
+295	2755968 4179 99228 163977 58.6 73 145 0.973 15.592589976598 603.84678608625 4272.3734626277
+296	2760147 2834 106536 163977 60.1 73 130 20.05 20.05 2606.5 52260.325
+297	2762981 4098 106536 163977 60.1 73 130 39.95 192.76873600364 13821.650151657 1772546.8444262
+298	2767079 2704 106569 164010 60.1 73 130 1000 1000 130000 130000000
+299	2769783 2704 106603 164050 60.1 73 130 1008 1008 131040 132088320
+300	2772487 4095 106717 163977 60.2 73 129 0.49935866959859 13.898897573561 1542.0761748866 20087.233502664
+301	2776582 4180 106898 163977 60.3 73 128 -2.1609020320466 4.9439929617802 133.89456180623 614.19474163023
+302	2780762 3698 106898 163977 60.3 73 128 0.973 16.34095427153 558.80154710257 4239.7279997588
+303	2784460 2484 113080 163977 61.7 73 114 20.05 20.05 2285.7 45828.285
+304	2786944 3594 113080 163977 61.7 73 114 39.95 170.41274228706 10873.853015555 1233134.144997
+305	2790538 2370 113114 164011 61.7 73 114 1000 1000 114000 114000000
+306	2792908 2370 113149 164051 61.7 73 114 1008 1008 114912 115831296
+307	2795278 3586 113267 163977 61.8 73 113 0.49647653033026 13.899818325741 1318.4298183733 16987.483352741
+308	2798864 3638 113997 163977 61.9 73 112 -2.3605380795198 4.9305077467579 133.05918972392 601.15618083752
+309	2802502 3234 113997 163977 61.9 73 112 0.973 14.350118310195 523.46942520588 4054.5016543451
+310	2805736 2114 120230 163977 63.4 73 97 20.05 20.05 1944.85 38994.2425
+311	2807850 3055 120230 163977 63.4 73 97 39.95 148.13641301297 8252.8265611965 817637.17631336
+312	2810905 2017 120265 164012 63.4 73 97 1000 1000 97000 97000000
+313	2812922 2017 120301 164052 63.4 73 97 1008 1008 97776 98558208
+314	2814939 3042 120573 163977 63.5 73 96 0.47829355632421 13.898128314619 1095.6855416875 13950.14608108
+315	2817981 3070 120764 163977 63.6 73 95 -2.0369496423518 4.9770100495972 133.43118001497 589.03302435835
+316	2821051 2772 120764 163977 63.6 73 95 0.973 14.543884744458 477.54917135699 3699.5763053219
+317	2823823 1744 127404 163977 65.1 73 80 20.05 20.05 1604 32160.2
+318	2825567 2510 127404 163977 65.1 73 80 39.95 125.14797409226 5945.9288984897 501504.78520509
+319	2828077 1664 127440 164013 65.1 73 80 1000 1000 80000 80000000
+320	2829741 1664 127477 164053 65.1 73 80 1008 1008 80640 81285120
+321	2831405 2505 127600 163977 65.2 73 79 0.48180989960092 13.89725326075 865.7218777569 10809.63832376
+322	2833910 2524 127796 163977 65.3 73 78 -1.98549545079 4.9375301552936 132.60326934682 586.2132712757
+323	2836434 2283 127796 163977 65.3 73 78 0.973 14.719768012379 418.16143378893 3520.9700080909
+324	2838717 1394 134711 163977 66.7 73 64 20.05 20.05 1283.2 25728.16
+325	2840111 2005 134711 163977 66.7 73 64 39.95 101.0496268305 4030.1770317117 277909.91717485
+326	2842116 1330 134748 164014 66.7 73 64 1000 1000 64000 64000000
+327	2843446 1330 134786 164054 66.7 73 64 1008 1008 64512 65028096
+328	2844776 1998 134912 163977 66.8 73 63 0.48353586795856 13.883830281533 624.8086507066 7371.4441473945
+329	2846774 1996 135113 163977 66.9 73 62 -2.195475208573 4.9886847264676 133.28846533626 511.28582960623
+330	2848770 1907 135113 163977 66.9 73 62 0.973 15.717709482051 359.27158901656 2970.1072615219
+331	2850677 1024 142172 163977 68.4 73 47 20.05 20.05 942.35 18894.1175
+332	2851701 1471 142172 163977 68.4 73 47 39.95 78.545797422968 2518.6179002311 141760.64469338
+333	2853172 977 142210 164015 68.4 73 47 1000 1000 47000 47000000
+334	2854149 977 142249 164055 68.4 73 47 1008 1008 47376 47755008
+335	2855126 1460 142379 163977 68.5 73 46 0.49004755584174 13.892954605899 399.85092883558 4323.0483962093
+336	2856586 1434 142985 163977 68.6 73 45 -1.7153893754585 4.8400546811534 134.02907050058 506.71624948142
+337	2858020 1409 142985 163977 68.6 73 45 0.973 13.943948839839 318.66477728307 2804.9922463519
+338	2859429 654 149907 163977 70.1 73 30 20.05 20.05 601.5 12060.075
+339	2860083 928 149907 163977 70.1 73 30 39.95 57.05861911428 1372.7472176461 63656.707843628
+340	2861011 624 149946 164016 70.1 73 30 1000 1000 30000 30000000
+341	2861635 624 149986 164056 70.1 73 30 1008 1008 30240 30481920
+342	2862259 921 150118 163977 70.2 73 29 0.48064336009556 11.900134680775 182.98632582358 1485.433155752
+343	2863180 881 150905 163977 70.3 73 28 3.0342810745729 4.9617570452392 114.19491320679 475.96154488385
+344	2864061 886 150905 163977 70.3 73 28 2.3234585264358 15.181951671814 217.23339610745 2013.4575008173
+345	2864947 304 158027 163977 71.7 73 14 20.05 20.05 280.7 5628.035
+346	2865251 424 158027 163977 71.7 73 14 39.95 43.300586387849 575.50060955125 23673.949715692
+347	2865675 290 158067 164017 71.7 73 14 1000 1000 14000 14000000
+348	2865965 290 158108 164057 71.7 73 14 1008 1008 14112 14224896
+349	2866255 414 158243 163977 71.8 73 13 0.47634091709042 5.2062935005299 38.712157379017 142.54332460305
+350	2866669 379 158459 163977 71.9 73 12 2.7031030118267 4.8159440210582 47.299525834394 191.81463707984
+351	2867048 379 158459 163977 71.9 73 12 2.2344330876974 6.8452378993883 49.918127966448 223.94459766511
+

@@ -81,7 +81,11 @@ simple Mac1609_4 extends BaseMacLayer
         @signal[sigChannelBusy](type=bool);
         // signal informing interested application about a collision
         @signal[sigCollision](type=bool);
-        
+        //         CAN Configurations
+		double maxt2cThresh = default (1.0);
+		double maxivtThresh = default (1.5);
+		double mint2cThresh = default(0.5);
+		double minivtThresh = default(0.5);
         
 
 }

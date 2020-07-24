@@ -53,6 +53,13 @@
 
 /*-------------------------END------------------------------------*/
 
+/*--------     BAM    --------*/
+#include "veins/modules/mobility/traci/TraCIMobility.h"
+#include "veins/modules/mobility/traci/TraCICommandInterface.h"
+#include "veins/modules/MCTA/MCTAmotionPlanning.h"
+#include "veins/modules/mobility/traci/TraCICoord.h" //BAM
+#include <algorithm>
+/*--------     BAM    --------*/
 
 /**
  * @brief
@@ -77,8 +84,36 @@
 
 //Interface Entry
 
-class inet::InterfaceEntry;
+/*--------     BAM    --------*/
+struct NeighborInfo{
+    vehicle vehicle_t;
+    simtime_t ReceptionTime;
+};
+using Veins::TraCIMobility;
+using Veins::TraCICommandInterface;
+using Veins::TraCICoord;//BAM
+struct Clusterstruct{
+    int cluster_id;
+    std::string cluster_Hid;
+    int cluster_HMac;
+    std::map<std::string, Veins::TraCIMobility*> clusterMembMob; //Member Vehicle Id and its corresponding mobility
+};
+struct cp2obstacle{
+    double ManT;
+    double cp;
+};
+struct CANDataCollection{
+    int cid;
+    int ncm;
+    double emcp;
+    double recordTime;
+    double rightmanlcp;
+    double leftmanlcp;
+    double collDetDelay;
+};
+/*--------     BAM    --------*/
 
+class inet::InterfaceEntry;
 
 /*--------------------END-------------------------------*/
 
@@ -259,6 +294,62 @@ class Mac1609_4 : public BaseMacLayer,
 		void handleAck(const Mac80211Ack* ack);
 		void handleAckTimeOut(AckTimeOutMessage* ackTimeOutMsg);
 		void handleRetransmit(t_access_category ac);
+
+//		BAM
+  /* pointers ill be set when used with TraCIMobility */
+        TraCIMobility* mobility;
+        TraCICommandInterface* traci;
+        TraCICommandInterface::Vehicle* traciVehicle;
+
+        int returnCID(std::string vehID);
+        Clusterstruct mycluster;
+        void reorganizethisCluster(std::string MemberID);
+        bool checkIsCH(std::string vehID);
+//        std::vector<RemoteSensedVehicles> SensedVehicles;
+        std::vector<NeighborInfo> NeighborInformation;
+        std::string LastRecvAccPktSenderID = "";
+        motionPlanning mp;
+        vehicle actualVeh;
+        void callForManeuver(double Time2Maneuver);
+        std::vector<vehicle> returnNeigbourVehicles(std::vector<NeighborInfo> NeigbourInf);
+        double returnDst(Coord Pos1, Coord Pos2);
+        double AccidentDetectionDst = 0;
+        Coord obstPosition;
+        double tmaneuver = 0; //Time To maneuver The Current Vehicle
+        int returnTheManeuverLane(std::vector<vehicle> NeighborVehs, vehicle curVehicle);
+        int chooseLanebyLaneDrivingKinnematics(std::vector<vehicle> NeighborVehs,  vehicle curVehicle);
+        int chooseLanebyDrivingDensity(std::vector<vehicle> NeighborVehs, int actualLane);
+        void NeigborsRecording(NeighborInfo recInf);
+        bool ckeckLaneChange = false;
+        void clusterManeuverHandler();
+        void CMManeuverPlanningBasedLaneProbability (Clusterstruct CMembers, double CP2Obst, TraCIMobility*  emvmob, double ManTime);
+        cp2obstacle CP2Obstacle(TraCIMobility* tmob);
+        cMessage* stopvehicle;
+        cMessage* triggerManeuverEvt;
+        cMessage* planManEvt;
+        std::map<int,double> CPManeuverLanes(Clusterstruct CMembers, double CP2Obst, TraCIMobility*  emvmob, double ManTime);
+        double maxIvTThresh = 0;
+        double minIvTThresh = 0;
+        double maxT2CThresh = 0;
+        double minT2CThresh = 0;
+        double accidentTime = 0;
+        double InjTime = 0;
+        double maxVehAccel;
+        double clustFormPeriod = 6;
+        double vSpeed;
+        std::string getClusterHeadID (std::map<std::string,Veins::TraCIMobility*> Allvehicles);
+        std::map<std::string, Veins::TraCIMobility*> myMembersInAccident;
+        void UpdateMyClusterMembers();
+        std::string getInterVehiclesAveragedistances(std::map<std::string,Veins::TraCIMobility*> Allvehicles);
+        bool isMyClusterInManeuver = false;
+        void classifyClusterMembersbyLane(Clusterstruct clust, int numLanes);
+        std::map<int,  std::vector<Veins::TraCIMobility*>> ClusterMembersbyLane;
+        void unregisteringFromClusters();
+        void memberManeuver();
+
+
+
+//		BAM
 	protected:
 		/** @brief Self message to indicate that the current channel shall be switched.*/
 		cMessage* nextChannelSwitch;

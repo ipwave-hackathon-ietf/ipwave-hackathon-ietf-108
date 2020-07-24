@@ -23,8 +23,11 @@ import inet.node.ipv6.StandardHost6;
 
 network CNPNet extends CNPScenario
 {
+    parameters:
+    int n;
+    
     submodules:
-        rsu[1]: CNPRSU {
+        rsu[n]: CNPRSU {
             @display("p=150,140;i=veins/sign/yellowdiamond;is=vs");
         }
         
@@ -32,6 +35,15 @@ network CNPNet extends CNPScenario
             @display("p=450.36751,41.445;i=veins/sign/yellowdiamond;is=vs");
         }
 	connections allowunconnected:
-	    MA[0].ethg$o++ --> ethernetline --> rsu[0].ethg$i++;
-        MA[0].ethg$i++ <-- ethernetline <-- rsu[0].ethg$o++;
+//	    MA[0].ethg$o++ --> ethernetline --> rsu[0].ethg$i++;
+//        MA[0].ethg$i++ <-- ethernetline <-- rsu[0].ethg$o++;
+
+        for i=0..n-1 {
+            MA[0].ethg$o++ --> ethernetline --> rsu[i].ethg$i++;
+            MA[0].ethg$i++ <-- ethernetline <-- rsu[i].ethg$o++;
+        }
+        rsu[0].ethg$i++ <-- ethernetline <-- rsu[1].ethg$o++;
+        rsu[0].ethg$o++ --> ethernetline --> rsu[1].ethg$i++;
+	 	rsu[1].ethg$i++ <-- ethernetline <-- rsu[2].ethg$o++;
+        rsu[1].ethg$o++ --> ethernetline --> rsu[2].ethg$i++;
 }

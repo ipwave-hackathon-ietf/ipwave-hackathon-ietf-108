@@ -2810,6 +2810,7 @@ void Ipv6NeighbourDiscovery::processDACPacket(Packet *packet, const Ipv6Duplicat
 void Ipv6NeighbourDiscovery::createAndSendDACPacket( const Ipv6Address& dgDestAddr,
         const Ipv6Address& dgSrcAddr, const Ipv6DuplicateAddrReq *dar, int status, InterfaceEntry *ie)
 {
+    std::cout <<" <----> MA ----> Ipv6Module !!" <<std::endl;
     MacAddress myMacAddr = ie->getMacAddress();
     //Construct a DAC message
     auto dac = makeShared<Ipv6DuplicateAddrConfirm>();
@@ -2836,7 +2837,6 @@ void Ipv6NeighbourDiscovery::createAndSendDACPacket( const Ipv6Address& dgDestAd
     Icmpv6::insertCrc(crcMode, dac, packet);
     packet->insertAtFront(dac);
     sendPacketToIpv6Module(packet, dgDestAddr, dgSrcAddr, ie->getInterfaceId());
-
 }
 // Mobility Anchor Behavior
 
@@ -3095,7 +3095,6 @@ void Ipv6NeighbourDiscovery::processNsForMultihopDAD(Packet *packet, const Ipv6N
             entry->reachabilityState = Ipv6NeighbourCache::STALE;
         }
     }
-
 }
 
 void Ipv6NeighbourDiscovery::forwardNDMessageForNeighbour(Packet *packet, const Ipv6Address& destAddr, InterfaceEntry *ie)  {
@@ -3130,7 +3129,6 @@ void Ipv6NeighbourDiscovery::processNsWithSpecifiedSrcAddr(Packet *packet, const
             EV_INFO << "Neighbour Entry not found. Create a Neighbour Cache Entry.\n";
 //            Ipv6Address relayAddr = ie->ipv6Data()->getLinkLocalAddress();
             Ipv6Address relayAddr = ie->ipv6Data()->getPreferredAddress();
-
 
             Ipv6Address globalAddr = ns->getTargetAddress();
             globalAddr.setPrefix(ie->ipv6Data()->getPreferredAddress().getPrefix(64), 64);

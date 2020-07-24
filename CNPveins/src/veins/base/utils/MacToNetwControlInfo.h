@@ -41,7 +41,7 @@ protected:
 
 	/** @brief MAC address of the last hop of this packet.*/
 	inet::MacAddress lastHopMac;
-
+	int laneID;
 	/** @brief The received signal strength for this packet.*/
 	double rssi;
 
@@ -64,7 +64,7 @@ public:
     {
         return bitErrorRate;
     }
-
+	int getLaneID();
 	/**
 	 * @brief Sets the bit error rate for this control infos packet.
 	 *
